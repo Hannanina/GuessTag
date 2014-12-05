@@ -32,6 +32,14 @@
             android:name=".RulesActivity"
             android:label="@string/title_activity_rules" >
         </activity>
+        <activity
+            android:name=".InputTagActivity"
+            android:label="@string/title_activity_input_tag" >
+        </activity>
+        <activity
+            android:name=".SelectTaggerActivity"
+            android:label="@string/title_activity_select_tagger" >
+        </activity>
     </application>
 
 </manifest>
