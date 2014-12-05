@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;GuessTag/res/menu/new.xml&apos; to &apos;new_menu.xml&apos;" description="Rename resource &apos;new.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="res/menu/new.xml" name="new_menu.xml" stamp="1417780984166" updateReferences="true"/>
+</session>

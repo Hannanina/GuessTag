@@ -1,0 +1,1 @@
+2014-12-05 13:01:37,774 [AppKit Thread] WARN  o.e.r.i.c.rcp.TypeBindingAnalyzer - Can't handle class org.eclipse.jdt.internal.compiler.ast.EqualExpression as parent of completion location.

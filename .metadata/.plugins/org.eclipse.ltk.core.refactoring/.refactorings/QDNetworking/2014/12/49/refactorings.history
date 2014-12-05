@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 2 elements from project &apos;QDNetworking&apos;&#x0A;- Original project: &apos;QDNetworking&apos;&#x0A;- Original elements:&#x0A;     android-support-v4.jar&#x0A;     android-support-v7-appcompat.jar" description="Delete elements" element1="libs/android-support-v7-appcompat.jar" element2="libs/android-support-v4.jar" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="2" stamp="1417783710819" subPackages="false" version="1.0"/>
+</session>

@@ -4,16 +4,21 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.os.Bundle;
+
 
 /**
  * Example activity implementing NetworkingEventHandler and its methods.
  * Test the communication with the server.
- * @author Peter Börjesson
+<<<<<<< Updated upstream
+ * @author Peter 
+=======
+ * @author Peter
+>>>>>>> Stashed changes
  *
  */
 public class MainActivity extends ActionBarActivity implements NetworkingEventHandler{
