@@ -1,5 +1,6 @@
 package com.example.guesstag;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -30,5 +31,23 @@ public class StartActivity extends ActionBarActivity{
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void onClickStart() {
+		Intent intent = new Intent(this, NewActivity.class);
+		startActivity(intent);
+	}
+	
+	/**
+	 * Highscore not implemented yet.
+	 */
+	public void onClickHighscore() {
+		//Intent intent = new Intent(this, HighscoreActivity.class);
+		//startActivity(intent);
+	}
+	
+	public void onClickRules() {
+		Intent intent = new Intent(this, RulesActivity.class);
+		startActivity(intent);
 	}
 }

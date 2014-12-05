@@ -1805,14 +1805,15 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f090030;
         public static final int action_mode_bar_stub=0x7f09002f;
         public static final int action_mode_close_button=0x7f090022;
-        public static final int action_settings=0x7f090045;
+        public static final int action_settings=0x7f090048;
         public static final int activity_chooser_view_content=0x7f090023;
         public static final int always=0x7f090014;
         public static final int beginning=0x7f09001b;
         public static final int bottom=0x7f09001e;
-        public static final int button_highscore=0x7f090043;
-        public static final int button_rules=0x7f090044;
-        public static final int button_start=0x7f090042;
+        public static final int button_back=0x7f090043;
+        public static final int button_highscore=0x7f090046;
+        public static final int button_rules=0x7f090047;
+        public static final int button_start=0x7f090045;
         public static final int checkbox=0x7f09002b;
         public static final int collapseActionView=0x7f090015;
         public static final int decor_content_parent=0x7f090031;
@@ -1838,6 +1839,8 @@ containing a value of this type.
         public static final int progress_circular=0x7f090007;
         public static final int progress_horizontal=0x7f090008;
         public static final int radio=0x7f09002d;
+        public static final int rules_heading=0x7f090041;
+        public static final int rules_text=0x7f090042;
         public static final int search_badge=0x7f090037;
         public static final int search_bar=0x7f090036;
         public static final int search_button=0x7f090038;
@@ -1853,7 +1856,7 @@ containing a value of this type.
         public static final int showHome=0x7f090011;
         public static final int showTitle=0x7f090012;
         public static final int split_action_bar=0x7f090004;
-        public static final int start_heading=0x7f090041;
+        public static final int start_heading=0x7f090044;
         public static final int submit_area=0x7f09003e;
         public static final int tabMode=0x7f09000c;
         public static final int title=0x7f090029;
@@ -1913,11 +1916,13 @@ containing a value of this type.
         public static final int abc_search_view=0x7f030015;
         public static final int abc_simple_dropdown_hint=0x7f030016;
         public static final int activity_new=0x7f030017;
-        public static final int activity_start=0x7f030018;
-        public static final int support_simple_spinner_dropdown_item=0x7f030019;
+        public static final int activity_rules=0x7f030018;
+        public static final int activity_start=0x7f030019;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001a;
     }
     public static final class menu {
         public static final int new_menu=0x7f0c0000;
+        public static final int rules=0x7f0c0001;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1975,13 +1980,21 @@ containing a value of this type.
         public static final int abc_shareactionprovider_share_with_application=0x7f0a000d;
         public static final int action_settings=0x7f0a0011;
         public static final int app_name=0x7f0a000f;
-        public static final int button_highscore=0x7f0a0014;
-        public static final int button_rules=0x7f0a0015;
-        public static final int button_start=0x7f0a0013;
+        /**  BACK BUTTON 
+         */
+        public static final int button_back=0x7f0a0012;
+        public static final int button_highscore=0x7f0a0015;
+        public static final int button_rules=0x7f0a0016;
+        public static final int button_start=0x7f0a0014;
         public static final int hello_world=0x7f0a0010;
+        /**  RULES ACTIVITY 
+         */
+        public static final int rules_heading=0x7f0a0018;
+        public static final int rules_text=0x7f0a0019;
         /**  START ACTIVITY 
          */
-        public static final int start_heading=0x7f0a0012;
+        public static final int start_heading=0x7f0a0013;
+        public static final int title_activity_rules=0x7f0a0017;
     }
     public static final class style {
         /** 
