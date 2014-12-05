@@ -1,6 +1,5 @@
 package com.example.guesstag;
 
-import android.R.layout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
