@@ -8,26 +8,27 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-public class InputTagActivity extends ActionBarActivity {
+public class GuessTagActivity extends ActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_input_tag);
+		setContentView(R.layout.activity_guess_tag);
 	}
+	
 	public void onClickSubmit (){
-		//ToDO: check if hashtag has been used, if so make textView visible
-		//toDo: save Input String
+
 		TextView textView = (TextView) findViewById(R.id.textView3);
         textView.setVisibility(View.INVISIBLE);
 
-		Intent intent = new Intent(this, NewActivity.class); //should lead to TimerActivity
-		startActivity(intent);
+		//Intent intent = new Intent(this, NewActivity.class); 
+		//startActivity(intent);
 	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.input_tag, menu);
+		getMenuInflater().inflate(R.menu.guess_tag, menu);
 		return true;
 	}
 

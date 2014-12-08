@@ -27,6 +27,6 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="Make me a tagger" 
-        android:onClick="selectTagger"/>
+        android:onClick="onClickSelect"/>
 
 </RelativeLayout>

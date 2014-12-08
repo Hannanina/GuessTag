@@ -23,7 +23,7 @@
     <string name="new_heading">Start new game</string>
     <string name="button_host">Host game</string>
     <string name="button_join">Join game</string>
-    
+
     <!-- HOST ACTIVITY -->
     <string name="host_heading">Host game</string>
     <string name="game_name_instruction">Input game name</string>
@@ -39,5 +39,6 @@
     <!-- TIMER ACTIVITY -->
     <string name="title_activity_timer">TimerActivity</string>
     <string name="title_activity_host">HostActivity</string>
+    <string name="title_activity_guess_tag">GuessTagActivity</string>
 
 </resources>

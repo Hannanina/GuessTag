@@ -48,6 +48,10 @@
             android:name=".HostActivity"
             android:label="@string/title_activity_host" >
         </activity>
+        <activity
+            android:name=".GuessTagActivity"
+            android:label="@string/title_activity_guess_tag" >
+        </activity>
     </application>
 
 </manifest>

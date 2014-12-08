@@ -14,7 +14,7 @@ public class SelectTaggerActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_select_tagger);
 	}
 	
-	public void selectTagger(){
+	public void onClickSelect(){
 		//toDo: disable button for other players and bring them to guessTag Activity
 		Intent intent = new Intent(this, InputTagActivity.class);
 		startActivity(intent);
