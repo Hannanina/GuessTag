@@ -40,6 +40,10 @@
             android:name=".SelectTaggerActivity"
             android:label="@string/title_activity_select_tagger" >
         </activity>
+        <activity
+            android:name=".TimerActivity"
+            android:label="@string/title_activity_timer" >
+        </activity>
     </application>
 
 </manifest>

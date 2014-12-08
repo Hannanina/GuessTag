@@ -1926,13 +1926,15 @@ containing a value of this type.
         public static final int activity_rules=0x7f030019;
         public static final int activity_select_tagger=0x7f03001a;
         public static final int activity_start=0x7f03001b;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001c;
+        public static final int activity_timer=0x7f03001c;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001d;
     }
     public static final class menu {
         public static final int input_tag=0x7f0c0000;
         public static final int new_menu=0x7f0c0001;
         public static final int rules=0x7f0c0002;
         public static final int select_tagger=0x7f0c0003;
+        public static final int timer=0x7f0c0004;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -2007,6 +2009,7 @@ containing a value of this type.
         public static final int title_activity_input_tag=0x7f0a001a;
         public static final int title_activity_rules=0x7f0a0017;
         public static final int title_activity_select_tagger=0x7f0a001b;
+        public static final int title_activity_timer=0x7f0a001c;
     }
     public static final class style {
         /** 
