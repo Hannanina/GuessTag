@@ -28,7 +28,7 @@ public class TimerActivity extends ActionBarActivity {
 		        @Override
 		        public void onTick(long millisUntilFinished) {
 		    		TextView textview = (TextView)findViewById(R.id.textView1);
-		    		textview.setText("seconds remaining: " + millisUntilFinished / 1000);
+		    		textview.setText(millisUntilFinished / 1000 + " sec");
 		            i++;
 		            mProgressBar.setProgress(i);
 

@@ -21,7 +21,7 @@ public class InputTagActivity extends ActionBarActivity {
 		TextView textView = (TextView) findViewById(R.id.textView3);
         textView.setVisibility(View.INVISIBLE);
 
-		Intent intent = new Intent(this, NewActivity.class); //should lead to TimerActivity
+		Intent intent = new Intent(this, TimerActivity.class);
 		startActivity(intent);
 	}
 	@Override
