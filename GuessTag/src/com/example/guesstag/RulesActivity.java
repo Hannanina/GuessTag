@@ -1,9 +1,11 @@
 package com.example.guesstag;
 
 import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class RulesActivity extends ActionBarActivity {
 
@@ -30,5 +32,10 @@ public class RulesActivity extends ActionBarActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void onClickBack(View view) {
+		Intent intent = new Intent(this, StartActivity.class);
+		startActivity(intent);
 	}
 }

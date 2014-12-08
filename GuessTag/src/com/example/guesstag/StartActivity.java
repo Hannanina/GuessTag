@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class StartActivity extends ActionBarActivity{
 	
@@ -33,7 +34,7 @@ public class StartActivity extends ActionBarActivity{
 		return super.onOptionsItemSelected(item);
 	}
 	
-	public void onClickStart() {
+	public void onClickStart(View view) {
 		Intent intent = new Intent(this, NewActivity.class);
 		startActivity(intent);
 	}
@@ -41,12 +42,12 @@ public class StartActivity extends ActionBarActivity{
 	/**
 	 * Highscore not implemented yet.
 	 */
-	public void onClickHighscore() {
+	public void onClickHighscore(View view) {
 		//Intent intent = new Intent(this, HighscoreActivity.class);
 		//startActivity(intent);
 	}
 	
-	public void onClickRules() {
+	public void onClickRules(View view) {
 		Intent intent = new Intent(this, RulesActivity.class);
 		startActivity(intent);
 	}

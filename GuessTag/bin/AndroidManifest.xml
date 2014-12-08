@@ -44,6 +44,10 @@
             android:name=".TimerActivity"
             android:label="@string/title_activity_timer" >
         </activity>
+        <activity
+            android:name=".HostActivity"
+            android:label="@string/title_activity_host" >
+        </activity>
     </application>
 
 </manifest>

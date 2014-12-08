@@ -1,0 +1,116 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:background="@color/DimGray"
+    tools:context="com.example.guesstag.HostActivity" >
+
+    <TextView
+        android:id="@+id/host_heading"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="15dp"
+        android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center"
+	    android:text="@string/host_heading"
+	    android:textStyle="italic"
+	    android:textSize="40sp"
+	    android:textColor="@color/White">
+    </TextView>
+    
+    <LinearLayout
+        android:id="@+id/input_container"
+        android:orientation="vertical"
+        android:layout_width="200dp"
+        android:layout_height="96dp"
+        android:layout_gravity="center" >
+   		<TextView
+        	android:id="@+id/game_name_instruction"
+        	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:layout_marginLeft="2dp"
+	    	android:layout_marginBottom="3dp"
+	    	android:text="@string/game_name_instruction"
+	    	android:textColor="@color/White">
+    	</TextView>
+    
+    	<EditText
+        	android:id="@+id/input_game_name"
+        	android:layout_width="match_parent"
+        	android:layout_height="40dp"
+        	android:layout_gravity="center"
+        	android:background="@color/White"
+        	android:hint="@string/input_game_name" >
+        
+    	</EditText>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/difficulty_container"
+        android:orientation="vertical"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" >
+    	
+        <TextView
+        	android:id="@+id/difficulty_setting_instruction"
+        	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:layout_marginLeft="2dp"
+	    	android:layout_marginBottom="3dp"
+	    	android:text="@string/difficulty_setting_instruction"
+	    	android:textColor="@color/White">
+    	</TextView>
+    
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/bar_container"
+        android:orientation="vertical"
+        android:layout_width="280dp"
+        android:layout_height="96dp"
+        android:layout_gravity="center" >
+        
+        <SeekBar
+            android:id="@+id/difficulty_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="2"
+            android:progress="1"
+            android:progressTint="@color/Teal" >
+        </SeekBar>
+        
+        <TextView
+        	android:id="@+id/difficulty_setting_level"
+        	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:layout_marginBottom="3dp"
+	    	android:layout_gravity="center"
+	    	android:textStyle="bold"
+	    	android:text="@string/difficulty_setting_level"
+	    	android:textColor="@color/">
+    	</TextView>
+    </LinearLayout>
+    
+    <Button 
+	    android:id="@+id/button_create"
+	    android:layout_width="200dp"
+	    android:layout_height="48dp"
+	    android:layout_gravity="bottom|center"
+	    android:text="@string/button_create"
+	    android:onClick="onClickCreate" >
+	</Button>
+    
+    <Button 
+	    android:id="@+id/button_back"
+	    android:layout_width="200dp"
+	    android:layout_height="48dp"
+	    android:layout_gravity="bottom|center"
+	    android:text="@string/button_back"
+	    android:onClick="onClickBack" >
+	</Button>
+
+</LinearLayout>
