@@ -1,0 +1,20 @@
+package com.example.guesstag;
+
+import java.util.ArrayList;
+
+public class SessionManager {
+
+	private Score score;
+	private int nrOfGuesses;
+	private int timeSpent;
+	private ArrayList<String> usedTags;
+	private ArrayList<String> listOfPlayers;
+	
+	public SessionManager() {
+		
+	}
+	
+	public Score getScore() {
+		return score;
+	}
+}

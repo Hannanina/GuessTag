@@ -1,0 +1,70 @@
+package com.example.guesstag;
+
+import java.util.ArrayList;
+
+public class SessionManager {
+
+	//Attributes
+	private Score score;
+	private int nrOfGuesses;
+	private int timeSpent;
+	private ArrayList<String> usedTags;
+	private ArrayList<String> listOfPlayers;
+	
+	//Variables to check tags
+	private Boolean correctFormatTag = true;
+	private Boolean correctGuessTag = false;
+	
+	private static SessionManager sessionManager = new SessionManager();
+	
+	private SessionManager() {
+		
+	}
+	
+	//SessionManager is a singleton class,
+	//so all interaction with should be through this static call.
+	public static SessionManager getSessionManager() {
+		return sessionManager;
+	}
+	
+	//Should be called early to fill relevant information into Score class.
+	public void fillScore(int nrOfPlayers, String gameName, String diffSetting) {
+		score = new Score(nrOfPlayers, 0, gameName, diffSetting);
+	}
+	
+	public Score getScore() {
+		return score;
+	}
+	
+	public void setScore(int nrOfPlayers, int points, String gameName, String diffSetting) {
+		
+	}
+	
+	public String getDiffSetting() {
+		return getScore().getDiffSetting();
+	}
+	
+	//Should only check if tags has been used before, not the format.
+	public Boolean checkInputTag(String tag) {
+		correctFormatTag = true;
+		
+		int size = usedTags.size();
+		for(int i = 0; i < size; i++) {
+			
+			if(tag == usedTags.get(i)) {
+				correctFormatTag = false;
+			}
+			else {
+				correctFormatTag = false;
+			}
+		}
+		
+		return correctFormatTag;
+	}
+	
+	public Boolean checkGuessTag(String tag) {
+		correctGuessTag = false;
+		
+		return correctGuessTag;
+	}
+}

@@ -1,0 +1,55 @@
+package com.example.guesstag;
+
+import java.util.ArrayList;
+
+public class SessionManager {
+
+	//Attributes
+	private Score score;
+	private int nrOfGuesses;
+	private int timeSpent;
+	private ArrayList<String> usedTags;
+	private ArrayList<String> listOfPlayers;
+	
+	//Bool values to check tags
+	private Boolean correctFormatTag = false;
+	private Boolean correctGuessTag = false;
+	
+	private static SessionManager sessionManager = new SessionManager();
+	
+	private SessionManager() {
+		
+	}
+	
+	public static SessionManager getSessionManager() {
+		return sessionManager;
+	}
+	
+	public void fillScore(int nrOfPlayers, String gameName, String diffSetting) {
+		score = new Score(nrOfPlayers, 0, gameName, diffSetting);
+	}
+	
+	public Score getScore() {
+		return score;
+	}
+	
+	public void setScore(int nrOfPlayers, int points, String gameName, String diffSetting) {
+		
+	}
+	
+	public String getDiffSetting() {
+		return getScore().getDiffSetting();
+	}
+	
+	public Boolean checkInputTag(String tag) {
+		correctFormatTag = false;
+		
+		return correctFormatTag;
+	}
+	
+	public Boolean checkGuessTag(String tag) {
+		correctGuessTag = false;
+		
+		return correctGuessTag;
+	}
+}

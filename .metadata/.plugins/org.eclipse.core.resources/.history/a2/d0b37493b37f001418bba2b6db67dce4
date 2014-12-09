@@ -1,0 +1,9 @@
+package com.example.guesstag;
+
+public class Score {
+	
+	private int nrOfPlayers;
+	private int points;
+	private String gameName;
+	private String diffSetting;
+}

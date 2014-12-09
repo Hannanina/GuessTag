@@ -1,0 +1,9 @@
+package com.example.guesstag;
+
+public class SessionManager {
+
+	private Score score;
+	private int nrOfGuesses;
+	private int timeSpent;
+	private ArrayList<String> d;
+}
