@@ -44,8 +44,8 @@ public class StartActivity extends ActionBarActivity{
 	 * Highscore not implemented yet.
 	 */
 	public void onClickHighscore(View view) {
-		//Intent intent = new Intent(this, HighscoreActivity.class);
-		//startActivity(intent);
+		Intent intent = new Intent(this, HighscoreActivity.class);
+		startActivity(intent);
 	}
 	
 	public void onClickRules(View view) {

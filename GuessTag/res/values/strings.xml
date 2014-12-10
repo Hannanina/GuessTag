@@ -43,5 +43,9 @@
     <string name="title_activity_result_round">ResultRoundActivity</string>
     <string name="title_activity_join_game">JoinGameActivity</string>
     <string name="title_activity_result_final">ResultFinalActivity</string>
+    <string name="title_activity_highscore">HighscoreActivity</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
 
 </resources>
