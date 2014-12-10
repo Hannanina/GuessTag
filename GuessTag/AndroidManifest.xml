@@ -52,6 +52,10 @@
             android:name=".GuessTagActivity"
             android:label="@string/title_activity_guess_tag" >
         </activity>
+        <activity
+            android:name=".ResultRoundActivity"
+            android:label="@string/title_activity_result_round" >
+        </activity>
     </application>
 
 </manifest>

@@ -33,7 +33,7 @@ public class TimerActivity extends ActionBarActivity {
 		            mProgressBar.setProgress(i);
 
 		        }
-
+		        
 		        @Override
 		        public void onFinish() {
 		    		TextView textview = (TextView)findViewById(R.id.textView1);
