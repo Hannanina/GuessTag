@@ -153,13 +153,7 @@ public class HostActivity extends ActionBarActivity implements
 		
 			//TODO Do something with returned values?
 			
-			Log.d(NetworkingManager.TAG_EVENT_COMPLETE, "JSONOBject retreived in method valueChanged + " +
-					"forKeyOfUser: " +  json.toString());
-			try {
-				serverMsg.setText(json.getJSONArray("records").getJSONObject(0).getString("value"));
-			} catch (JSONException e) {
-				Log.e(NetworkingManager.TAG_ERROR, e.getMessage());
-			}
+
 		
 	}
 		

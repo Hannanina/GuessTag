@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -23,8 +23,10 @@ public class JoinGameActivity extends ActionBarActivity implements
 
 	private ArrayList<String> listOfGames = new ArrayList<String>();
 	private OnItemClickListener clickList;
-	private TextView serverMsg;
+	private TextView testing;
 	private NetworkingManager manager;
+
+	ArrayAdapter<String> adapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +35,9 @@ public class JoinGameActivity extends ActionBarActivity implements
 
 		manager = new NetworkingManager(this, "group6", "client");
 		manager.monitorKeyOfUser("createGame", "user1");
+		 manager.saveValueForKeyOfUser("createGame", "user1", "value1");
 
-		listOfGames.add("First Game");
-
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+		adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, listOfGames);
 
 		ListView listView = (ListView) findViewById(R.id.listOfGames);
@@ -76,8 +77,9 @@ public class JoinGameActivity extends ActionBarActivity implements
 	}
 
 	public void onClickBack(View view) {
-		Intent intent = new Intent(this, NewActivity.class);
-		startActivity(intent);
+		// Intent intent = new Intent(this, NewActivity.class);
+		// startActivity(intent);
+		manager.loadValueForKeyOfUser("createGame", "user1");
 	}
 
 	public void onClickJoin(View view) {
@@ -88,22 +90,8 @@ public class JoinGameActivity extends ActionBarActivity implements
 
 	public void valueChangedForKeyOfUser(JSONObject json, String key,
 			String user) {
-		// TODO Auto-generated method stub
 
-		// TODO Do something with returned values?
-
-		Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
-				"JSONOBject retreived in method valueChanged + "
-						+ "forKeyOfUser: " + json.toString());
-		try {
-			serverMsg.setText(json.getJSONArray("records").getJSONObject(0)
-					.getString("value"));
-		} catch (JSONException e) {
-			Log.e(NetworkingManager.TAG_ERROR, e.getMessage());
-		}
-
-		listOfGames.add(serverMsg.toString());
-		listOfGames.add("second game");
+		// listOfGames.add("second game");
 
 	}
 
@@ -116,8 +104,24 @@ public class JoinGameActivity extends ActionBarActivity implements
 	@Override
 	public void loadedValueForKeyOfUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
+		testing = (TextView) findViewById(R.id.testing);
+		// testing.setText("Value is changed for key of user!");
+
+		Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
+				"JSONOBject retreived in method loadedValue + "
+						+ "forKeyOfUser: " + json.toString());
+		try {
+			testing.setText(json.getJSONArray("records").getJSONObject(0)
+					.getString("value"));
+		} catch (JSONException e) {
+			Log.e(NetworkingManager.TAG_ERROR, e.getMessage());
+		}
+//		adapter.add("A new game is added!");
+//			adapter.notifyDataSetChanged();
 
 	}
+	
+	
 
 	@Override
 	public void deletedKeyOfUser(JSONObject json, String key, String user) {
