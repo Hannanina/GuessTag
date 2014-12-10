@@ -2,6 +2,7 @@ package com.example.guesstag;
 
 
 import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.Menu;
@@ -14,6 +15,7 @@ public class TimerActivity extends ActionBarActivity {
 	ProgressBar mProgressBar;
 	CountDownTimer mCountDownTimer;
 	int i=1;
+	TextView timerValue = (TextView)findViewById(R.id.timerValue);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -23,12 +25,13 @@ public class TimerActivity extends ActionBarActivity {
 		
 		mProgressBar=(ProgressBar)findViewById(R.id.circularProgressbar);
 		mProgressBar.setProgress(i);
-		mCountDownTimer=new CountDownTimer(30000,300) {
+		if(SessionManager.getSessionManager().getDiffSetting().equals("easy")) {
+		
+			mCountDownTimer=new CountDownTimer(60000,600) {
 
 		        @Override
 		        public void onTick(long millisUntilFinished) {
-		    		TextView textview = (TextView)findViewById(R.id.textView1);
-		    		textview.setText(millisUntilFinished / 1000 + " sec");
+		    		timerValue.setText(millisUntilFinished / 1000 + " sec");
 		            i++;
 		            mProgressBar.setProgress(i);
 
@@ -36,12 +39,63 @@ public class TimerActivity extends ActionBarActivity {
 		        
 		        @Override
 		        public void onFinish() {
-		    		TextView textview = (TextView)findViewById(R.id.textView1);
-		    		textview.setText("Time is up");
+		    		SessionManager.getSessionManager().calculatePoints(Integer.parseInt((timerValue.getText().toString())));
+		    		//Intent intent = new Intent(this, ResultRound.class);
+		    		//startActivity(intent);
 		    		
 		        }
 		    };
 		    mCountDownTimer.start();
+		}
+		else if(SessionManager.getSessionManager().getDiffSetting().equals("medium")) {
+		
+			mCountDownTimer=new CountDownTimer(30000,300) {
+
+		        @Override
+		        public void onTick(long millisUntilFinished) {
+		    		timerValue.setText(millisUntilFinished / 1000 + " sec");
+		            i++;
+		            mProgressBar.setProgress(i);
+
+		        }
+
+		        @Override
+		        public void onFinish() {
+		    		SessionManager.getSessionManager().calculatePoints(Integer.parseInt((timerValue.getText().toString())));
+		    		//Intent intent = new Intent(this, ResultRound.class);
+		    		//startActivity(intent);
+		    		
+		        }
+		    };
+		    mCountDownTimer.start();
+		}
+		else {
+		
+			mCountDownTimer=new CountDownTimer(15000,150) {
+
+		        @Override
+		        public void onTick(long millisUntilFinished) {
+		    		timerValue.setText(millisUntilFinished / 1000 + " sec");
+		            i++;
+		            mProgressBar.setProgress(i);
+
+		        }
+
+		        @Override
+		        public void onFinish() {
+		    		SessionManager.getSessionManager().calculatePoints(Integer.parseInt((timerValue.getText().toString())));
+		    		//Intent intent = new Intent(this, ResultRound.class);
+		    		//startActivity(intent);
+		    		
+		        }
+		    };
+		    mCountDownTimer.start();
+		}
+		
+    }
+    
+    public void stopTimer() {
+    	mCountDownTimer.cancel();
     }
     
 	@Override
