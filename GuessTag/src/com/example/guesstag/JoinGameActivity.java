@@ -66,9 +66,13 @@ public class JoinGameActivity extends ActionBarActivity {
 		startActivity(intent);
 	}
 
-	public void onClickCreate(View view) {
+	public void onClickJoin(View view) {
 
 		// Intent intent = new Intent(this, NewActivity.class);
 		// startActivity(intent);
+	}
+	
+	public void getListOfGames(){
+		
 	}
 }
