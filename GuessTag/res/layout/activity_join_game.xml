@@ -11,6 +11,30 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:text="@string/List of Games" />
+
+    <ListView
+        android:id="@+id/listOfGames"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1" >
+    </ListView>
+
+    <Button
+        android:id="@+id/buttonJoin"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickJoin"
+        android:text="Join" />
+
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_centerHorizontal="true"
+        android:layout_weight="0"
+        android:onClick="onClickBack"
+        android:text="Back" />
 
 </RelativeLayout>

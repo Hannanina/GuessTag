@@ -57,8 +57,13 @@
             android:label="@string/title_activity_result_round" >
         </activity>
         <activity
+<<<<<<< HEAD
             android:name=".JoinGameActivity"
             android:label="@string/title_activity_join_game" >
+=======
+            android:name=".ResultFinalActivity"
+            android:label="@string/title_activity_result_final" >
+>>>>>>> 11559b626f8575733386931daec3b3c615c1d32b
         </activity>
     </application>
 

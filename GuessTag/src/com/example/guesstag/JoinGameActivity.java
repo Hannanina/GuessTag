@@ -1,16 +1,45 @@
 package com.example.guesstag;
 
+
 import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class JoinGameActivity extends ActionBarActivity {
+
+	private String[] listOfGames = new String[10];
+	private OnItemClickListener clickList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_join_game);
+
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, listOfGames);
+
+		ListView listView = (ListView) findViewById(R.id.listOfGames);
+		listView.setAdapter(adapter);
+
+		clickList = new OnItemClickListener() {
+
+			public void onItemClick(AdapterView<?> parent, View v,
+					int position, long id) {
+				Intent intent = new Intent(this, WaitRoomGuest.class);
+			//	intent.putExtra("id", position);
+				startActivity(intent);
+			}
+		};
+
+		listView.setOnItemClickListener(clickList);
+
 	}
 
 	@Override
@@ -30,5 +59,16 @@ public class JoinGameActivity extends ActionBarActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	public void onClickBack(View view) {
+		Intent intent = new Intent(this, NewActivity.class);
+		startActivity(intent);
+	}
+
+	public void onClickCreate(View view) {
+
+		// Intent intent = new Intent(this, NewActivity.class);
+		// startActivity(intent);
 	}
 }
