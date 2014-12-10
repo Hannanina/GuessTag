@@ -20,7 +20,7 @@ public class HostActivity extends ActionBarActivity implements
 
 	SeekBar diffSetting;
 	TextView difficultyText;
-	 TextView serverMsg;
+	private TextView serverMsg;
 
 
 	/* added by caofa */

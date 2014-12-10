@@ -44,8 +44,8 @@ public class NewActivity extends ActionBarActivity {
 	 * Highscore not implemented yet.
 	 */
 	public void onClickJoin(View view) {
-		//Intent intent = new Intent(this, HighscoreActivity.class);
-		//startActivity(intent);
+		Intent intent = new Intent(this, JoinGameActivity.class);
+		startActivity(intent);
 	}
 	
 	public void onClickBack(View view) {

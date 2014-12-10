@@ -18,9 +18,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class JoinGameActivity extends ActionBarActivity {
+public class JoinGameActivity extends ActionBarActivity implements NetworkingEventHandler {
 
-	private ArrayList<String> listOfGames;
+	private ArrayList<String> listOfGames = new ArrayList<String>();
 	private OnItemClickListener clickList;
 	private TextView serverMsg;
 
@@ -28,7 +28,7 @@ public class JoinGameActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_join_game);
-
+		listOfGames.add("First Game");
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, listOfGames);
 
@@ -82,18 +82,62 @@ public class JoinGameActivity extends ActionBarActivity {
 	public void valueChangedForKeyOfUser(JSONObject json, String key,
 			String user) {
 		// TODO Auto-generated method stub
+
+		// TODO Do something with returned values?
+
+		Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
+				"JSONOBject retreived in method valueChanged + "
+						+ "forKeyOfUser: " + json.toString());
+		try {
+			serverMsg.setText(json.getJSONArray("records").getJSONObject(0)
+					.getString("value"));
+		} catch (JSONException e) {
+			Log.e(NetworkingManager.TAG_ERROR, e.getMessage());
+		}
+
+		listOfGames.add(serverMsg.toString());
+
+	}
+
+	@Override
+	public void savedValueForKeyOfUser(JSONObject json, String key, String user) {
+		// TODO Auto-generated method stub
 		
-			//TODO Do something with returned values?
-			
-			Log.d(NetworkingManager.TAG_EVENT_COMPLETE, "JSONOBject retreived in method valueChanged + " +
-					"forKeyOfUser: " +  json.toString());
-			try {
-				serverMsg.setText(json.getJSONArray("records").getJSONObject(0).getString("value"));
-			} catch (JSONException e) {
-				Log.e(NetworkingManager.TAG_ERROR, e.getMessage());
-			}
+	}
+
+	@Override
+	public void loadedValueForKeyOfUser(JSONObject json, String key, String user) {
+		// TODO Auto-generated method stub
 		
-			listOfGames.add(serverMsg.toString());
-			
+	}
+
+	@Override
+	public void deletedKeyOfUser(JSONObject json, String key, String user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void monitoringKeyOfUser(JSONObject json, String key, String user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void ignoringKeyOfUser(JSONObject json, String key, String user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void lockedKeyofUser(JSONObject json, String key, String user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void unlockedKeyOfUser(JSONObject json, String key, String user) {
+		// TODO Auto-generated method stub
+		
 	}
 }
