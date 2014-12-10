@@ -504,7 +504,7 @@ int id action_menu_presenter 0x7f05001d
 int id action_mode_bar 0x7f050030
 int id action_mode_bar_stub 0x7f05002f
 int id action_mode_close_button 0x7f050022
-int id action_settings 0x7f05006c
+int id action_settings 0x7f05006d
 int id activity_chooser_view_content 0x7f050023
 int id always 0x7f05000d
 int id bar_container 0x7f05004d
@@ -556,6 +556,7 @@ int id listMode 0x7f050002
 int id listOfGames 0x7f050052
 int id listOfPlayers 0x7f050066
 int id list_item 0x7f050027
+int id list_item1 0x7f05006c
 int id middle 0x7f050013
 int id never 0x7f05000b
 int id new_heading 0x7f050054

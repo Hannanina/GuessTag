@@ -1806,7 +1806,7 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f050030;
         public static final int action_mode_bar_stub=0x7f05002f;
         public static final int action_mode_close_button=0x7f050022;
-        public static final int action_settings=0x7f05006c;
+        public static final int action_settings=0x7f05006d;
         public static final int activity_chooser_view_content=0x7f050023;
         public static final int always=0x7f05000d;
         public static final int bar_container=0x7f05004d;
@@ -1858,6 +1858,7 @@ containing a value of this type.
         public static final int listOfGames=0x7f050052;
         public static final int listOfPlayers=0x7f050066;
         public static final int list_item=0x7f050027;
+        public static final int list_item1=0x7f05006c;
         public static final int middle=0x7f050013;
         public static final int never=0x7f05000b;
         public static final int new_heading=0x7f050054;
