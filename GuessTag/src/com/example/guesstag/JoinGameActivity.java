@@ -1,9 +1,14 @@
 package com.example.guesstag;
 
+import java.util.ArrayList;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,11 +16,13 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class JoinGameActivity extends ActionBarActivity {
 
-	private String[] listOfGames = new String[10];
+	private ArrayList<String> listOfGames;
 	private OnItemClickListener clickList;
+	private TextView serverMsg;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +39,9 @@ public class JoinGameActivity extends ActionBarActivity {
 
 			public void onItemClick(AdapterView<?> parent, View v,
 					int position, long id) {
-				//Intent intent = new Intent(this, WaitRoomGuest.class);
-			//	intent.putExtra("id", position);
-			//	startActivity(intent);
+				// Intent intent = new Intent(this, WaitRoomGuest.class);
+				// intent.putExtra("id", position);
+				// startActivity(intent);
 			}
 		};
 
@@ -71,8 +78,22 @@ public class JoinGameActivity extends ActionBarActivity {
 		// Intent intent = new Intent(this, NewActivity.class);
 		// startActivity(intent);
 	}
-	
-	public void getListOfGames(){
+
+	public void valueChangedForKeyOfUser(JSONObject json, String key,
+			String user) {
+		// TODO Auto-generated method stub
 		
+			//TODO Do something with returned values?
+			
+			Log.d(NetworkingManager.TAG_EVENT_COMPLETE, "JSONOBject retreived in method valueChanged + " +
+					"forKeyOfUser: " +  json.toString());
+			try {
+				serverMsg.setText(json.getJSONArray("records").getJSONObject(0).getString("value"));
+			} catch (JSONException e) {
+				Log.e(NetworkingManager.TAG_ERROR, e.getMessage());
+			}
+		
+			listOfGames.add(serverMsg.toString());
+			
 	}
 }
