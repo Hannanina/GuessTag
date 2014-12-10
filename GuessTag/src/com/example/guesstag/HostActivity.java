@@ -25,7 +25,7 @@ public class HostActivity extends ActionBarActivity implements
 
 	/* added by caofa */
 	private NetworkingManager manager;
-	 EditText gameName;
+	EditText gameName;
 	 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -77,15 +77,11 @@ public class HostActivity extends ActionBarActivity implements
 
 			manager.saveValueForKeyOfUser("key", "user", gameName.getText()
 					.toString());
-		//	Intent intent = new Intent(this, JoinActivity.class);
-			// startActivity(intent);
+			Intent intent = new Intent(this, WaitHostActivity.class);
+			startActivity(intent);
 		}
 	
 	}
-	
-	
-	
-	
 
 	public void onClickBack(View view) {
 		Intent intent = new Intent(this, NewActivity.class);

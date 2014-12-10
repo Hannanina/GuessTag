@@ -27,14 +27,13 @@ public class TimerActivity extends ActionBarActivity {
 		mProgressBar.setProgress(i);
 		if(SessionManager.getSessionManager().getDiffSetting().equals("easy")) {
 		
-			mCountDownTimer=new CountDownTimer(60000,600) {
+			mCountDownTimer=new CountDownTimer(60000, 600) {
 
 		        @Override
 		        public void onTick(long millisUntilFinished) {
 		    		timerValue.setText(millisUntilFinished / 1000 + " sec");
 		            i++;
 		            mProgressBar.setProgress(i);
-
 		        }
 		        
 		        @Override
@@ -47,14 +46,13 @@ public class TimerActivity extends ActionBarActivity {
 		}
 		else if(SessionManager.getSessionManager().getDiffSetting().equals("medium")) {
 		
-			mCountDownTimer=new CountDownTimer(30000,300) {
+			mCountDownTimer=new CountDownTimer(30000, 300) {
 
 		        @Override
 		        public void onTick(long millisUntilFinished) {
 		    		timerValue.setText(millisUntilFinished / 1000 + " sec");
 		            i++;
 		            mProgressBar.setProgress(i);
-
 		        }
 
 		        @Override
@@ -67,7 +65,7 @@ public class TimerActivity extends ActionBarActivity {
 		}
 		else {
 		
-			mCountDownTimer=new CountDownTimer(15000,150) {
+			mCountDownTimer=new CountDownTimer(15000, 150) {
 
 		        @Override
 		        public void onTick(long millisUntilFinished) {
@@ -85,7 +83,6 @@ public class TimerActivity extends ActionBarActivity {
 		    };
 		    mCountDownTimer.start();
 		}
-		
     }
     
     public void stopTimer() {
@@ -122,6 +119,5 @@ public class TimerActivity extends ActionBarActivity {
 			Intent intent = new Intent(this, ResultFinalActivity.class);
 			startActivity(intent);
 		}
-		
 	}
 }
