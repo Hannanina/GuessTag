@@ -65,13 +65,16 @@
             android:label="@string/title_activity_result_final" >
         </activity>
         <activity
-<<<<<<< Updated upstream
             android:name=".HighscoreActivity"
             android:label="@string/title_activity_highscore" >
-=======
+        </activity>
+        <activity
             android:name=".WaitHostActivity"
             android:label="@string/title_activity_wait_host" >
->>>>>>> Stashed changes
+        </activity>
+        <activity
+            android:name=".WaitGuestActivity"
+            android:label="@string/title_activity_wait_guest" >
         </activity>
     </application>
 

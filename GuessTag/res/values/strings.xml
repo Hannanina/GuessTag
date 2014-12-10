@@ -36,10 +36,11 @@
     <string name="host_wait_heading">Host game</string>
     <string name="waiting_for_players">Waiting for players.</string>
     <string name="button_start_game">Start game</string>
-    
+
     <!-- WAIT GUEST ACTIVITY -->
-    <string name="guest_wait_heading">Finding games.</string>
-    
+    <string name="guest_wait_heading">Join game</string>
+    <string name="waiting_for_host">Waiting for host.</string>
+
     <!-- INPUT TAG ACTIVITY -->
     <string name="title_activity_input_tag">InputTagActivity</string>
     <string name="title_activity_select_tagger">SelectTaggerActivity</string>
@@ -51,13 +52,13 @@
     <string name="title_activity_result_round">ResultRoundActivity</string>
     <string name="title_activity_join_game">JoinGameActivity</string>
     <string name="title_activity_result_final">ResultFinalActivity</string>
-<<<<<<< Updated upstream
+
+    <!-- HIGHSCORE ACTIVITY -->
     <string name="title_activity_highscore">HighscoreActivity</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
-=======
+    <string name="title_section1">Easy</string>
+    <string name="title_section2">Medium</string>
+    <string name="title_section3">Hard</string>
     <string name="title_activity_wait_host">WaitHostActivity</string>
->>>>>>> Stashed changes
+    <string name="title_activity_wait_guest">WaitGuestActivity</string>
 
 </resources>
