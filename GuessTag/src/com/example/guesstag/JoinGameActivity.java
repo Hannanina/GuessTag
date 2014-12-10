@@ -23,12 +23,16 @@ public class JoinGameActivity extends ActionBarActivity implements NetworkingEve
 	private ArrayList<String> listOfGames = new ArrayList<String>();
 	private OnItemClickListener clickList;
 	private TextView serverMsg;
+	private NetworkingManager manager;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_join_game);
+	
 		listOfGames.add("First Game");
+		manager.monitorKeyOfUser("key", "user");
+
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, listOfGames);
 
@@ -96,6 +100,8 @@ public class JoinGameActivity extends ActionBarActivity implements NetworkingEve
 		}
 
 		listOfGames.add(serverMsg.toString());
+	//	listOfGames.add("second game");
+
 
 	}
 
