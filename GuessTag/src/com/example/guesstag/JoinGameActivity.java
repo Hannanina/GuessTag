@@ -1,7 +1,6 @@
 package com.example.guesstag;
 
 
-import android.R;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -33,9 +32,9 @@ public class JoinGameActivity extends ActionBarActivity {
 
 			public void onItemClick(AdapterView<?> parent, View v,
 					int position, long id) {
-				Intent intent = new Intent(this, WaitRoomGuest.class);
+				//Intent intent = new Intent(this, WaitRoomGuest.class);
 			//	intent.putExtra("id", position);
-				startActivity(intent);
+			//	startActivity(intent);
 			}
 		};
 

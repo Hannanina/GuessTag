@@ -1,7 +1,6 @@
 package com.example.guesstag;
 
 
-import android.R;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;

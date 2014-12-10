@@ -3,7 +3,6 @@ package com.example.guesstag;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.R;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;

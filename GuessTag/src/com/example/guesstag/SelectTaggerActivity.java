@@ -1,6 +1,6 @@
 package com.example.guesstag;
 
-import android.R;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
