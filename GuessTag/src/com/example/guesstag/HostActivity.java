@@ -37,10 +37,10 @@ public class HostActivity extends ActionBarActivity implements
 		difficultyText = (TextView) findViewById(R.id.difficulty_setting_level);
 
 		/* added by caofa */
-		manager = new NetworkingManager(this, "group", "me");
+		manager = new NetworkingManager(this, "group6", "host");
 		gameName = (EditText) findViewById(R.id.input_game_name);
 		serverMsg = (TextView) findViewById(R.id.host_heading);
-		manager.monitorKeyOfUser("key", "user");
+		manager.monitorKeyOfUser("createGame", "user1");
 	}
 
 	@Override
@@ -75,7 +75,7 @@ public class HostActivity extends ActionBarActivity implements
 		if (view.getId() == R.id.button_create && gameName != null
 				&& gameName.getText() != null && !gameName.getText().equals("")) {
 
-			manager.saveValueForKeyOfUser("key", "user", gameName.getText()
+			manager.saveValueForKeyOfUser("createGame", "user1", gameName.getText()
 					.toString());
 			Intent intent = new Intent(this, WaitHostActivity.class);
 			startActivity(intent);

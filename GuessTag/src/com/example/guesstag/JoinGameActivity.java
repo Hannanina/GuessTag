@@ -18,7 +18,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class JoinGameActivity extends ActionBarActivity implements NetworkingEventHandler {
+public class JoinGameActivity extends ActionBarActivity implements
+		NetworkingEventHandler {
 
 	private ArrayList<String> listOfGames = new ArrayList<String>();
 	private OnItemClickListener clickList;
@@ -29,9 +30,11 @@ public class JoinGameActivity extends ActionBarActivity implements NetworkingEve
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_join_game);
-	
+
+		manager = new NetworkingManager(this, "group6", "client");
+		manager.monitorKeyOfUser("createGame", "user1");
+
 		listOfGames.add("First Game");
-		manager.monitorKeyOfUser("key", "user");
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, listOfGames);
@@ -100,50 +103,49 @@ public class JoinGameActivity extends ActionBarActivity implements NetworkingEve
 		}
 
 		listOfGames.add(serverMsg.toString());
-	//	listOfGames.add("second game");
-
+		listOfGames.add("second game");
 
 	}
 
 	@Override
 	public void savedValueForKeyOfUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void loadedValueForKeyOfUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deletedKeyOfUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void monitoringKeyOfUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void ignoringKeyOfUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void lockedKeyofUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void unlockedKeyOfUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
