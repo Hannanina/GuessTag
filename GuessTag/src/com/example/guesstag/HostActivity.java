@@ -3,12 +3,11 @@ package com.example.guesstag;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.example.guesstag.NetworkingEventHandler;
-import com.example.guesstag.NetworkingManager;
-import android.support.v7.app.ActionBarActivity;
+import android.R;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;

@@ -1,8 +1,9 @@
 package com.example.guesstag;
 
-import android.support.v7.app.ActionBarActivity;
+import android.R;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 

@@ -3,8 +3,9 @@ package com.example.guesstag;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import android.support.v7.app.ActionBarActivity;
+import android.R;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
