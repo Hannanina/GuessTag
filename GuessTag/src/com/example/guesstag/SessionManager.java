@@ -7,7 +7,8 @@ public class SessionManager {
 	//Attributes
 	private Score score;
 	private String tag;
-	private int nrOfGuesses = 0;
+	private int nrOfGuesses;
+	private int roundsPlayed;
 	private int totalNrOfGuesses;
 	private int totalTimeSpent;
 	private ArrayList<String> usedTags;
@@ -20,7 +21,10 @@ public class SessionManager {
 	private static SessionManager sessionManager = new SessionManager();
 	
 	private SessionManager() {
-		
+		nrOfGuesses = 0;
+		roundsPlayed = 0;
+		totalNrOfGuesses = 0;
+		totalTimeSpent = 0;
 	}
 	
 	//SessionManager is a singleton class,
@@ -42,8 +46,25 @@ public class SessionManager {
 	}
 	
 	public String getDiffSetting() {
-		
 		return getScore().getDiffSetting();
+	}
+	
+	public ArrayList<String> getListOfPlayers() {
+		return listOfPlayers;
+	}
+
+	public void setListOfPlayers(ArrayList<String> listOfPlayers) {
+		this.listOfPlayers = listOfPlayers;
+	}
+	
+	//Called to check whether played round was last round
+	public int getRoundsPlayed() {
+		return roundsPlayed;
+	}
+	
+	//Called when a round is finished
+	public void incrementRoundsPlayed() {
+		roundsPlayed++;
 	}
 	
 	public void calculatePoints(int time) {
@@ -72,6 +93,7 @@ public class SessionManager {
 		
 		if(tag.equals("")){
 			correctFormatTag = false;
+			return correctFormatTag;
 		}
 		
 		int size = usedTags.size();
@@ -81,11 +103,12 @@ public class SessionManager {
 			
 				if(tag.equals(usedTags.get(i))) {
 					correctFormatTag = false;
-					break;
+					return correctFormatTag;
 				}
 			}	
 		}
 		
+		usedTags.add(tag);
 		return correctFormatTag;
 	}
 	

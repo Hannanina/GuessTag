@@ -1,6 +1,7 @@
 package com.example.guesstag;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
@@ -39,9 +40,7 @@ public class TimerActivity extends ActionBarActivity {
 		        @Override
 		        public void onFinish() {
 		    		SessionManager.getSessionManager().calculatePoints(Integer.parseInt((timerValue.getText().toString())));
-		    		//Intent intent = new Intent(this, ResultRound.class);
-		    		//startActivity(intent);
-		    		
+		    		goToResult(SessionManager.getSessionManager().getRoundsPlayed());
 		        }
 		    };
 		    mCountDownTimer.start();
@@ -61,9 +60,7 @@ public class TimerActivity extends ActionBarActivity {
 		        @Override
 		        public void onFinish() {
 		    		SessionManager.getSessionManager().calculatePoints(Integer.parseInt((timerValue.getText().toString())));
-		    		//Intent intent = new Intent(this, ResultRound.class);
-		    		//startActivity(intent);
-		    		
+		    		goToResult(SessionManager.getSessionManager().getRoundsPlayed());
 		        }
 		    };
 		    mCountDownTimer.start();
@@ -83,9 +80,7 @@ public class TimerActivity extends ActionBarActivity {
 		        @Override
 		        public void onFinish() {
 		    		SessionManager.getSessionManager().calculatePoints(Integer.parseInt((timerValue.getText().toString())));
-		    		//Intent intent = new Intent(this, ResultRound.class);
-		    		//startActivity(intent);
-		    		
+		    		goToResult(SessionManager.getSessionManager().getRoundsPlayed());
 		        }
 		    };
 		    mCountDownTimer.start();
@@ -114,5 +109,19 @@ public class TimerActivity extends ActionBarActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	//Checks number of rounds played and navigate to either next round or final result
+	public void goToResult(int roundsPlayed) {
+		
+		if(roundsPlayed < 6) {
+			Intent intent = new Intent(this, ResultRoundActivity.class);
+			startActivity(intent);
+		}
+		else {
+			Intent intent = new Intent(this, ResultFinalActivity.class);
+			startActivity(intent);
+		}
+		
 	}
 }
