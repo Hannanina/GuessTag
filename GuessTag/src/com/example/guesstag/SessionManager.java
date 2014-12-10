@@ -7,8 +7,9 @@ public class SessionManager {
 	//Attributes
 	private Score score;
 	private String tag;
-	private int nrOfGuesses;
-	private int timeSpent;
+	private int nrOfGuesses = 0;
+	private int totalNrOfGuesses;
+	private int totalTimeSpent;
 	private ArrayList<String> usedTags;
 	private ArrayList<String> listOfPlayers;
 	
@@ -41,7 +42,27 @@ public class SessionManager {
 	}
 	
 	public String getDiffSetting() {
+		
 		return getScore().getDiffSetting();
+	}
+	
+	public void calculatePoints(int time) {
+		totalTimeSpent = totalTimeSpent + (30 - time);
+		totalNrOfGuesses = totalNrOfGuesses + nrOfGuesses;
+		if(score.getDiffSetting().equals("easy")) {
+			
+			score.setPoints(score.getPoints() + (time/nrOfGuesses)); 
+		}
+		else if(score.getDiffSetting().equals("medium")) {
+			
+			score.setPoints(score.getPoints() + (time/nrOfGuesses)*2); 
+		}
+		else {
+			
+			score.setPoints(score.getPoints() + (time/nrOfGuesses)*4); 
+		}
+		
+		nrOfGuesses = 0;
 	}
 	
 	//Should only check tag format and if tag has been used before
@@ -75,6 +96,7 @@ public class SessionManager {
 		if(this.tag.equals(tag)) {
 			correctGuessTag = true;
 		}
+		nrOfGuesses++;
 		return correctGuessTag;
 	}
 }
