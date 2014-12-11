@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.Gravity;
@@ -29,7 +30,9 @@ public class HighscoreActivity extends ActionBarActivity implements
 	 * {@link android.support.v4.app.FragmentStatePagerAdapter}.
 	 */
 	SectionsPagerAdapter mSectionsPagerAdapter;
-
+	
+	HighscoreList hl = HighscoreList.getHighscoreList();
+	
 	/**
 	 * The {@link ViewPager} that will host the section contents.
 	 */
@@ -39,6 +42,12 @@ public class HighscoreActivity extends ActionBarActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_highscore);
+				
+		 SharedPreferences listOfScores = getSharedPreferences("preferences",0);
+	     hl.loadChanges(listOfScores);
+	     
+	     
+
 
 		// Set up the action bar.
 		final ActionBar actionBar = getSupportActionBar();

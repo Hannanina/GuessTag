@@ -54,11 +54,21 @@
     <string name="title_activity_result_final">ResultFinalActivity</string>
 
     <!-- HIGHSCORE ACTIVITY -->
-    <string name="title_activity_highscore">HighscoreActivity</string>
+    <string name="title_activity_highscore">Highscore List</string>
     <string name="title_section1">Easy</string>
     <string name="title_section2">Medium</string>
     <string name="title_section3">Hard</string>
     <string name="title_activity_wait_host">WaitHostActivity</string>
     <string name="title_activity_wait_guest">WaitGuestActivity</string>
+    
+    <!-- RESULT FINAL ACTIVITY -->
+    <string name="final_result">Final result</string>
+    <string name="button_end">End game</string>
+    
+    <!-- HIGHSCORE LIST ITEM -->
+    <string name="game_name">game name</string>
+    <string name="nr_of_guesses">55</string>
+    <string name="total_time_spent">3:46</string>
+    <string name="points">104</string>
 
 </resources>

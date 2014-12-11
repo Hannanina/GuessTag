@@ -100,8 +100,13 @@ public class JoinGameActivity extends ActionBarActivity implements
 	@Override
 	public void loadedValueForKeyOfUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
+<<<<<<< HEAD
 		testing= (TextView)findViewById(R.id.testing);
 
+=======
+		testing = (TextView) findViewById(R.id.testing);
+		// testing.setText("Value is changed for key of user!");
+>>>>>>> origin/master
 		Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
 				"JSONOBject retreived in method loadedValue + "
 						+ "forKeyOfUser: " + json.toString());

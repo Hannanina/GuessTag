@@ -1,0 +1,18 @@
+package com.example.guesstag;
+
+public class HighscoreListItem extends Score {
+
+	private Score score;
+	private int totalNrOfGuesses;
+	private int totalTimeSpent;
+	
+	public HighscoreListItem(int nrOfPlayers, int points, String gameName,
+			String diffSetting, int totalNrOfGuesses, int totalTimeSpent) {
+		super(nrOfPlayers, points, gameName, diffSetting);
+		
+		this.totalNrOfGuesses = totalNrOfGuesses;
+		this.totalTimeSpent = totalTimeSpent;
+	}
+
+	
+}

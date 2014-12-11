@@ -122,4 +122,8 @@ public class SessionManager {
 		nrOfGuesses++;
 		return correctGuessTag;
 	}
+	
+	
+
+	
 }

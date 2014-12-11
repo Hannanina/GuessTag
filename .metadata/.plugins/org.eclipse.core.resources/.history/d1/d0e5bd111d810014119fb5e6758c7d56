@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/highscore_list_item_margin_hori"
+    android:paddingLeft="@dimen/highscore_list_item_margin_vert"
+    android:paddingRight="@dimen/highscore_list_item_margin_vert"
+    android:paddingTop="@dimen/highscore_list_item_margin_hori"
+    android:orientation="horizontal"
+    android:background="@color/DimGray" >
+
+    <TextView
+        android:id="@+id/"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/White"
+        android:text="@string/game_name" >   
+    </TextView>
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/White"
+        android:text="@string/game_name" >   
+    </TextView>
+</LinearLayout>
