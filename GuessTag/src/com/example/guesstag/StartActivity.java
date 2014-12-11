@@ -2,6 +2,7 @@ package com.example.guesstag;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -10,10 +11,16 @@ import android.view.View;
 
 public class StartActivity extends ActionBarActivity{
 	
+	HighscoreList hl = HighscoreList.getHighscoreList();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_start);
+		
+
+        SharedPreferences listOfScores = getSharedPreferences("preferences",0);
+        hl.loadChanges(listOfScores);
 	}
 
 	@Override
