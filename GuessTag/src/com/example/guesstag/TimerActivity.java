@@ -2,6 +2,7 @@ package com.example.guesstag;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.ActionBarActivity;
@@ -14,8 +15,10 @@ public class TimerActivity extends ActionBarActivity {
 
 	ProgressBar mProgressBar;
 	CountDownTimer mCountDownTimer;
-	int i=1;
+	int i=0;
 	TextView timerValue = (TextView)findViewById(R.id.timerValue);
+	HighscoreList hl = HighscoreList.getHighscoreList();
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,8 @@ public class TimerActivity extends ActionBarActivity {
 		        public void onFinish() {
 		    		SessionManager.getSessionManager().calculatePoints(Integer.parseInt((timerValue.getText().toString())));
 		    		goToResult(SessionManager.getSessionManager().getRoundsPlayed());
+		    		 SharedPreferences listOfScores = getSharedPreferences("preferences",0);
+		    	     hl.saveChanges(listOfScores);
 		        }
 		    };
 		    mCountDownTimer.start();
@@ -59,6 +64,8 @@ public class TimerActivity extends ActionBarActivity {
 		        public void onFinish() {
 		    		SessionManager.getSessionManager().calculatePoints(Integer.parseInt((timerValue.getText().toString())));
 		    		goToResult(SessionManager.getSessionManager().getRoundsPlayed());
+		    		 SharedPreferences listOfScores = getSharedPreferences("preferences",0);
+		    	     hl.saveChanges(listOfScores);
 		        }
 		    };
 		    mCountDownTimer.start();
@@ -79,6 +86,8 @@ public class TimerActivity extends ActionBarActivity {
 		        public void onFinish() {
 		    		SessionManager.getSessionManager().calculatePoints(Integer.parseInt((timerValue.getText().toString())));
 		    		goToResult(SessionManager.getSessionManager().getRoundsPlayed());
+		    		 SharedPreferences listOfScores = getSharedPreferences("preferences",0);
+		    	     hl.saveChanges(listOfScores);
 		        }
 		    };
 		    mCountDownTimer.start();

@@ -46,10 +46,7 @@ public class HighscoreActivity extends ActionBarActivity implements
 		 SharedPreferences listOfScores = getSharedPreferences("preferences",0);
 	     hl.loadChanges(listOfScores);
 	     
-	     
-
-
-		// Set up the action bar.
+	     // Set up the action bar.
 		final ActionBar actionBar = getSupportActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
