@@ -50,9 +50,7 @@ public class WaitHostActivity extends ActionBarActivity implements
 
 			public void onItemClick(AdapterView<?> parent, View v,
 					int position, long id) {
-				// Intent intent = new Intent(this, WaitRoomGuest.class);
-				// intent.putExtra("id", position);
-				// startActivity(intent);
+
 			}
 		};
 
@@ -80,7 +78,6 @@ public class WaitHostActivity extends ActionBarActivity implements
 	}
 
 	public void onClickStartGame(View view) {
-
 		Intent intent = new Intent(this, SelectTaggerActivity.class);
 		startActivity(intent);
 	}

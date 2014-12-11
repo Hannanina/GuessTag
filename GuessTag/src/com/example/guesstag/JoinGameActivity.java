@@ -48,6 +48,7 @@ public class JoinGameActivity extends ActionBarActivity implements
 			public void onItemClick(AdapterView<?> parent, View v,
 					int position, long id) {
 				goToWaitGuestActivity();
+		
 			}
 		};
 
