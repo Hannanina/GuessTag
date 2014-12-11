@@ -35,7 +35,6 @@ public class HighscoreList {
     }
     
 
-
 	  public void saveChanges(SharedPreferences listOfScores ) {
 	        Gson gson = new Gson();
 	        String json = gson.toJson(allScores);
