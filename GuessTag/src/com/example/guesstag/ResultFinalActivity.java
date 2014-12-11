@@ -28,8 +28,8 @@ public class ResultFinalActivity extends ActionBarActivity {
 	//	startActivity(intent);
 	}
 	
-	public void onClickNew(View view) {
-		Intent intent = new Intent(this, NewActivity.class);
+	public void onClickEnd(View view) {
+		Intent intent = new Intent(this, StartActivity.class);
 		startActivity(intent);
 	}
 

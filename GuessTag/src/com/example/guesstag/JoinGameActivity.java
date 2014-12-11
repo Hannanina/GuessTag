@@ -106,7 +106,6 @@ public class JoinGameActivity extends ActionBarActivity implements
 		// TODO Auto-generated method stub
 		testing = (TextView) findViewById(R.id.testing);
 		// testing.setText("Value is changed for key of user!");
-
 		Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
 				"JSONOBject retreived in method loadedValue + "
 						+ "forKeyOfUser: " + json.toString());

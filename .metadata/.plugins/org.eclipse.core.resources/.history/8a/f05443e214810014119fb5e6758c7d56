@@ -1,0 +1,14 @@
+package com.example.guesstag;
+
+public class HighscoreListItem extends Score {
+
+	private
+	
+	public HighscoreListItem(int nrOfPlayers, int points, String gameName,
+			String diffSetting, ) {
+		super(nrOfPlayers, points, gameName, diffSetting);
+		// TODO Auto-generated constructor stub
+	}
+
+	
+}

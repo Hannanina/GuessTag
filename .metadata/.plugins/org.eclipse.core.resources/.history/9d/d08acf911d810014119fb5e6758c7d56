@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/highscore_list_item_margin_hori"
+    android:paddingLeft="@dimen/highscore_list_item_margin_vert"
+    android:paddingRight="@dimen/highscore_list_item_margin_vert"
+    android:paddingTop="@dimen/highscore_list_item_margin_hori"
+    android:orientation="horizontal"
+    android:background="@color/DimGray" >
+
+    <TextView
+        android:id="@+id/game_name"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:textColor="@color/White"
+        android:text="@string/game_name" >   
+    </TextView>
+    <TextView
+        android:id="@+id/nr_of_guesses"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/White"
+        android:text="@string/nr_of_guesses" >   
+    </TextView>
+    <TextView
+        android:id="@+id/total_time_spent"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/White"
+        android:text="@string/total_time_spent" >   
+    </TextView>
+    <TextView
+        android:id="@+id/points"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/White"
+        android:text="@string/points" >   
+    </TextView>
+</LinearLayout>
