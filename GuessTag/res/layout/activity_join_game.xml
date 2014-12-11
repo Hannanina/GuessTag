@@ -10,9 +10,11 @@
 
     <TextView
         android:id="@+id/testing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="HERE I am!" />
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_marginLeft="100dp"
+        android:text="Press refresh" >
+    </TextView>
 
     <ListView
         android:id="@+id/listOfGames"
@@ -21,15 +23,14 @@
         android:layout_marginBottom="30dp" >
     </ListView>
 
-    <!-- <Button -->
-    <!-- android:id="@+id/buttonJoin" -->
-    <!-- android:layout_width="200dp" -->
-    <!-- android:layout_height="48dp" -->
-    <!-- android:layout_alignParentBottom="true" -->
-    <!-- android:layout_above="buttonBack" -->
-    <!-- android:layout_centerHorizontal="true" -->
-    <!-- android:onClick="onClickJoin" -->
-    <!-- android:text="Join" /> -->
+    <Button
+        android:id="@+id/buttonRefresh"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_above="@+id/buttonBack"
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickRefresh"
+        android:text="Refresh" />
 
     <Button
         android:id="@+id/buttonBack"
