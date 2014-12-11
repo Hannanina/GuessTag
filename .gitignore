@@ -45,3 +45,10 @@ Temporary Items
 *.class
 *.class
 *.class
+*.jar
+appcompat_v7/bin/android-support-v7-appcompat.jar
+GuessTag/bin/R.txt
+GuessTag/gen/android/support/v7/appcompat/R.java
+*.java
+GuessTag/gen/com/example/guesstag/R.java
+GuessTag/bin/classes/com/example/guesstag/NetworkingManager.class

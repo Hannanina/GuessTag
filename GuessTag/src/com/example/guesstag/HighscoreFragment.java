@@ -15,7 +15,8 @@ public class HighscoreFragment extends Fragment{
 	
 	private static final String ARG_SECTION_NUMBER = "section_number";
 
-	private ArrayList<String> listOfGames = new ArrayList<String>();
+	HighscoreList hl = HighscoreList.getHighscoreList();
+
 	/**
 	 * Returns a new instance of this fragment for the given section number.
 	 */
@@ -36,10 +37,14 @@ public class HighscoreFragment extends Fragment{
 		View rootView = inflater.inflate(R.layout.fragment_highscore,
 				container, false);
 		
-		listOfGames.add("First Game");
-
+		  String[] values = new String[hl.count()];
+	        int i=0;
+	        for (HighscoreListItem item: hl.getAllScores()){
+	            values[i]= item.getTitle();
+	            i++;
+	        }
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-				android.R.layout.simple_list_item_1, listOfGames);
+				android.R.layout.simple_list_item_1, values);
 
 		final ListView listView = (ListView) rootView.findViewById(R.id.list_item1);
 		listView.setAdapter(adapter);

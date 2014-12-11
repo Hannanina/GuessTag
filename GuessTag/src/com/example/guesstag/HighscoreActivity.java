@@ -42,10 +42,11 @@ public class HighscoreActivity extends ActionBarActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_highscore);
-		
-		
+				
 		 SharedPreferences listOfScores = getSharedPreferences("preferences",0);
 	     hl.loadChanges(listOfScores);
+	     
+	     
 
 
 		// Set up the action bar.

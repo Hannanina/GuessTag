@@ -27,6 +27,15 @@ public class HighscoreList {
 		return highscoreList;
 	}
 	
+    public HighscoreListItem getScore(int index) {
+        return allScores.get(index);
+    }
+    public ArrayList<HighscoreListItem> getAllScores() {
+        return allScores;
+    }
+    
+
+
 	  public void saveChanges(SharedPreferences listOfScores ) {
 	        Gson gson = new Gson();
 	        String json = gson.toJson(allScores);
