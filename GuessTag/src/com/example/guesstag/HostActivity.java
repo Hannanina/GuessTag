@@ -20,7 +20,6 @@ public class HostActivity extends ActionBarActivity implements
 	TextView difficultyText;
 	private TextView serverMsg;
 
-
 	/* added by caofa */
 	private NetworkingManager manager;
 	EditText gameName;
@@ -38,7 +37,7 @@ public class HostActivity extends ActionBarActivity implements
 		manager = new NetworkingManager(this, "group6", "host");
 		gameName = (EditText) findViewById(R.id.input_game_name);
 		serverMsg = (TextView) findViewById(R.id.host_heading);
-		manager.monitorKeyOfUser("createGame", "user1");
+		//manager.monitorKeyOfUser("createGame", "user1");
 	}
 
 	@Override
@@ -75,6 +74,8 @@ public class HostActivity extends ActionBarActivity implements
 
 			manager.saveValueForKeyOfUser("createGame", "user1", gameName.getText()
 					.toString());
+
+			manager.saveValueForKeyOfUser("listOfPlayers", "user1", "user1");
 			Intent intent = new Intent(this, WaitHostActivity.class);
 			startActivity(intent);
 		}

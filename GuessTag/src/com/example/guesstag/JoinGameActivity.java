@@ -34,7 +34,7 @@ public class JoinGameActivity extends ActionBarActivity implements
 		setContentView(R.layout.activity_join_game);
 
 		manager = new NetworkingManager(this, "group6", "client");
-		manager.monitorKeyOfUser("createGame", "user1");
+	//	manager.monitorKeyOfUser("createGame", "user1");
 	//	manager.saveValueForKeyOfUser("createGame", "user1", "NewGame");
 
 		adapter = new ArrayAdapter<String>(this,
@@ -47,14 +47,17 @@ public class JoinGameActivity extends ActionBarActivity implements
 
 			public void onItemClick(AdapterView<?> parent, View v,
 					int position, long id) {
-				// Intent intent = new Intent(this, WaitRoomGuest.class);
-				// intent.putExtra("id", position);
-				// startActivity(intent);
+				goToWaitGuestActivity();
 			}
 		};
 
 		listView.setOnItemClickListener(clickList);
 
+	}
+	
+	public void goToWaitGuestActivity(){
+		 Intent intent = new Intent(this, WaitGuestActivity.class);
+			  startActivity(intent);
 	}
 
 	@Override
