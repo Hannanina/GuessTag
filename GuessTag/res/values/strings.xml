@@ -70,5 +70,10 @@
     <string name="nr_of_guesses">55</string>
     <string name="total_time_spent">3:46</string>
     <string name="points">104</string>
+    
+    <!-- USER NAME POPUP -->
+    <string name="choose_an_alias">Choose an alias</string>
+    <string name="button_ok">OK</string>
+    <string name="input_alias">alias</string>
 
 </resources>

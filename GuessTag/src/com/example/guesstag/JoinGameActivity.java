@@ -47,9 +47,9 @@ public class JoinGameActivity extends ActionBarActivity implements
 
 			public void onItemClick(AdapterView<?> parent, View v,
 					int position, long id) {
-				// Intent intent = new Intent(this, WaitRoomGuest.class);
-				// intent.putExtra("id", position);
-				// startActivity(intent);
+				//Intent intent = new Intent(this, WaitRoomGuest.class);
+				//intent.putExtra("id", position);
+				//startActivity(intent);
 			}
 		};
 
