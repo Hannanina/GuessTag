@@ -2,18 +2,28 @@ package com.example.guesstag;
 
 import java.util.ArrayList;
 
+<<<<<<< Updated upstream
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class SessionManager implements NetworkingEventHandler {
 
 	// Attributes
+=======
+import android.widget.Toast;
+
+public class SessionManager {
+
+	//Attributes
+	private String userName;
+>>>>>>> Stashed changes
 	private Score score;
 	private String tag;
 	private int nrOfGuesses;
 	private int roundsPlayed;
 	private int totalNrOfGuesses;
 	private int totalTimeSpent;
+	private ArrayList<String> registeredUsers;
 	private ArrayList<String> usedTags;
 	private ArrayList<String> listOfPlayers = new ArrayList<String> ();
 
@@ -38,7 +48,19 @@ public class SessionManager implements NetworkingEventHandler {
 	public static SessionManager getSessionManager() {
 		return sessionManager;
 	}
+<<<<<<< Updated upstream
 
+=======
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	
+>>>>>>> Stashed changes
 	public Score getScore() {
 		return score;
 	}
@@ -78,7 +100,31 @@ public class SessionManager implements NetworkingEventHandler {
 	public void incrementRoundsPlayed() {
 		roundsPlayed++;
 	}
+<<<<<<< Updated upstream
 
+=======
+	
+	public ArrayList<String> getRegisteredUsers() {
+		return registeredUsers;
+	}
+
+	public void setRegisteredUsers(String user) {
+		
+		try {
+			if(!registeredUsers.contains(user)) {
+				registeredUsers.add(user);
+			}
+			else {
+				
+			}
+		}
+		catch(Exception e) {
+			
+		}
+	}
+
+	
+>>>>>>> Stashed changes
 	public void calculatePoints(int time) {
 		totalTimeSpent = totalTimeSpent + (30 - time);
 		totalNrOfGuesses = totalNrOfGuesses + nrOfGuesses;

@@ -1,7 +1,0 @@
-package com.example.guesstag;
-
-import android.support.v7.app.ActionBarActivity;
-
-public class StartActivity extends ActionBarActivity{
-	
-}

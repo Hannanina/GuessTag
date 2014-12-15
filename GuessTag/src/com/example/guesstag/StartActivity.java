@@ -1,17 +1,19 @@
 package com.example.guesstag;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 public class StartActivity extends ActionBarActivity{
 	
@@ -26,7 +28,8 @@ public class StartActivity extends ActionBarActivity{
         SharedPreferences listOfScores = getSharedPreferences("preferences",0);
         hl.loadChanges(listOfScores);
         
-        popup();
+        PopupFragment popup = PopupFragment.newInstance();
+        popup.show(getSupportFragmentManager(), "Choose a user name");
 	}
 
 	@Override
@@ -46,18 +49,6 @@ public class StartActivity extends ActionBarActivity{
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
-	}
-	
-	public void popup() {
-		LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		PopupWindow pw = new PopupWindow(inflater.inflate(R.layout.user_name_popup , null, false), 100, 100, true);
-			    
-		// The code below assumes that the root container has an id called 'main'
-		pw.showAtLocation(this.findViewById(R.id.button_start), Gravity.CENTER, 0, 0); 
-	}
-	
-	public void onClickOk(View view) {
-		
 	}
 	
 	public void onClickStart(View view) {
