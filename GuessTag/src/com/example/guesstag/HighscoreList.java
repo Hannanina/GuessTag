@@ -27,6 +27,10 @@ public class HighscoreList {
 		return highscoreList;
 	}
 	
+	public int count(){
+		return allScores.size();
+	}
+	
     public HighscoreListItem getScore(int index) {
         return allScores.get(index);
     }

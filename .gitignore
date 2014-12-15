@@ -46,3 +46,5 @@ Temporary Items
 *.class
 *.class
 GuessTag/src/com/example/guesstag/HighscoreList.java
+appcompat_v7/bin/R.txt
+*.class

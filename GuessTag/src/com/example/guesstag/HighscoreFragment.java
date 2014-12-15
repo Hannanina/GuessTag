@@ -37,17 +37,16 @@ public class HighscoreFragment extends Fragment{
 		View rootView = inflater.inflate(R.layout.fragment_highscore,
 				container, false);
 		
-//		  String[] values = new String[hl.count()];
-//	        int i=0;
-//	        for (HighscoreListItem item: hl.getAllScores()){
-//	            values[i]= item.getTitle();
-//	            i++;
-//	        }
-//		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-//				android.R.layout.simple_list_item_1, values);
-//
-//		final ListView listView = (ListView) rootView.findViewById(R.id.list_item1);
-//		listView.setAdapter(adapter);
+//		  String[] highscore = new String[hl.count()];
+//        int i=0;
+//        for (HighscoreListItem item: hl.getAllScores()){
+//        	highscore[i]= item.getGameName();
+//            i++;
+//        }
+
+//    ScoreAdapter adapter = new ScoreAdapter(getActivity(), highscore);
+//	ListView listView = (ListView) rootView.findViewById(R.id.list_item1);
+//	listView.setAdapter(adapter);
 //		
 		return rootView;
 	}
