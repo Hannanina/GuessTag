@@ -15,7 +15,7 @@ public class HighscoreFragment extends Fragment{
 	
 	private static final String ARG_SECTION_NUMBER = "section_number";
 
-	HighscoreList hl = HighscoreList.getHighscoreList();
+	ArrayList<HighscoreListItem> hl;
 
 	/**
 	 * Returns a new instance of this fragment for the given section number.
@@ -34,20 +34,13 @@ public class HighscoreFragment extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fragment_highscore,
-				container, false);
-		
-//		  String[] highscore = new String[hl.count()];
-//        int i=0;
-//        for (HighscoreListItem item: hl.getAllScores()){
-//        	highscore[i]= item.getGameName();
-//            i++;
-//        }
+		View rootView = inflater.inflate(R.layout.fragment_highscore, container, false);
+		hl = HighscoreList.getHighscoreList().getAllScores();
 
-//    ScoreAdapter adapter = new ScoreAdapter(getActivity(), highscore);
-//	ListView listView = (ListView) rootView.findViewById(R.id.list_item1);
-//	listView.setAdapter(adapter);
-//		
+		ScoreAdapter adapter = new ScoreAdapter(getActivity(), hl);
+		ListView listView = (ListView) rootView.findViewById(R.id.list_item1);
+		listView.setAdapter(adapter);
+		
 		return rootView;
 	}
 }
