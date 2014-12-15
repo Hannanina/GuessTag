@@ -110,6 +110,8 @@ public class SessionManager implements NetworkingEventHandler {
 		}
 	}
 
+	
+>>>>>>> Stashed changes
 	public void calculatePoints(int time) {
 		totalTimeSpent = totalTimeSpent + (30 - time);
 		totalNrOfGuesses = totalNrOfGuesses + nrOfGuesses;

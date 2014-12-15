@@ -42,6 +42,9 @@ public class SessionManager implements NetworkingEventHandler {
 	public static SessionManager getSessionManager() {
 		return sessionManager;
 	}
+<<<<<<< Updated upstream
+
+=======
 	
 	public String getUserName() {
 		return userName;
@@ -51,6 +54,7 @@ public class SessionManager implements NetworkingEventHandler {
 		this.userName = userName;
 	}
 	
+>>>>>>> Stashed changes
 	public Score getScore() {
 		return score;
 	}
@@ -90,6 +94,9 @@ public class SessionManager implements NetworkingEventHandler {
 	public void incrementRoundsPlayed() {
 		roundsPlayed++;
 	}
+<<<<<<< Updated upstream
+
+=======
 	
 	public ArrayList<String> getRegisteredUsers() {
 		return registeredUsers;
@@ -110,6 +117,8 @@ public class SessionManager implements NetworkingEventHandler {
 		}
 	}
 
+	
+>>>>>>> Stashed changes
 	public void calculatePoints(int time) {
 		totalTimeSpent = totalTimeSpent + (30 - time);
 		totalNrOfGuesses = totalNrOfGuesses + nrOfGuesses;

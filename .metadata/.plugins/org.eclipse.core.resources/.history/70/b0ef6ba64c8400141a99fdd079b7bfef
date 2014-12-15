@@ -90,6 +90,9 @@ public class SessionManager implements NetworkingEventHandler {
 	public void incrementRoundsPlayed() {
 		roundsPlayed++;
 	}
+<<<<<<< Updated upstream
+
+=======
 	
 	public ArrayList<String> getRegisteredUsers() {
 		return registeredUsers;
@@ -110,6 +113,8 @@ public class SessionManager implements NetworkingEventHandler {
 		}
 	}
 
+	
+>>>>>>> Stashed changes
 	public void calculatePoints(int time) {
 		totalTimeSpent = totalTimeSpent + (30 - time);
 		totalNrOfGuesses = totalNrOfGuesses + nrOfGuesses;
