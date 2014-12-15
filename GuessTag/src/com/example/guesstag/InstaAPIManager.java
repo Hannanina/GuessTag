@@ -11,25 +11,41 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
-import android.widget.ImageView;
 
 public class InstaAPIManager {
-	String accessToken = "15170786.1fb234f.196d7fd71cfa40a9aa12140c522a5c99 HTTP/1.1";
-	ImageView img1;
-	JSONObject nja;
+	String accessToken = "15170786.1fb234f.196d7fd71cfa40a9aa12140c522a5c99";
+	JSONObject level2;
+	JSONObject level3;
+	Bitmap bmp;
 	
 	public void initiateConnection() {
-//	img1 = (ImageView) findViewById(R.id.imageView1);
+		// img1 = (ImageView) findViewById(R.id.imageView1);
 
 		try {
 			URL example = new URL(
-					"https://api.instagram.com/v1/media/popular?access_token=" + accessToken);
+					"https://api.instagram.com/v1/media/popular?access_token="
+							+ accessToken);
 
 			URLConnection tc = example.openConnection();
 			BufferedReader in = new BufferedReader(new InputStreamReader(
 					tc.getInputStream()));
+			imageParsing(in);
 
+		} catch (MalformedURLException e) {
+
+			e.printStackTrace();
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+
+	}
+
+	public void imageParsing(BufferedReader in) {
+		try {
 			String line;
 			while ((line = in.readLine()) != null) {
 				JSONObject ob = new JSONObject(line);
@@ -38,40 +54,37 @@ public class InstaAPIManager {
 
 		//		for (int i = 0; i < object.length(); i++) {
 
-					JSONObject jo = (JSONObject) object.get(1);
-					nja = (JSONObject) jo.getJSONObject("standard_resolution");
+					JSONObject level1 = (JSONObject) object.get(1);
+					level2 = (JSONObject) level1.getJSONObject("images");
 
-					JSONObject purl3 = (JSONObject) nja
-							.getJSONObject("thumbnail");
-								        
-					Log.d("API DEBUGGING FEEDBACK","JSONOBject retreived from Insta API + "+ nja.toString());	
-					// PhotoSet set = new PhotoSet();
-					// set.setThumb(purl3.getString("url"));
-					// thesets.add(set);
+					level3 = (JSONObject) level2
+							.getJSONObject("standard_resolution");
+					String imageURL = level3.get("url").toString();
 
-					// Log.i(TAG, "" + purl3.getString("url"));
-				}
+					Log.d("API DEBUGGING FEEDBACK",
+							"JSONOBject retreived from Insta API: " + imageURL);
+					URL url = new URL(imageURL);
+					 bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+					 Log.d("API DEBUGGING FEEDBACK",
+								"Bitmap generated: " +  bmp.toString());
 
-		//	}
+		//		}
+
+			}
 
 		} catch (MalformedURLException e) {
-
-			e.printStackTrace();
-		} catch (IOException e) {
-
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (JSONException e) {
-
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-	}
-	public JSONObject getImage(){
-		return nja;
 	}
 	
-	public void imageParsing(){
-    //   Bitmap bitmap = BitmapFactory.decodeStream(nja);
-
+	public Bitmap getBitmap(){
+		return bmp;
 	}
 }

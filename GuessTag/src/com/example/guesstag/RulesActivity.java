@@ -1,19 +1,37 @@
 package com.example.guesstag;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
 public class RulesActivity extends ActionBarActivity {
+
+	InstaAPIManager apimanager = new InstaAPIManager();
+	ImageView imageview1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_rules);
+		// setContentView(R.layout.activity_rules);
+		setContentView(R.layout.insta_images);
+
+		new Thread() {
+			public void run() {
+				apimanager.initiateConnection();
+				
+			}
+		}.start();
+		imageview1 = (ImageView) findViewById(R.id.imageView1);
+		imageview1.setImageBitmap(apimanager.getBitmap());
+
+	}
+
+	public void initiate() {
+
 	}
 
 	@Override
@@ -34,7 +52,7 @@ public class RulesActivity extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+
 	public void onClickBack(View view) {
 		Intent intent = new Intent(this, StartActivity.class);
 		startActivity(intent);
