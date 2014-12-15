@@ -20,14 +20,14 @@ public class ResultFinalActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_result_final);
 	
-	    HighscoreListItem item = new HighscoreListItem(4, 100, "gameName",
-    			"diffSetting", 12 , 100);
-        hl.getAllScores().add(item);
-	    HighscoreListItem item2 = new HighscoreListItem(2, 70, "hallo",
+	    HighscoreListItem item = new HighscoreListItem(4, 70, "game1",
     			"diffSetting", 12 , 50);
+        hl.getAllScores().add(item);
+	    HighscoreListItem item2 = new HighscoreListItem(2, 100, "game2",
+    			"diffSetting", 12 , 100);
         hl.getAllScores().add(item2);
-	    HighscoreListItem item3 = new HighscoreListItem(2, 70, "test",
-    			"diffSetting", 12 , 120);
+	    HighscoreListItem item3 = new HighscoreListItem(2, 50, "game3",
+    			"diffSetting", 12 , 70);
         hl.getAllScores().add(item3);
         
         SharedPreferences listOfScores = getSharedPreferences("preferences",0);

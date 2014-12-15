@@ -32,23 +32,22 @@ public class HighscoreFragment extends Fragment{
 	public HighscoreFragment() {
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+			Bundle savedInstanceState){
 		View rootView = inflater.inflate(R.layout.fragment_highscore, container, false);
 		hl = HighscoreList.getHighscoreList().getAllScores();
 		
-		Collections.sort(hl, new Comparator(){
+			Collections.sort(hl, new Comparator(){
 
             public int compare(Object o1, Object o2) {
             	HighscoreListItem p1 = (HighscoreListItem) o1;
                 HighscoreListItem p2 = (HighscoreListItem) o2;
-               return p2.getPoints()-(p1.getPoints());
+               return (p2.getPoints())-(p1.getPoints());
             }
-
         });
 		
-
 		ScoreAdapter adapter = new ScoreAdapter(getActivity(), hl);
 		ListView listView = (ListView) rootView.findViewById(R.id.list_item1);
 		listView.setAdapter(adapter);
