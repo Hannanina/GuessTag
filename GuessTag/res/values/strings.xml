@@ -75,5 +75,8 @@
     <string name="choose_an_alias">Choose an alias</string>
     <string name="button_ok">OK</string>
     <string name="input_alias">alias</string>
+    
+        <string name="image_view_1">ImageView1</string>
+    
 
 </resources>
