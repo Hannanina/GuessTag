@@ -1,18 +1,56 @@
 package com.example.guesstag;
 
+import java.util.ArrayList;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
 
-public class WaitGuestActivity extends ActionBarActivity {
+public class WaitGuestActivity extends ActionBarActivity implements
+NetworkingEventHandler {
+	
+	private ArrayList<String> listOfPlayers = new ArrayList<String>();
+	ArrayAdapter<String> adapter;
+	TextView waiting_for_players;
+	
+	private NetworkingManager manager;
+
+	private OnItemClickListener clickList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_wait_guest);
+		listOfPlayers = SessionManager.getSessionManager().getListOfPlayers();
+		manager = new NetworkingManager(this, "group6", "guest");
+		manager.monitorKeyOfUser("listOfPlayers", "user1");
+		adapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, listOfPlayers);
+
+		ListView listView = (ListView) findViewById(R.id.listOfPlayers);
+		listView.setAdapter(adapter);
+
+		clickList = new OnItemClickListener() {
+
+			public void onItemClick(AdapterView<?> parent, View v,
+					int position, long id) {
+
+			}
+		};
+
+		listView.setOnItemClickListener(clickList);
 	}
 
 	@Override
@@ -37,5 +75,76 @@ public class WaitGuestActivity extends ActionBarActivity {
 	public void onClickBack(View view) {
 		Intent intent = new Intent(this, JoinGameActivity.class);
 		startActivity(intent);
+	}
+
+	@Override
+	public void savedValueForKeyOfUser(JSONObject json, String key, String user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void loadedValueForKeyOfUser(JSONObject json, String key, String user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deletedKeyOfUser(JSONObject json, String key, String user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void monitoringKeyOfUser(JSONObject json, String key, String user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void ignoringKeyOfUser(JSONObject json, String key, String user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void valueChangedForKeyOfUser(JSONObject json, String key,
+			String user) {
+		// TODO Auto-generated method stub
+		// waiting_for_players = (TextView)
+		// findViewById(R.id.waiting_for_players);
+
+		Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
+				"JSONOBject retreived in method valueChanged + "
+						+ "forKeyOfUser: " + json.toString());
+
+		try {
+			
+			for (int i = 0; i <10; i++) {
+				if (json.getJSONArray("records").getJSONObject(i).getString("key")
+						.equals("listOfPlayers")) {
+					SessionManager.getSessionManager().addListOfPlayers(
+							json.getJSONArray("records").getJSONObject(i)
+									.getString("value"));
+				}
+			}
+		} catch (JSONException e) {
+			Log.e(NetworkingManager.TAG_ERROR, e.getMessage());
+		}
+
+		adapter.notifyDataSetChanged();
+
+	}
+
+	@Override
+	public void lockedKeyofUser(JSONObject json, String key, String user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void unlockedKeyOfUser(JSONObject json, String key, String user) {
+		// TODO Auto-generated method stub
+		
 	}
 }
