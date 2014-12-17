@@ -32,7 +32,8 @@ public class HighscoreActivity extends ActionBarActivity implements
 	SectionsPagerAdapter mSectionsPagerAdapter;
 	
 	HighscoreList hl = HighscoreList.getHighscoreList();
-	
+	SessionManager sm =  SessionManager.getSessionManager();
+
 	/**
 	 * The {@link ViewPager} that will host the section contents.
 	 */
@@ -134,6 +135,14 @@ public class HighscoreActivity extends ActionBarActivity implements
 			// getItem is called to instantiate the fragment for the given page.
 			// Return a PlaceholderFragment (defined as a static inner class
 			// below). 
+			if(sm.getDiffSetting().equals("easy")){
+				mViewPager.setCurrentItem(0);
+			}else if(sm.getDiffSetting().equals("medium")){
+				mViewPager.setCurrentItem(1);
+			}else if (sm.getDiffSetting().equals("hard")){
+				mViewPager.setCurrentItem(2);
+			}
+			
 			switch (position){
         case 0:
             return HighscoreEasyFragment.newInstance(position + 1);
