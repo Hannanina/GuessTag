@@ -53,6 +53,18 @@
     <string name="title_activity_join_game">JoinGameActivity</string>
     <string name="title_activity_result_final">ResultFinalActivity</string>
 
+    <!-- GUESS TAG ACTIVITY -->
+    <string name="guess_the_hashtag">Guess the hashtag</string>
+    <string name="wrong_answer">Wrong answer, try again!</string>
+    <string name="hashtag_sign">#</string>
+    <string name="guess_tag">Guess#</string>
+    <string name="image_one">Image 1</string>
+    <string name="image_two">Image 2</string>
+    <string name="image_three">Image 3</string>
+    <string name="image_four">Image 4</string>
+    <string name="image_five">Image 5</string>
+    <string name="image_six">Image 6</string>
+    
     <!-- HIGHSCORE ACTIVITY -->
     <string name="title_activity_highscore">Highscore List</string>
     <string name="title_section1">Easy</string>

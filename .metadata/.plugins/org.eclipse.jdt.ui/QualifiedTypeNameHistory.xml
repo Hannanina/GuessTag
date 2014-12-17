@@ -4,6 +4,14 @@
 <fullyQualifiedTypeName name="android.R.layout"/>
 <fullyQualifiedTypeName name="android.support.v7.app.ActionBarActivity"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="com.example.guesstag.R.id"/>
 <fullyQualifiedTypeName name="android.content.Intent"/>
+<fullyQualifiedTypeName name="com.example.guesstag.SessionManager"/>
+<fullyQualifiedTypeName name="android.text.Editable"/>
+<fullyQualifiedTypeName name="android.app.AlertDialog.Builder"/>
+<fullyQualifiedTypeName name="com.example.guesstag.R.layout"/>
+<fullyQualifiedTypeName name="android.widget.Button"/>
+<fullyQualifiedTypeName name="android.widget.Toast"/>
+<fullyQualifiedTypeName name="com.example.guesstag.R.id"/>
+<fullyQualifiedTypeName name="android.widget.TextView"/>
+<fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
 </qualifiedTypeNameHistroy>
