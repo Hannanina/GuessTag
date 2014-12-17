@@ -47,10 +47,13 @@ public class HighscoreFragment extends Fragment{
                return (p2.getPoints())-(p1.getPoints());
             }
         });
-		
-		ScoreAdapter adapter = new ScoreAdapter(getActivity(), hl);
-		ListView listView = (ListView) rootView.findViewById(R.id.list_item1);
-		listView.setAdapter(adapter);
+
+			ListView listView = (ListView) rootView.findViewById(R.id.list_item1);
+			View header = (View)inflater.inflate(R.layout.header_layout, null, false);
+			listView.addHeaderView(header);
+			
+			ScoreAdapter adapter = new ScoreAdapter(getActivity(), hl);
+			listView.setAdapter(adapter);
 		
 		return rootView;
 	}

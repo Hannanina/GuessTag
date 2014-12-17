@@ -11,17 +11,18 @@
 
     <TextView
         android:id="@+id/game_name"
-        android:layout_width="150dp"
+        android:layout_width="132dp"
         android:layout_height="wrap_content"
-        android:textSize="22sp"
+        android:text="@string/game_name"
         android:textColor="@color/White"
-        android:text="@string/game_name" >   
+        android:textSize="18sp" >
+   
     </TextView>
     <TextView
         android:id="@+id/nr_of_guesses"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textColor="@color/White"
         android:text="@string/nr_of_guesses" >   
     </TextView>
@@ -29,7 +30,7 @@
         android:id="@+id/total_time_spent"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textColor="@color/White"
         android:text="@string/total_time_spent" >   
     </TextView>
@@ -37,7 +38,7 @@
         android:id="@+id/points"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:textSize="22sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@color/White"
         android:text="@string/points" >   
