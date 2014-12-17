@@ -136,13 +136,13 @@ public class HighscoreActivity extends ActionBarActivity implements
 			// below). 
 			switch (position){
         case 0:
-            return HighscoreFragment.newInstance(position + 1);
+            return HighscoreEasyFragment.newInstance(position + 1);
 
          case 1:
-             return HighscoreFragment.newInstance(position + 1);
+             return HighscoreMediumFragment.newInstance(position + 1);
              
          case 2:
-             return HighscoreFragment.newInstance(position + 1);
+             return HighscoreHardFragment.newInstance(position + 1);
      }
 			return PlaceholderFragment.newInstance(position + 1);
 		}

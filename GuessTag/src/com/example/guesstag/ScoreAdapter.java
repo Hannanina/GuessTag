@@ -31,11 +31,14 @@ public class ScoreAdapter extends ArrayAdapter<HighscoreListItem> {
        TextView nr_of_guesses = (TextView) convertView.findViewById(R.id.nr_of_guesses);
        TextView total_time_spent = (TextView) convertView.findViewById(R.id.total_time_spent);
        TextView points = (TextView) convertView.findViewById(R.id.points);
+
+        	   game_name.setText(items.getGameName());
+               nr_of_guesses.setText(String.valueOf(items.getTotalNrOfGuesses()));
+               total_time_spent.setText(String.valueOf(items.getTotalTimeSpent()));
+               points.setText(String.valueOf(items.getPoints()));
        
-       game_name.setText(items.getGameName());
-       nr_of_guesses.setText(String.valueOf(items.getTotalNrOfGuesses()));
-       total_time_spent.setText(String.valueOf(items.getTotalTimeSpent()));
-       points.setText(String.valueOf(items.getPoints()));
+       
+      
 
        // Return the completed view to render on screen
        return convertView;
