@@ -81,7 +81,7 @@ public class HighscoreList {
 	        String highscoreParameters3 = listOfScores.getString("highscore list hard", "");
 
 
-	        if (highscoreParameters!="" && highscoreParameters2!="") {
+	        if (highscoreParameters!="" && highscoreParameters2!="" && highscoreParameters3!="") {
 	        	easyScores = gson.fromJson(highscoreParameters, listType);
 	        	mediumScores = gson.fromJson(highscoreParameters2, listType);
 	        	hardScores = gson.fromJson(highscoreParameters3, listType);
