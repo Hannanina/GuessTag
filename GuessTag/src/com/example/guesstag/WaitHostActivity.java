@@ -38,14 +38,19 @@ public class WaitHostActivity extends ActionBarActivity implements
 		listOfPlayers = SessionManager.getSessionManager().getListOfPlayers();
 
 		manager = new NetworkingManager(this, "group6", "host");
-		manager.monitorKeyOfUser("listOfPlayers", "user1");
+		// manager.monitorKeyOfUser("listOfPlayers", "user1");
+
+	//	monitorListOfPlayers("user1", "user1");
+		String hostname = SessionManager.getSessionManager().getUserName();
+		monitorListOfPlayers(hostname);
 
 		adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, listOfPlayers);
 
 		ListView listView = (ListView) findViewById(R.id.listOfPlayers);
 		listView.setAdapter(adapter);
-
+         adapter.notify(); 
+		
 		clickList = new OnItemClickListener() {
 
 			public void onItemClick(AdapterView<?> parent, View v,
@@ -55,6 +60,12 @@ public class WaitHostActivity extends ActionBarActivity implements
 		};
 
 		listView.setOnItemClickListener(clickList);
+
+	}
+
+	public void monitorListOfPlayers(String hostname) {
+	//	manager.saveValueForKeyOfUser("listOfPlayers", hostname, guestname);
+		manager.monitorKeyOfUser("listOfPlayers", hostname);
 
 	}
 
@@ -129,10 +140,10 @@ public class WaitHostActivity extends ActionBarActivity implements
 						+ "forKeyOfUser: " + json.toString());
 
 		try {
-			
-			for (int i = 0; i <10; i++) {
-				if (json.getJSONArray("records").getJSONObject(i).getString("key")
-						.equals("listOfPlayers")) {
+
+			for (int i = 0; i < 10; i++) {
+				if (json.getJSONArray("records").getJSONObject(i)
+						.getString("key").equals("listOfPlayers")) {
 					SessionManager.getSessionManager().addListOfPlayers(
 							json.getJSONArray("records").getJSONObject(i)
 									.getString("value"));

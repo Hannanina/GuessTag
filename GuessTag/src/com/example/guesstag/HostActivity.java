@@ -1,11 +1,21 @@
 package com.example.guesstag;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,11 +29,14 @@ public class HostActivity extends ActionBarActivity implements
 	SeekBar diffSetting;
 	TextView difficultyText;
 	private TextView serverMsg;
+	String hostname;
+	Gson gson = new Gson();
+	List<String> hosts = new ArrayList<String>();
 
 	/* added by caofa */
 	private NetworkingManager manager;
 	EditText gameName;
-	 
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -37,7 +50,7 @@ public class HostActivity extends ActionBarActivity implements
 		manager = new NetworkingManager(this, "group6", "host");
 		gameName = (EditText) findViewById(R.id.input_game_name);
 		serverMsg = (TextView) findViewById(R.id.host_heading);
-		//manager.monitorKeyOfUser("createGame", "user1");
+		// manager.monitorKeyOfUser("createGame", "user1");
 	}
 
 	@Override
@@ -65,21 +78,32 @@ public class HostActivity extends ActionBarActivity implements
 	 * 
 	 * @param view
 	 */
-	
-	//added by caofa!
+
+	// added by caofa!
 	public void onClickCreate(View view) {
-		
+
 		if (view.getId() == R.id.button_create && gameName != null
 				&& gameName.getText() != null && !gameName.getText().equals("")) {
 
-			manager.saveValueForKeyOfUser("createGame", "user1", gameName.getText()
-					.toString());
+			// manager.saveValueForKeyOfUser("createGame", "user1",
+			// gameName.getText()
+			// .toString());
+			hostname = SessionManager.getSessionManager().getUserName();
+			manager.saveValueForKeyOfUser("createGame", hostname, gameName
+					.getText().toString());
+			manager.saveValueForKeyOfUser("listOfPlayers", hostname, hostname);
+			manager.loadValueForKeyOfUser("listOfHosts", "hosts");
 
-			manager.saveValueForKeyOfUser("listOfPlayers", "user1", "user1");
+			// updateListOfHosts();
 			Intent intent = new Intent(this, WaitHostActivity.class);
 			startActivity(intent);
 		}
-	
+
+	}
+
+	public void updateListOfHosts() {
+		manager.loadValueForKeyOfUser("listOfHosts", "hosts");
+
 	}
 
 	public void onClickBack(View view) {
@@ -118,55 +142,74 @@ public class HostActivity extends ActionBarActivity implements
 	@Override
 	public void savedValueForKeyOfUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void loadedValueForKeyOfUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
-		
+
+		try {
+			Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
+					"JSONOBject retreived in method loadedValue + "
+							+ "forKeyOfUser: " + json.toString());
+
+			if (!hosts.contains(json.get("value").toString())) {
+				String[] host1 = gson.fromJson((String) json.get("value"),
+						String[].class);
+
+				hosts.add(hostname);
+				hosts.addAll(Arrays.asList(host1));
+
+				String jstring = gson.toJson(hosts);
+				manager.saveValueForKeyOfUser("listOfHosts", "hosts", jstring);
+
+				Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
+						"jsonHosts parsed from gson: " + jstring.toString());
+			}
+
+		} catch (JSONException e) {
+			Log.e(NetworkingManager.TAG_ERROR, e.getMessage());
+		}
+
 	}
 
 	@Override
 	public void deletedKeyOfUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void monitoringKeyOfUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void ignoringKeyOfUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void valueChangedForKeyOfUser(JSONObject json, String key,
 			String user) {
 		// TODO Auto-generated method stub
-		
-			//TODO Do something with returned values?
-			
 
-		
+		// TODO Do something with returned values?
+
 	}
-		
-	
 
 	@Override
 	public void lockedKeyofUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void unlockedKeyOfUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

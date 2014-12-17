@@ -1,9 +1,13 @@
 package com.example.guesstag;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.google.gson.Gson;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,7 +29,7 @@ public class JoinGameActivity extends ActionBarActivity implements
 	private OnItemClickListener clickList;
 	private TextView testing;
 	private NetworkingManager manager;
-
+	Gson gson=new Gson();
 	ArrayAdapter<String> adapter;
 
 	@Override
@@ -34,8 +38,8 @@ public class JoinGameActivity extends ActionBarActivity implements
 		setContentView(R.layout.activity_join_game);
 
 		manager = new NetworkingManager(this, "group6", "client");
-	//	manager.monitorKeyOfUser("createGame", "user1");
-	//	manager.saveValueForKeyOfUser("createGame", "user1", "NewGame");
+		// manager.monitorKeyOfUser("createGame", "user1");
+		// manager.saveValueForKeyOfUser("createGame", "user1", "NewGame");
 
 		adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, listOfGames);
@@ -48,17 +52,17 @@ public class JoinGameActivity extends ActionBarActivity implements
 			public void onItemClick(AdapterView<?> parent, View v,
 					int position, long id) {
 				goToWaitGuestActivity();
-		
+
 			}
 		};
 
 		listView.setOnItemClickListener(clickList);
 
 	}
-	
-	public void goToWaitGuestActivity(){
-		 Intent intent = new Intent(this, WaitGuestActivity.class);
-			  startActivity(intent);
+
+	public void goToWaitGuestActivity() {
+		Intent intent = new Intent(this, WaitGuestActivity.class);
+		startActivity(intent);
 	}
 
 	@Override
@@ -86,7 +90,8 @@ public class JoinGameActivity extends ActionBarActivity implements
 	}
 
 	public void onClickRefresh(View view) {
-		manager.loadValueForKeyOfUser("createGame", "user1");
+		manager.loadValueForKeyOfUser("listOfHosts", "hosts");
+		// manager.loadValueForKeyOfUser("createGame", "user1");
 
 	}
 
@@ -104,21 +109,19 @@ public class JoinGameActivity extends ActionBarActivity implements
 	@Override
 	public void loadedValueForKeyOfUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
+		testing = (TextView) findViewById(R.id.testing);
 
-		testing= (TextView)findViewById(R.id.testing);
-
-
-		Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
-				"JSONOBject retreived in method loadedValue + "
-						+ "forKeyOfUser: " + json.toString());
+//		Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
+//				"JSONOBject retreived in method loadedValue + "
+//						+ "forKeyOfUser: " + json.toString());
 
 		try {
-			if (listOfGames.contains(json.get("value").toString())) {
-				testing.setText("No new game added.");
-			} else {
-				adapter.add(json.get("value").toString());
-			}
-
+			String[] host1 = gson.fromJson((String) json.get("value"),
+					String[].class);
+            listOfGames.addAll(Arrays.asList(host1));
+		
+			Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
+					"jsonHosts parsed from gson: " + listOfGames.toString());
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

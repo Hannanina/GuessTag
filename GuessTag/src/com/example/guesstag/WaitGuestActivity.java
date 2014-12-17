@@ -35,12 +35,19 @@ NetworkingEventHandler {
 		setContentView(R.layout.activity_wait_guest);
 		listOfPlayers = SessionManager.getSessionManager().getListOfPlayers();
 		manager = new NetworkingManager(this, "group6", "guest");
-		manager.monitorKeyOfUser("listOfPlayers", "user1");
+		//manager.monitorKeyOfUser("listOfPlayers", "user1");
+		String guestname = SessionManager.getSessionManager().getUserName();
+	//	monitorListOfPlayers();
+	
+	
+		
 		adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, listOfPlayers);
 
 		ListView listView = (ListView) findViewById(R.id.listOfPlayers);
 		listView.setAdapter(adapter);
+		adapter.notifyDataSetChanged();
+
 
 		clickList = new OnItemClickListener() {
 
@@ -51,6 +58,13 @@ NetworkingEventHandler {
 		};
 
 		listView.setOnItemClickListener(clickList);
+	}
+	
+	public void monitorListOfPlayers(String hostname, String guestname){
+		manager.loadValueForKeyOfUser("listOfHosts", "hosts");
+		manager.saveValueForKeyOfUser("listOfPlayers", hostname, guestname);
+		manager.monitorKeyOfUser("listOfPlayers", hostname);
+
 	}
 
 	@Override
