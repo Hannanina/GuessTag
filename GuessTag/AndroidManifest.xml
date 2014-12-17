@@ -18,11 +18,7 @@
         <activity
             android:name=".StartActivity"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            
         </activity>
         <activity
             android:name=".NewActivity"
@@ -43,6 +39,11 @@
         <activity
             android:name=".TimerActivity"
             android:label="@string/title_activity_timer" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".HostActivity"
@@ -63,6 +64,7 @@
         <activity
             android:name=".ResultFinalActivity"
             android:label="@string/title_activity_result_final" >
+            
         </activity>
         <activity
             android:name=".HighscoreActivity"

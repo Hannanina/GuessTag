@@ -18,6 +18,9 @@ public class ResultRoundActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_result_round);
+		
+		//sm.calculatePoints();
+		
 		TextView textview = (TextView)findViewById(R.id.score);
 		textview.setText(String.valueOf(sm.getScore().getPoints()));
 		

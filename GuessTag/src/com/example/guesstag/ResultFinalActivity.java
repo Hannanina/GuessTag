@@ -14,25 +14,28 @@ public class ResultFinalActivity extends ActionBarActivity {
 	
 	SessionManager sm = SessionManager.getSessionManager();
 	HighscoreList hl = HighscoreList.getHighscoreList();
-
+	HighscoreListItem item;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_result_final);
 	
-	    HighscoreListItem item = new HighscoreListItem(4, 70, "game1",
-    			"medium", 12 , 50);
-        hl.getMediumScores().add(item);
-
-	    HighscoreListItem item2 = new HighscoreListItem(2, 100, "game2",
-    			"easy", 12 , 100);
-        hl.getEasyScores().add(item2);
-
-	    HighscoreListItem item3 = new HighscoreListItem(2, 50, "game3",
-    			"hard", 12 , 70);
-        hl.getHardScores().add(item3);
-
+	    //sm.calculatePoints();
+		
+	    item = new HighscoreListItem(sm.getScore().getNrOfPlayers(), sm.getScore().getPoints(),
+	    		sm.getScore().getGameName(), sm.getDiffSetting(), sm.getNrOfGuesses() , calcFinalTime(sm.getTotalTimeSpent()));
         
+	    if(item.getDiffSetting().equals("easy")) {
+	    	hl.getEasyScores().add(item);
+	    }
+	    else if(item.getDiffSetting().equals("medium")) {
+	    	hl.getMediumScores().add(item);	
+	    }
+	    else {
+	    	hl.getHardScores().add(item);
+	    }
+	    
         SharedPreferences listOfScores = getSharedPreferences("preferences",0);
         hl.saveChanges(listOfScores);
         hl.loadChanges(listOfScores);
@@ -69,5 +72,18 @@ public class ResultFinalActivity extends ActionBarActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public String calcFinalTime(int time) {
+		String finalTime;
+		Integer minutes;
+		Integer seconds;
+		
+		minutes = time / 60;
+		seconds = time % 60;
+		
+		finalTime = minutes.toString() + ":" + seconds.toString();
+		System.out.println("Final time is: " + finalTime);
+		return finalTime;
 	}
 }
