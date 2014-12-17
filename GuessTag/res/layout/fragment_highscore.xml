@@ -16,5 +16,12 @@
     
         <ListView android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:text="" android:id="@+id/list_item1" />
+      
+    <TextView
+        android:id="@+id/text"
+        android:text="You haven't played any games in this level"
+        android:textSize="22sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" /> 
 
 </RelativeLayout>

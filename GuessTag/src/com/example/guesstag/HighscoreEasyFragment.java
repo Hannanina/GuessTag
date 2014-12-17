@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 
 public class HighscoreEasyFragment extends Fragment{
@@ -37,7 +38,9 @@ public class HighscoreEasyFragment extends Fragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState){
 		View rootView = inflater.inflate(R.layout.fragment_highscore, container, false);
-		 hl = HighscoreList.getHighscoreList().getEasyScores();
+		hl = HighscoreList.getHighscoreList().getEasyScores();
+		TextView textView =(TextView)rootView.findViewById(R.id.text);
+
 		
 			Collections.sort(hl, new Comparator(){
 
@@ -52,9 +55,14 @@ public class HighscoreEasyFragment extends Fragment{
 			View header = (View)inflater.inflate(R.layout.header_layout, null, false);
 			listView.addHeaderView(header);
 			
-
-			ScoreAdapter adapter = new ScoreAdapter(getActivity(), hl);
-			listView.setAdapter(adapter);
+			if (hl.isEmpty()==true){
+				textView.setVisibility(TextView.VISIBLE);
+				
+			}else{
+				textView.setVisibility(TextView.INVISIBLE);
+				ScoreAdapter adapter = new ScoreAdapter(getActivity(), hl);
+				listView.setAdapter(adapter);
+			}
 		
 		return rootView;
 	}

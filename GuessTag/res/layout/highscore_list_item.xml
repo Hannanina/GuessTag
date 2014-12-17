@@ -43,4 +43,5 @@
         android:textColor="@color/White"
         android:text="@string/points" >   
     </TextView>
+    
 </LinearLayout>
