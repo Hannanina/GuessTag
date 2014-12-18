@@ -49,7 +49,6 @@ public class WaitHostActivity extends ActionBarActivity implements
 
 		ListView listView = (ListView) findViewById(R.id.listOfPlayers);
 		listView.setAdapter(adapter);
-         adapter.notify(); 
 		
 		clickList = new OnItemClickListener() {
 
