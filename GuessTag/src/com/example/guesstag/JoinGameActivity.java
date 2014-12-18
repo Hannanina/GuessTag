@@ -29,9 +29,10 @@ public class JoinGameActivity extends ActionBarActivity implements
 	private OnItemClickListener clickList;
 	private TextView testing;
 	private NetworkingManager manager;
+	
 	Gson gson=new Gson();
 	ArrayAdapter<String> adapter;
-
+	String clickedName;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -51,7 +52,10 @@ public class JoinGameActivity extends ActionBarActivity implements
 
 			public void onItemClick(AdapterView<?> parent, View v,
 					int position, long id) {
-				goToWaitGuestActivity();
+				 clickedName=(String)adapter.getItem(position);
+
+				goToWaitGuestActivity(clickedName);
+				
 
 			}
 		};
@@ -60,8 +64,9 @@ public class JoinGameActivity extends ActionBarActivity implements
 
 	}
 
-	public void goToWaitGuestActivity() {
+	public void goToWaitGuestActivity(String name) {
 		Intent intent = new Intent(this, WaitGuestActivity.class);
+		intent.putExtra("ChosenOne", name);
 		startActivity(intent);
 	}
 

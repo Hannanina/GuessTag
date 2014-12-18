@@ -24,6 +24,7 @@ NetworkingEventHandler {
 	private ArrayList<String> listOfPlayers = new ArrayList<String>();
 	ArrayAdapter<String> adapter;
 	TextView waiting_for_players;
+	String hostname;
 	
 	private NetworkingManager manager;
 
@@ -34,10 +35,11 @@ NetworkingEventHandler {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_wait_guest);
 		listOfPlayers = SessionManager.getSessionManager().getListOfPlayers();
+		hostname = getIntent().getExtras().getString("ChosenOne");
 		manager = new NetworkingManager(this, "group6", "guest");
 		//manager.monitorKeyOfUser("listOfPlayers", "user1");
 		String guestname = SessionManager.getSessionManager().getUserName();
-	//	monitorListOfPlayers();
+		monitorListOfPlayers(hostname, guestname);
 	
 	
 		
@@ -61,7 +63,7 @@ NetworkingEventHandler {
 	}
 	
 	public void monitorListOfPlayers(String hostname, String guestname){
-		manager.loadValueForKeyOfUser("listOfHosts", "hosts");
+		//manager.loadValueForKeyOfUser("listOfHosts", "hosts");
 		manager.saveValueForKeyOfUser("listOfPlayers", hostname, guestname);
 		manager.monitorKeyOfUser("listOfPlayers", hostname);
 
