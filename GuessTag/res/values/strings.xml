@@ -42,10 +42,15 @@
     <string name="waiting_for_host">Waiting for host.</string>
 
     <!-- INPUT TAG ACTIVITY -->
+    <string name="input_heading">Input hashtag</string>
+    <string name="input_a_word">Input word excluding # sign</string>
+    <string name="button_submit">Submit</string>
+    <string name="used_hashtag">This hashtag has already been used!</string>
     <string name="title_activity_input_tag">InputTagActivity</string>
     <string name="title_activity_select_tagger">SelectTaggerActivity</string>
 
     <!-- TIMER ACTIVITY -->
+    <string name="timer_heading">Countdown Timer</string>
     <string name="timer_value">Timer Value</string>
     <string name="title_activity_timer">TimerActivity</string>
     <string name="title_activity_host">HostActivity</string>

@@ -19,7 +19,7 @@
 	    android:layout_gravity="center"
 	    android:text="@string/guest_wait_heading"
 	    android:textStyle="italic"
-	    android:textSize="50sp"
+	    android:textSize="30sp"
 	    android:textColor="@color/White">
     </TextView>
     
