@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -65,6 +66,10 @@ public class HighscoreEasyFragment extends Fragment{
 			}
 		
 		return rootView;
+	}
+	public void onClickBack(View view) {
+		Intent intent = new Intent(getActivity(), StartActivity.class);
+		startActivity(intent);
 	}
 }
 

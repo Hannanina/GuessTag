@@ -138,11 +138,11 @@ public class HighscoreActivity extends ActionBarActivity implements
 			// Return a PlaceholderFragment (defined as a static inner class
 			// below). 
 			if(sm.getDiffSetting().equals("easy")){
-				mViewPager.setCurrentItem(0);
-			}else if(sm.getDiffSetting().equals("medium")){
 				mViewPager.setCurrentItem(1);
-			}else if (sm.getDiffSetting().equals("hard")){
+			}else if(sm.getDiffSetting().equals("medium")){
 				mViewPager.setCurrentItem(2);
+			}else {
+				mViewPager.setCurrentItem(3);
 			}
 			
 			switch (position){
