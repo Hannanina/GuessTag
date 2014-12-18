@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.guesstag"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="21" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".StartActivity"
+            android:label="@string/app_name" >
+            
+        </activity>
+        <activity
+            android:name=".NewActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".RulesActivity"
+            android:label="@string/title_activity_rules" >
+        </activity>
+        <activity
+            android:name=".InputTagActivity"
+            android:label="@string/title_activity_input_tag" >
+        </activity>
+        <activity
+            android:name=".SelectTaggerActivity"
+            android:label="@string/title_activity_select_tagger" >
+        </activity>
+        <activity
+            android:name=".TimerActivity"
+            android:label="@string/title_activity_timer" >
+            
+        </activity>
+        <activity
+            android:name=".HostActivity"
+            android:label="@string/title_activity_host" >
+        </activity>
+        <activity
+            android:name=".GuessTagActivity"
+            android:label="@string/title_activity_guess_tag" >
+        </activity>
+        <activity
+            android:name=".ResultRoundActivity"
+            android:label="@string/title_activity_result_round" >
+        </activity>
+        <activity
+            android:name=".JoinGameActivity"
+            android:label="@string/title_activity_join_game" >
+        </activity>
+        <activity
+            android:name=".ResultFinalActivity"
+            android:label="@string/title_activity_result_final" >
+            
+        </activity>
+        <activity
+            android:name=".HighscoreActivity"
+            android:label="@string/title_activity_highscore" >
+        </activity>
+        <activity
+            android:name=".WaitHostActivity"
+            android:label="@string/title_activity_wait_host" >
+        </activity>
+        <activity
+            android:name=".WaitGuestActivity"
+            android:label="@string/title_activity_wait_guest" >
+        </activity>
+    </application>
+
+</manifest>

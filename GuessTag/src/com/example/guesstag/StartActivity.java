@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -12,11 +13,17 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class StartActivity extends ActionBarActivity{
+public class StartActivity extends ActionBarActivity implements PopupFragment.NoticeDialogListener{
 	
+	SharedPreferences listOfScores;
+	SharedPreferences popup;
+	final String popupShown = "popupShown";
+	Boolean popupIsShown;
 	HighscoreList hl = HighscoreList.getHighscoreList();
 	
 	@Override
@@ -25,11 +32,20 @@ public class StartActivity extends ActionBarActivity{
 		setContentView(R.layout.activity_start);
 		
 
-        SharedPreferences listOfScores = getSharedPreferences("preferences",0);
+        listOfScores = getSharedPreferences("preferences",0);
         hl.loadChanges(listOfScores);
         
-        PopupFragment popup = PopupFragment.newInstance();
-        popup.show(getSupportFragmentManager(), "Choose a user name");
+        popup = PreferenceManager.getDefaultSharedPreferences(this);
+        popupIsShown = popup.getBoolean(popupShown, false);
+        
+        if(!popupIsShown) {
+        	PopupFragment popupFragment = PopupFragment.newInstance();
+            popupFragment.show(getSupportFragmentManager(), "Choose a user name");
+            
+            SharedPreferences.Editor editor = popup.edit();
+            editor.putBoolean(popupShown, true);
+            editor.commit();
+        }
 	}
 
 	@Override
@@ -49,6 +65,13 @@ public class StartActivity extends ActionBarActivity{
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	@Override
+	public void onPopupOkClick(DialogFragment popupFragment) {
+		EditText et = (EditText)popupFragment.getDialog().findViewById(R.id.choose_an_alias);
+		String userName = et.getText().toString();
+		SessionManager.getSessionManager().setUserName(userName);
 	}
 	
 	public void onClickStart(View view) {

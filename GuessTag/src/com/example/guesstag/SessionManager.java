@@ -31,6 +31,7 @@ public class SessionManager implements NetworkingEventHandler {
 	private static SessionManager sessionManager = new SessionManager();
 
 	private SessionManager() {
+		Score score = new Score(0, 0, "", "");
 		nrOfGuesses = 0;
 		roundsPlayed = 0;
 		totalNrOfGuesses = 0;
