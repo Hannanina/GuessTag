@@ -66,9 +66,9 @@ public class HighscoreHardFragment extends Fragment{
 			}
 		return rootView;
 	}
-	public void onClickBack(View view) {
-		Intent intent = new Intent(getActivity(), StartActivity.class);
-		startActivity(intent);
-	}
+//	public void onClickBack(View view) {
+//		Intent intent = new Intent(getActivity(), StartActivity.class);
+//		startActivity(intent);
+//	}
 }
 

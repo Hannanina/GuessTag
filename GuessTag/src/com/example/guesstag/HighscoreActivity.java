@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -212,4 +213,8 @@ public class HighscoreActivity extends ActionBarActivity implements
 		}
 	}
 
+	public void onClickBack(View view) {
+		Intent intent = new Intent(this, StartActivity.class);
+		startActivity(intent);
+	}
 }
