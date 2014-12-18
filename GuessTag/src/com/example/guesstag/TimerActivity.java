@@ -15,27 +15,28 @@ public class TimerActivity extends ActionBarActivity {
 
 	ProgressBar mProgressBar;
 	CountDownTimer mCountDownTimer;
-	int i=0;
-	
-	TextView timerValue = (TextView)findViewById(R.id.timerValue);
-	HighscoreList hl = HighscoreList.getHighscoreList();
+	int i = 0;
+	TextView timerValue;
+	HighscoreList hl;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-       
     	super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_timer);
 		
+		hl = HighscoreList.getHighscoreList();
+		timerValue = (TextView)findViewById(R.id.timerValue);
 		mProgressBar=(ProgressBar)findViewById(R.id.circularProgressbar);
 		mProgressBar.setProgress(i);
 		SessionManager.getSessionManager().getScore().setDiffSetting("medium");
+		
 		if(SessionManager.getSessionManager().getDiffSetting().equals("easy")) {
 		
 			mCountDownTimer=new CountDownTimer(60000, 600) {
 
 		        @Override
 		        public void onTick(long millisUntilFinished) {
-		    		timerValue.setText(millisUntilFinished / 1000 + " sec");
+		    		timerValue.setText(String.valueOf(millisUntilFinished / 1000));
 		            i++;
 		            mProgressBar.setProgress(i);
 		        }
@@ -43,12 +44,12 @@ public class TimerActivity extends ActionBarActivity {
 		        @Override
 		        public void onFinish() {
 		    		//SessionManager.getSessionManager().calculatePoints(Integer.parseInt((timerValue.getText().toString())));
-		    		goToResult(SessionManager.getSessionManager().getRoundsPlayed());
-		    		 //SharedPreferences listOfScores = getSharedPreferences("preferences",0);
-		    	     //hl.saveChanges(listOfScores);
+		        	SessionManager.getSessionManager().incrementRoundsPlayed();
+		        	goToResult(SessionManager.getSessionManager().getRoundsPlayed());
+		    		//SharedPreferences listOfScores = getSharedPreferences("preferences",0);
+		    	    //hl.saveChanges(listOfScores);
 		        }
-		    };
-		    mCountDownTimer.start();
+		    }.start();
 		}
 		else if(SessionManager.getSessionManager().getDiffSetting().equals("medium")) {
 		
@@ -56,7 +57,7 @@ public class TimerActivity extends ActionBarActivity {
 
 		        @Override
 		        public void onTick(long millisUntilFinished) {
-		    		timerValue.setText(millisUntilFinished / 1000 + " sec");
+		    		timerValue.setText(String.valueOf(millisUntilFinished / 1000));
 		            i++;
 		            mProgressBar.setProgress(i);
 		        }
@@ -64,12 +65,12 @@ public class TimerActivity extends ActionBarActivity {
 		        @Override
 		        public void onFinish() {
 		    		//SessionManager.getSessionManager().calculatePoints(Integer.parseInt((timerValue.getText().toString())));
-		    		goToResult(SessionManager.getSessionManager().getRoundsPlayed());
-		    		 //SharedPreferences listOfScores = getSharedPreferences("preferences",0);
-		    	     //hl.saveChanges(listOfScores);
+		        	SessionManager.getSessionManager().incrementRoundsPlayed();
+		        	goToResult(SessionManager.getSessionManager().getRoundsPlayed());
+		    		//SharedPreferences listOfScores = getSharedPreferences("preferences",0);
+		    	    //hl.saveChanges(listOfScores);
 		        }
-		    };
-		    mCountDownTimer.start();
+		    }.start();
 		}
 		else {
 		
@@ -77,7 +78,7 @@ public class TimerActivity extends ActionBarActivity {
 
 		        @Override
 		        public void onTick(long millisUntilFinished) {
-		    		timerValue.setText(millisUntilFinished / 1000 + " sec");
+		    		timerValue.setText(String.valueOf(millisUntilFinished / 1000));
 		            i++;
 		            mProgressBar.setProgress(i);
 
@@ -86,17 +87,19 @@ public class TimerActivity extends ActionBarActivity {
 		        @Override
 		        public void onFinish() {
 		    		//SessionManager.getSessionManager().calculatePoints(Integer.parseInt((timerValue.getText().toString())));
-		    		goToResult(SessionManager.getSessionManager().getRoundsPlayed());
-		    		 //SharedPreferences listOfScores = getSharedPreferences("preferences",0);
-		    	     //hl.saveChanges(listOfScores);
+		        	SessionManager.getSessionManager().incrementRoundsPlayed();
+		        	goToResult(SessionManager.getSessionManager().getRoundsPlayed());
+		    		//SharedPreferences listOfScores = getSharedPreferences("preferences",0);
+		    	    //hl.saveChanges(listOfScores);
 		        }
-		    };
-		    mCountDownTimer.start();
+		    }.start();
 		}
     }
     
     public void stopTimer() {
     	mCountDownTimer.cancel();
+    	SessionManager.getSessionManager().incrementRoundsPlayed();
+    	goToResult(SessionManager.getSessionManager().getRoundsPlayed());
     }
     
 	@Override

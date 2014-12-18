@@ -1,0 +1,133 @@
+package com.example.guesstag;
+
+
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+public class TimerActivity extends ActionBarActivity {
+
+	ProgressBar mProgressBar;
+	CountDownTimer mCountDownTimer;
+	int i = 0;
+	TextView timerValue;
+	//HighscoreList hl;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+    	super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_timer);
+		
+		//hl = HighscoreList.getHighscoreList();
+		timerValue = (TextView)findViewById(R.id.timerValue);
+		mProgressBar=(ProgressBar)findViewById(R.id.circularProgressbar);
+		mProgressBar.setProgress(i);
+		SessionManager.getSessionManager().getScore().setDiffSetting("easy");
+		if(SessionManager.getSessionManager().getDiffSetting().equals("easy")) {
+		
+			mCountDownTimer=new CountDownTimer(60000, 600) {
+
+		        @Override
+		        public void onTick(long millisUntilFinished) {
+		    		timerValue.setText(millisUntilFinished / 1000 + " sec");
+		            i++;
+		            mProgressBar.setProgress(i);
+		        }
+		        
+		        @Override
+		        public void onFinish() {
+		    		//SessionManager.getSessionManager().calculatePoints(Integer.parseInt((timerValue.getText().toString())));
+		    		goToResult(SessionManager.getSessionManager().getRoundsPlayed());
+		    		 //SharedPreferences listOfScores = getSharedPreferences("preferences",0);
+		    	     //hl.saveChanges(listOfScores);
+		        }
+		    }.start();
+		    //mCountDownTimer
+		}
+		else if(SessionManager.getSessionManager().getDiffSetting().equals("medium")) {
+		
+			mCountDownTimer=new CountDownTimer(30000, 300) {
+
+		        @Override
+		        public void onTick(long millisUntilFinished) {
+		    		timerValue.setText(millisUntilFinished / 1000 + " sec");
+		            i++;
+		            mProgressBar.setProgress(i);
+		        }
+
+		        @Override
+		        public void onFinish() {
+		    		//SessionManager.getSessionManager().calculatePoints(Integer.parseInt((timerValue.getText().toString())));
+		    		goToResult(SessionManager.getSessionManager().getRoundsPlayed());
+		    		 //SharedPreferences listOfScores = getSharedPreferences("preferences",0);
+		    	     //hl.saveChanges(listOfScores);
+		        }
+		    }.start();
+		    //mCountDownTimer
+		}
+		else {
+		
+			mCountDownTimer=new CountDownTimer(15000, 150) {
+
+		        @Override
+		        public void onTick(long millisUntilFinished) {
+		    		timerValue.setText(millisUntilFinished / 1000 + " sec");
+		            i++;
+		            mProgressBar.setProgress(i);
+
+		        }
+
+		        @Override
+		        public void onFinish() {
+		    		//SessionManager.getSessionManager().calculatePoints(Integer.parseInt((timerValue.getText().toString())));
+		    		goToResult(SessionManager.getSessionManager().getRoundsPlayed());
+		    		 //SharedPreferences listOfScores = getSharedPreferences("preferences",0);
+		    	     //hl.saveChanges(listOfScores);
+		        }
+		    }.start();
+		    //mCountDownTimer
+		}
+    }
+    
+    public void stopTimer() {
+    	mCountDownTimer.cancel();
+    }
+    
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.timer, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
+	//Checks number of rounds played and navigate to either next round or final result
+	public void goToResult(int roundsPlayed) {
+		
+		if(roundsPlayed < 6) {
+			Intent intent = new Intent(this, ResultRoundActivity.class);
+			startActivity(intent);
+		}
+		else {
+			Intent intent = new Intent(this, ResultFinalActivity.class);
+			startActivity(intent);
+		}
+	}
+}

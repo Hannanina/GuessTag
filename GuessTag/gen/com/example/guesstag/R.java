@@ -2075,34 +2075,34 @@ containing a value of this type.
          */
         public static final int button_back=0x7f0a0012;
         public static final int button_create=0x7f0a0022;
-        public static final int button_end=0x7f0a0041;
+        public static final int button_end=0x7f0a0042;
         public static final int button_highscore=0x7f0a0015;
         public static final int button_host=0x7f0a001b;
         public static final int button_join=0x7f0a001c;
-        public static final int button_ok=0x7f0a0047;
+        public static final int button_ok=0x7f0a0048;
         public static final int button_rules=0x7f0a0016;
         public static final int button_start=0x7f0a0014;
         public static final int button_start_game=0x7f0a0025;
         /**  USER NAME POPUP 
          */
-        public static final int choose_an_alias=0x7f0a0046;
+        public static final int choose_an_alias=0x7f0a0047;
         public static final int difficulty_setting_instruction=0x7f0a001f;
         public static final int difficulty_setting_level=0x7f0a0021;
         /**  RESULT FINAL ACTIVITY 
          */
-        public static final int final_result=0x7f0a0040;
+        public static final int final_result=0x7f0a0041;
         /**  HIGHSCORE LIST ITEM 
          */
-        public static final int game_name=0x7f0a0042;
+        public static final int game_name=0x7f0a0043;
         public static final int game_name_instruction=0x7f0a001e;
-        public static final int guess_tag=0x7f0a0033;
+        public static final int guess_tag=0x7f0a0034;
         /**  GUESS TAG ACTIVITY 
          */
-        public static final int guess_the_hashtag=0x7f0a0030;
+        public static final int guess_the_hashtag=0x7f0a0031;
         /**  WAIT GUEST ACTIVITY 
          */
         public static final int guest_wait_heading=0x7f0a0026;
-        public static final int hashtag_sign=0x7f0a0032;
+        public static final int hashtag_sign=0x7f0a0033;
         public static final int hello_world=0x7f0a0010;
         /**  HOST ACTIVITY 
          */
@@ -2110,20 +2110,20 @@ containing a value of this type.
         /**  WAIT HOST ACTIVITY 
          */
         public static final int host_wait_heading=0x7f0a0023;
-        public static final int image_five=0x7f0a0038;
-        public static final int image_four=0x7f0a0037;
-        public static final int image_one=0x7f0a0034;
-        public static final int image_six=0x7f0a0039;
-        public static final int image_three=0x7f0a0036;
-        public static final int image_two=0x7f0a0035;
-        public static final int image_view_1=0x7f0a0049;
-        public static final int input_alias=0x7f0a0048;
+        public static final int image_five=0x7f0a0039;
+        public static final int image_four=0x7f0a0038;
+        public static final int image_one=0x7f0a0035;
+        public static final int image_six=0x7f0a003a;
+        public static final int image_three=0x7f0a0037;
+        public static final int image_two=0x7f0a0036;
+        public static final int image_view_1=0x7f0a004a;
+        public static final int input_alias=0x7f0a0049;
         public static final int input_game_name=0x7f0a0020;
         /**  NEW ACTIVITY 
          */
         public static final int new_heading=0x7f0a001a;
-        public static final int nr_of_guesses=0x7f0a0043;
-        public static final int points=0x7f0a0045;
+        public static final int nr_of_guesses=0x7f0a0044;
+        public static final int points=0x7f0a0046;
         /**  RULES ACTIVITY 
          */
         public static final int rules_heading=0x7f0a0018;
@@ -2131,31 +2131,32 @@ containing a value of this type.
         /**  START ACTIVITY 
          */
         public static final int start_heading=0x7f0a0013;
-        public static final int title_activity_guess_tag=0x7f0a002c;
+        /**  TIMER ACTIVITY 
+         */
+        public static final int timer_value=0x7f0a002a;
+        public static final int title_activity_guess_tag=0x7f0a002d;
         /**  HIGHSCORE ACTIVITY 
          */
-        public static final int title_activity_highscore=0x7f0a003a;
-        public static final int title_activity_host=0x7f0a002b;
+        public static final int title_activity_highscore=0x7f0a003b;
+        public static final int title_activity_host=0x7f0a002c;
         /**  INPUT TAG ACTIVITY 
          */
         public static final int title_activity_input_tag=0x7f0a0028;
-        public static final int title_activity_join_game=0x7f0a002e;
-        public static final int title_activity_result_final=0x7f0a002f;
-        public static final int title_activity_result_round=0x7f0a002d;
+        public static final int title_activity_join_game=0x7f0a002f;
+        public static final int title_activity_result_final=0x7f0a0030;
+        public static final int title_activity_result_round=0x7f0a002e;
         public static final int title_activity_rules=0x7f0a0017;
         public static final int title_activity_select_tagger=0x7f0a0029;
-        /**  TIMER ACTIVITY 
-         */
-        public static final int title_activity_timer=0x7f0a002a;
-        public static final int title_activity_wait_guest=0x7f0a003f;
-        public static final int title_activity_wait_host=0x7f0a003e;
-        public static final int title_section1=0x7f0a003b;
-        public static final int title_section2=0x7f0a003c;
-        public static final int title_section3=0x7f0a003d;
-        public static final int total_time_spent=0x7f0a0044;
+        public static final int title_activity_timer=0x7f0a002b;
+        public static final int title_activity_wait_guest=0x7f0a0040;
+        public static final int title_activity_wait_host=0x7f0a003f;
+        public static final int title_section1=0x7f0a003c;
+        public static final int title_section2=0x7f0a003d;
+        public static final int title_section3=0x7f0a003e;
+        public static final int total_time_spent=0x7f0a0045;
         public static final int waiting_for_host=0x7f0a0027;
         public static final int waiting_for_players=0x7f0a0024;
-        public static final int wrong_answer=0x7f0a0031;
+        public static final int wrong_answer=0x7f0a0032;
     }
     public static final class style {
         /** 

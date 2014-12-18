@@ -11,7 +11,7 @@ public class SessionManager implements NetworkingEventHandler {
 
 	//Attributes
 	private String userName;
-	private Score score;
+	private Score score = new Score(0, 0, "", "");
 	private String tag;
 	private int nrOfGuesses;
 	private int roundsPlayed;
@@ -31,7 +31,6 @@ public class SessionManager implements NetworkingEventHandler {
 	private static SessionManager sessionManager = new SessionManager();
 
 	private SessionManager() {
-		Score score = new Score(0, 0, "", "");
 		nrOfGuesses = 0;
 		roundsPlayed = 0;
 		totalNrOfGuesses = 0;
