@@ -16,23 +16,12 @@
     
         <ListView android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:text="" android:id="@+id/list_item1" />
-     <TextView
+      
+    <TextView
         android:id="@+id/text"
         android:text="You haven't played any games in this level"
         android:textSize="22sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" /> 
-    <Button
-        android:id="@+id/btn_New"
-	    android:layout_width="200dp"
-	    android:layout_height="48dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="20dp"
-        android:text="@string/button_back"
-        android:width="170dp"
-        android:layout_alignParentBottom="true" 
-        android:onClick="onClickBack" 
-        />
 
 </RelativeLayout>

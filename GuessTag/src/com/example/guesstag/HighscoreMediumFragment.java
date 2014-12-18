@@ -4,14 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.TextView;
 
 
 public class HighscoreMediumFragment extends Fragment{
@@ -40,7 +38,6 @@ public class HighscoreMediumFragment extends Fragment{
 			Bundle savedInstanceState){
 		View rootView = inflater.inflate(R.layout.fragment_highscore, container, false);
 		hl = HighscoreList.getHighscoreList().getMediumScores();
-		TextView textView =(TextView)rootView.findViewById(R.id.text);
 		
 			Collections.sort(hl, new Comparator(){
 
@@ -55,20 +52,11 @@ public class HighscoreMediumFragment extends Fragment{
 			View header = (View)inflater.inflate(R.layout.header_layout, null, false);
 			listView.addHeaderView(header);
 			
-			if (hl.isEmpty()==true){
-				textView.setVisibility(TextView.VISIBLE);
-				
-			}else{
-				textView.setVisibility(TextView.INVISIBLE);
-				ScoreAdapter adapter = new ScoreAdapter(getActivity(), hl);
-				listView.setAdapter(adapter);
-			}
+
+			ScoreAdapter adapter = new ScoreAdapter(getActivity(), hl);
+			listView.setAdapter(adapter);
+		
 		return rootView;
-	}
-	
-	public void onClickBack(View view) {
-		Intent intent = new Intent(getActivity(), StartActivity.class);
-		startActivity(intent);
 	}
 }
 
