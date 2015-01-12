@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/highscore_list_item_margin_vert"
     android:paddingTop="@dimen/highscore_list_item_margin_hori"
     android:orientation="horizontal"
-    android:background="@color/DimGray" >
+    android:background="#212121" >
 
     <TextView
         android:id="@+id/game_name"

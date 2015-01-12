@@ -25,10 +25,9 @@
     <string name="button_join">Join game</string>
 
     <!-- HOST ACTIVITY -->
-    <string name="host_heading">Host game</string>
-    <string name="game_name_instruction">Input game name</string>
-    <string name="difficulty_setting_instruction">Set difficulty</string>
-    <string name="input_game_name">Input game name</string>
+    <string name="host_heading">Input a game name</string>
+    <string name="difficulty_setting_instruction">Set difficulty level</string>
+    <string name="input_game_name">game name</string>
     <string name="difficulty_setting_level">medium</string>
     <string name="button_create">Create game</string>
 
@@ -43,8 +42,7 @@
 
     <!-- INPUT TAG ACTIVITY -->
     <string name="input_heading">Input hashtag</string>
-    <string name="input_hashtag">Input hashtag</string>
-    <string name="input_a_word">Input word excluding # sign</string>
+    <string name="input_hashtag">hashtag</string>
     <string name="button_submit">Submit</string>
     <string name="used_hashtag">This hashtag has already been used!</string>
     <string name="title_activity_input_tag">InputTagActivity</string>

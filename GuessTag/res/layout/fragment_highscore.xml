@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.guesstag.HighscoreActivity$HighscoreFragment" 
-    android:background="@color/DimGray" >
+    android:background="#212121" >
     
     <TextView
         android:id="@+id/section_label"
@@ -21,6 +21,7 @@
         android:id="@+id/text"
         android:text="You haven't played any games in this level"
         android:textSize="22sp"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" /> 
         

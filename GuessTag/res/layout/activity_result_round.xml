@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,20 +7,9 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    android:background="@color/DimGray"
+    android:background="#212121"
     tools:context="com.example.guesstag.ResultRoundActivity" >
 
-	<TextView
-        android:id="@+id/score_heading"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="15dp"
-        android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_gravity="center"
-	    android:text="Your score for this round:"
-	    android:textSize="20sp"
-	    android:textColor="@color/White">
-    </TextView>
     	<TextView
         android:id="@+id/score"
         android:layout_marginTop="30dp"
@@ -32,4 +21,16 @@
 	    android:textSize="20sp"
 	    android:textColor="@color/White">
     </TextView>
-    </LinearLayout>
+
+    	<TextView
+    	    android:id="@+id/score_heading"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:layout_alignBaseline="@+id/score"
+    	    android:layout_alignBottom="@+id/score"
+    	    android:layout_centerHorizontal="true"
+    	    android:text="Good job!\nYour score for this round is:"
+    	    android:textColor="@color/White"
+    	    android:textSize="22sp" />
+
+    </RelativeLayout>
