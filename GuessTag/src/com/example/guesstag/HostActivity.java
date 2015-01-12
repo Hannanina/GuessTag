@@ -29,13 +29,14 @@ public class HostActivity extends ActionBarActivity implements
 	SeekBar diffSetting;
 	TextView difficultyText;
 	private TextView serverMsg;
-	String hostname;
+//	String hostname;
 	Gson gson = new Gson();
-	List<String> hosts = new ArrayList<String>();
+	List<String> listOfGames = new ArrayList<String>();
 
 	/* added by caofa */
 	private NetworkingManager manager;
 	EditText gameName;
+	String gameNameStr;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,7 @@ public class HostActivity extends ActionBarActivity implements
 		/* added by caofa */
 		manager = new NetworkingManager(this, "group6", "host");
 		gameName = (EditText) findViewById(R.id.input_game_name);
-		serverMsg = (TextView) findViewById(R.id.host_heading);
+		//serverMsg = (TextView) findViewById(R.id.host_heading);
 		// manager.monitorKeyOfUser("createGame", "user1");
 	}
 
@@ -88,14 +89,24 @@ public class HostActivity extends ActionBarActivity implements
 			// manager.saveValueForKeyOfUser("createGame", "user1",
 			// gameName.getText()
 			// .toString());
-			hostname = SessionManager.getSessionManager().getUserName();
+			//hostname = SessionManager.getSessionManager().getUserName();
+			
+		
+			/*
 			manager.saveValueForKeyOfUser("createGame", hostname, gameName
 					.getText().toString());
 			manager.saveValueForKeyOfUser("listOfPlayers", hostname, hostname);
 			manager.loadValueForKeyOfUser("listOfHosts", "hosts");
+            */
 
+			/**Updated version of networking*/
+			gameNameStr = gameName.getText().toString();
+			manager.loadValueForKeyOfUser("listOfGames", "games");
+		//	manager.saveValueForKeyOfUser("listOfPlayers", gameNameStr, hostname);
+			
 			// updateListOfHosts();
 			Intent intent = new Intent(this, WaitHostActivity.class);
+			intent.putExtra("GameName", gameNameStr);
 			startActivity(intent);
 		}
 
@@ -154,18 +165,18 @@ public class HostActivity extends ActionBarActivity implements
 					"JSONOBject retreived in method loadedValue + "
 							+ "forKeyOfUser: " + json.toString());
 
-			if (!hosts.contains(json.get("value").toString())) {
-				String[] host1 = gson.fromJson((String) json.get("value"),
+			if (!listOfGames.contains(json.get("value").toString())) {
+				String[] lsg = gson.fromJson((String) json.get("value"),
 						String[].class);
 
-				hosts.add(hostname);
-				hosts.addAll(Arrays.asList(host1));
+				listOfGames.add(gameNameStr);
+				listOfGames.addAll(Arrays.asList(lsg));
 
-				String jstring = gson.toJson(hosts);
-				manager.saveValueForKeyOfUser("listOfHosts", "hosts", jstring);
+				String jstring = gson.toJson(listOfGames);
+				manager.saveValueForKeyOfUser("listOfGames", "games", jstring);
 
 				Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
-						"jsonHosts parsed from gson: " + jstring.toString());
+						"New Host is added to the list: " + jstring.toString());
 			}
 
 		} catch (JSONException e) {

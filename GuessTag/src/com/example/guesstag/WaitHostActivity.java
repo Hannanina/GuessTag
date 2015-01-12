@@ -26,6 +26,8 @@ public class WaitHostActivity extends ActionBarActivity implements
 	private ArrayList<String> listOfPlayers = new ArrayList<String>();
 	ArrayAdapter<String> adapter;
 	TextView waiting_for_players;
+	String gameNameStr;
+	String hostname;
 
 	private NetworkingManager manager;
 
@@ -35,21 +37,26 @@ public class WaitHostActivity extends ActionBarActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_wait_host);
-		listOfPlayers = SessionManager.getSessionManager().getListOfPlayers();
+		Bundle bundle = getIntent().getExtras();
+		gameNameStr = bundle.getString("GameName");
+		// listOfPlayers =
+		// SessionManager.getSessionManager().getListOfPlayers();
 
 		manager = new NetworkingManager(this, "group6", "host");
 		// manager.monitorKeyOfUser("listOfPlayers", "user1");
+		// monitorListOfPlayers("user1", "user1");
+		// String hostname = SessionManager.getSessionManager().getUserName();
 
-	//	monitorListOfPlayers("user1", "user1");
-		String hostname = SessionManager.getSessionManager().getUserName();
-		monitorListOfPlayers(hostname);
+		hostname = SessionManager.getSessionManager().getUserName();
+		monitorListOfPlayers(gameNameStr);
+		manager.saveValueForKeyOfUser("listOfPlayers", gameNameStr, hostname);
 
 		adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, listOfPlayers);
 
 		ListView listView = (ListView) findViewById(R.id.listOfPlayers);
 		listView.setAdapter(adapter);
-		
+
 		clickList = new OnItemClickListener() {
 
 			public void onItemClick(AdapterView<?> parent, View v,
@@ -62,9 +69,10 @@ public class WaitHostActivity extends ActionBarActivity implements
 
 	}
 
-	public void monitorListOfPlayers(String hostname) {
-	//	manager.saveValueForKeyOfUser("listOfPlayers", hostname, guestname);
-		manager.monitorKeyOfUser("listOfPlayers", hostname);
+	public void monitorListOfPlayers(String gamename) {
+		// manager.saveValueForKeyOfUser("listOfPlayers", hostname, guestname);
+
+		manager.monitorKeyOfUser("listOfPlayers", gamename);
 
 	}
 
