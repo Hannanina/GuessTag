@@ -21,6 +21,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -42,10 +43,15 @@ public class GuessTagActivity extends ActionBarActivity {
 	ImageView five;
 	ImageView six;
 	
+	InstaAPIManager im =  InstaAPIManager.getInstaAPIManager();
+	SessionManager sm =  SessionManager.getSessionManager();
+
+	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+			
 		setContentView(R.layout.activity_guess_tag);
 		one = (ImageView)findViewById(R.id.image_one);
 		two = (ImageView)findViewById(R.id.image_two);
@@ -56,13 +62,33 @@ public class GuessTagActivity extends ActionBarActivity {
 		//TextView wrongAnswer = (TextView) findViewById(R.id.wrong_answer);
 		//wrongAnswer.setVisibility(View.INVISIBLE);
 		
-		pd = new ProgressDialog(this);
-	    pd.setMessage("Loading...");
-	    new TheTask().execute();
+		new Thread() {
+			public void run() {
+				im.initiateConnection();
+				
+			}
+		}.start();
+
+		one.setImageBitmap(im.getBitmap());
+		two.setImageBitmap(im.getBitmap());
+		three.setImageBitmap(im.getBitmap());
+		four.setImageBitmap(im.getBitmap());
+		five.setImageBitmap(im.getBitmap());
+		six.setImageBitmap(im.getBitmap());
+
+
+		
+//		pd = new ProgressDialog(this);
+//	    pd.setMessage("Loading...");
+//	    new TheTask().execute();
+//	    
 	}
 	
 	public void onClickSubmit (){
-
+		
+		EditText guessEdit = (EditText)findViewById(R.id.input_guess);
+        sm.checkGuessTag(guessEdit.getText().toString());
+        
 		//TextView wrongAnswer = (TextView) findViewById(R.id.wrong_answer);
 		//wrongAnswer.setVisibility(View.VISIBLE);
 		
@@ -89,95 +115,97 @@ public class GuessTagActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	class TheTask extends AsyncTask<Void,Void,Void> {
 
-		@Override
-		protected void onPreExecute() {
-			// TODO Auto-generated method stub
-			super.onPreExecute();
-			pd.show();
-		}
-
-		@Override
-		protected Void doInBackground(Void... params) {
-			// TODO Auto-generated method stub
-			try
-			{
-				imageOne = downloadBitmap("http://www.dailygarnish.com/wp-content/uploads/2012/04/IMG_20120414_205845-640x640.jpg");
-				imageTwo = downloadBitmap("http://cdn.onegreenplanet.org/wp-content/uploads/2010/10//2013/12/nelly-the-bc-PB-640x640.jpg");
-				imageThree = downloadBitmap("http://forums.auscelebs.net/acnet-images/86206/kylie-gillies-630803.jpg");
-				imageFour = downloadBitmap("http://scontent-b.cdninstagram.com/hphotos-xap1/t51.2885-15/10424508_632154030205948_1786575134_n.jpg");
-				imageFive = downloadBitmap("http://designyoutrust.com/wp-content/uploads/2014/08/1391450925_1-640x640.jpg");
-				imageSix = downloadBitmap("http://illpumpyouup.com/images/640x640-banner-2.jpg");
-			}
-			catch(Exception e)
-			{
-				e.printStackTrace();
-			}
-			return null;
-		}
-
-		@Override
-		protected void onPostExecute(Void result) {
-			// TODO Auto-generated method stub
-			super.onPostExecute(result);
-			pd.dismiss();
-			
-			if(imageOne!=null)
-			{
-				one.setImageBitmap(imageOne);
-				two.setImageBitmap(imageTwo);
-				three.setImageBitmap(imageThree);
-				four.setImageBitmap(imageFour);
-				five.setImageBitmap(imageFive);
-				six.setImageBitmap(imageSix);
-			}
-		}   
-	}
-
-	private Bitmap downloadBitmap(String url) {
-
-		final DefaultHttpClient client = new DefaultHttpClient();
-
-		//forming a HttoGet request 
-		final HttpGet getRequest = new HttpGet(url);
-		try {
-			HttpResponse response = client.execute(getRequest);
-
-			//check 200 OK for success
-			final int statusCode = response.getStatusLine().getStatusCode();
-
-			if (statusCode != HttpStatus.SC_OK) {
-				Log.w("ImageDownloader", "Error " + statusCode + 
-                " while retrieving bitmap from " + url);
-				return null;
-
-			}
-
-			final HttpEntity entity = response.getEntity();
-			if (entity != null) {
-				InputStream inputStream = null;
-				try {
-					// getting contents from the stream 
-					inputStream = entity.getContent();
-
-					// decoding stream data back into image Bitmap that android understands
-					BitmapImage = BitmapFactory.decodeStream(inputStream);
-
-
-				}
-				finally {
-					if (inputStream != null) {
-						inputStream.close();
-					}
-					entity.consumeContent();
-				}
-			}
-		} catch (Exception e) {
-			// You Could provide a more explicit error message for IOException
-			getRequest.abort();
-			Log.e("ImageDownloader", "Something went wrong while" + " retrieving bitmap from " + url + e.toString());
-		} 
-		return BitmapImage;
- 		}
+	
+//	class TheTask extends AsyncTask<Void,Void,Void> {
+//
+//		@Override
+//		protected void onPreExecute() {
+//			// TODO Auto-generated method stub
+//			super.onPreExecute();
+//			pd.show();
+//		}
+//
+//		@Override
+//		protected Void doInBackground(Void... params) {
+//			// TODO Auto-generated method stub
+//			try
+//			{
+//				imageOne = downloadBitmap("http://www.dailygarnish.com/wp-content/uploads/2012/04/IMG_20120414_205845-640x640.jpg");
+//				imageTwo = downloadBitmap("http://cdn.onegreenplanet.org/wp-content/uploads/2010/10//2013/12/nelly-the-bc-PB-640x640.jpg");
+//				imageThree = downloadBitmap("http://forums.auscelebs.net/acnet-images/86206/kylie-gillies-630803.jpg");
+//				imageFour = downloadBitmap("http://scontent-b.cdninstagram.com/hphotos-xap1/t51.2885-15/10424508_632154030205948_1786575134_n.jpg");
+//				imageFive = downloadBitmap("http://designyoutrust.com/wp-content/uploads/2014/08/1391450925_1-640x640.jpg");
+//				imageSix = downloadBitmap("http://illpumpyouup.com/images/640x640-banner-2.jpg");
+//			}
+//			catch(Exception e)
+//			{
+//				e.printStackTrace();
+//			}
+//			return null;
+//		}
+//
+//		@Override
+//		protected void onPostExecute(Void result) {
+//			// TODO Auto-generated method stub
+//			super.onPostExecute(result);
+//			pd.dismiss();
+//			
+//			if(imageOne!=null)
+//			{
+//				one.setImageBitmap(imageOne);
+//				two.setImageBitmap(imageTwo);
+//				three.setImageBitmap(imageThree);
+//				four.setImageBitmap(imageFour);
+//				five.setImageBitmap(imageFive);
+//				six.setImageBitmap(imageSix);
+//			}
+//		}   
+//	}
+//
+//	private Bitmap downloadBitmap(String url) {
+//
+//		final DefaultHttpClient client = new DefaultHttpClient();
+//
+//		//forming a HttoGet request 
+//		final HttpGet getRequest = new HttpGet(url);
+//		try {
+//			HttpResponse response = client.execute(getRequest);
+//
+//			//check 200 OK for success
+//			final int statusCode = response.getStatusLine().getStatusCode();
+//
+//			if (statusCode != HttpStatus.SC_OK) {
+//				Log.w("ImageDownloader", "Error " + statusCode + 
+//                " while retrieving bitmap from " + url);
+//				return null;
+//
+//			}
+//
+//			final HttpEntity entity = response.getEntity();
+//			if (entity != null) {
+//				InputStream inputStream = null;
+//				try {
+//					// getting contents from the stream 
+//					inputStream = entity.getContent();
+//
+//					// decoding stream data back into image Bitmap that android understands
+//					BitmapImage = BitmapFactory.decodeStream(inputStream);
+//
+//
+//				}
+//				finally {
+//					if (inputStream != null) {
+//						inputStream.close();
+//					}
+//					entity.consumeContent();
+//				}
+//			}
+//		} catch (Exception e) {
+//			// You Could provide a more explicit error message for IOException
+//			getRequest.abort();
+//			Log.e("ImageDownloader", "Something went wrong while" + " retrieving bitmap from " + url + e.toString());
+//		} 
+//		return BitmapImage;
+// 		}
 	}

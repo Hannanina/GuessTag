@@ -6,11 +6,13 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
@@ -20,14 +22,27 @@ public class InstaAPIManager {
 	JSONObject level2;
 	JSONObject level3;
 	Bitmap bmp;
-	
+	String tag;
+	URL example;
+	ArrayList<String> listOfURLs = new ArrayList<String> ();
+
+private static InstaAPIManager instaManager = new InstaAPIManager();
+
+	private InstaAPIManager() {
+	}
+
+	public static InstaAPIManager getInstaAPIManager() {
+		return instaManager;
+	}
+     
 	public void initiateConnection() {
 		// img1 = (ImageView) findViewById(R.id.imageView1);
+		
 
 		try {
-			URL example = new URL(
-					"https://api.instagram.com/v1/media/popular?access_token="
-							+ accessToken);
+			example = new URL(
+					"https://api.instagram.com/v1/tags/snow/media/recent?access_token="
+							+ accessToken + "&count=6");
 
 			URLConnection tc = example.openConnection();
 			BufferedReader in = new BufferedReader(new InputStreamReader(
@@ -52,14 +67,18 @@ public class InstaAPIManager {
 
 				JSONArray object = ob.getJSONArray("data");
 
-		//		for (int i = 0; i < object.length(); i++) {
+				for (int i = 0; i < object.length(); i++) {
 
-					JSONObject level1 = (JSONObject) object.get(1);
+					JSONObject level1 = (JSONObject) object.get(i);
 					level2 = (JSONObject) level1.getJSONObject("images");
 
 					level3 = (JSONObject) level2
 							.getJSONObject("standard_resolution");
+					
+					
 					String imageURL = level3.get("url").toString();
+		//			listOfURLs.add(imageURL);
+
 
 					Log.d("API DEBUGGING FEEDBACK",
 							"JSONOBject retreived from Insta API: " + imageURL);
@@ -68,7 +87,7 @@ public class InstaAPIManager {
 					 Log.d("API DEBUGGING FEEDBACK",
 								"Bitmap generated: " +  bmp.toString());
 
-		//		}
+				}
 
 			}
 

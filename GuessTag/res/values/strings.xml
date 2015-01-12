@@ -43,6 +43,7 @@
 
     <!-- INPUT TAG ACTIVITY -->
     <string name="input_heading">Input hashtag</string>
+    <string name="input_hashtag">Input hashtag</string>
     <string name="input_a_word">Input word excluding # sign</string>
     <string name="button_submit">Submit</string>
     <string name="used_hashtag">This hashtag has already been used!</string>
@@ -61,6 +62,7 @@
 
     <!-- GUESS TAG ACTIVITY -->
     <string name="guess_the_hashtag">Guess the hashtag</string>
+    <string name="input_guess">Input your guess</string>
     <string name="wrong_answer">Wrong answer, try again!</string>
     <string name="hashtag_sign">#</string>
     <string name="guess_tag">Guess#</string>

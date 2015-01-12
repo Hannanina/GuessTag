@@ -2,14 +2,19 @@ package com.example.guesstag;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class InputTagActivity extends ActionBarActivity {
+	
+	SessionManager sm =  SessionManager.getSessionManager();
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -17,11 +22,17 @@ public class InputTagActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_input_tag);
 	}
 	public void onClickSubmit (){
-		//ToDO: check if hashtag has been used, if so make textView visible
-		//toDo: save Input String
-		TextView textView = (TextView) findViewById(R.id.textView3);
-        textView.setVisibility(View.INVISIBLE);
 
+        EditText hashtagEdit = (EditText)findViewById(R.id.input_hashtag);
+        sm.checkInputTag(hashtagEdit.getText().toString());
+        
+		//ToDO: check if hashtag has been used, if so make textView visible
+		TextView textView = (TextView) findViewById(R.id.used_hashtag);
+        textView.setVisibility(View.INVISIBLE);
+        
+		 SharedPreferences listOfHashtags = getSharedPreferences("preferences",0);
+	     sm.saveChanges(listOfHashtags);
+	    
 		Intent intent = new Intent(this, TimerActivity.class);
 		startActivity(intent);
 	}

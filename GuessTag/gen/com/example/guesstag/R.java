@@ -1808,90 +1808,92 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f050030;
         public static final int action_mode_bar_stub=0x7f05002f;
         public static final int action_mode_close_button=0x7f050022;
-        public static final int action_settings=0x7f050087;
+        public static final int action_settings=0x7f050089;
         public static final int activity_chooser_view_content=0x7f050023;
         public static final int always=0x7f05000d;
-        public static final int bar_container=0x7f050054;
+        public static final int bar_container=0x7f050055;
         public static final int beginning=0x7f050012;
         public static final int bottom=0x7f050016;
         public static final int bottom_image_container=0x7f050045;
-        public static final int buttonBack=0x7f05005f;
-        public static final int buttonRefresh=0x7f05005e;
+        public static final int buttonBack=0x7f050061;
+        public static final int buttonRefresh=0x7f050060;
         public static final int buttonSubmit=0x7f05004e;
-        public static final int buttonTagger=0x7f05006b;
-        public static final int button_back=0x7f050058;
-        public static final int button_create=0x7f050057;
-        public static final int button_end=0x7f050067;
-        public static final int button_highscore=0x7f050066;
-        public static final int button_host=0x7f050061;
-        public static final int button_join=0x7f050062;
-        public static final int button_rules=0x7f05006e;
-        public static final int button_start=0x7f05006d;
-        public static final int button_start_game=0x7f050079;
+        public static final int buttonTagger=0x7f05006d;
+        public static final int button_back=0x7f050059;
+        public static final int button_create=0x7f050058;
+        public static final int button_end=0x7f050069;
+        public static final int button_highscore=0x7f050068;
+        public static final int button_host=0x7f050063;
+        public static final int button_join=0x7f050064;
+        public static final int button_rules=0x7f050070;
+        public static final int button_start=0x7f05006f;
+        public static final int button_start_game=0x7f05007b;
         public static final int checkbox=0x7f05002b;
-        public static final int choose_an_alias=0x7f050086;
-        public static final int circularProgressbar=0x7f050070;
+        public static final int choose_an_alias=0x7f050088;
+        public static final int circularProgressbar=0x7f050072;
         public static final int collapseActionView=0x7f05000f;
         public static final int decor_content_parent=0x7f050031;
         public static final int default_activity_button=0x7f050026;
         public static final int dialog=0x7f050010;
-        public static final int difficulty_container=0x7f050052;
-        public static final int difficulty_setting=0x7f050055;
-        public static final int difficulty_setting_instruction=0x7f050053;
-        public static final int difficulty_setting_level=0x7f050056;
+        public static final int difficulty_container=0x7f050053;
+        public static final int difficulty_setting=0x7f050056;
+        public static final int difficulty_setting_instruction=0x7f050054;
+        public static final int difficulty_setting_level=0x7f050057;
         public static final int disableHome=0x7f05000a;
         public static final int dropdown=0x7f050011;
         public static final int edit_query=0x7f050035;
         public static final int end=0x7f050014;
         public static final int expand_activities_button=0x7f050024;
         public static final int expanded_menu=0x7f05002a;
-        public static final int final_result=0x7f050063;
-        public static final int game_name=0x7f050080;
+        public static final int final_result=0x7f050065;
+        public static final int game_name=0x7f050082;
         public static final int game_name_instruction=0x7f050051;
         public static final int guess_the_hashtag=0x7f05004a;
-        public static final int guest_list_container=0x7f050073;
-        public static final int guest_wait_heading=0x7f050072;
+        public static final int guest_list_container=0x7f050075;
+        public static final int guest_wait_heading=0x7f050074;
         public static final int hashtag_sign=0x7f05004c;
         public static final int home=0x7f050017;
         public static final int homeAsUp=0x7f050007;
         public static final int host_heading=0x7f050050;
-        public static final int host_list_container=0x7f050077;
-        public static final int host_wait_heading=0x7f050076;
+        public static final int host_list_container=0x7f050079;
+        public static final int host_wait_heading=0x7f050078;
         public static final int icon=0x7f050028;
         public static final int ifRoom=0x7f05000c;
         public static final int image=0x7f050025;
-        public static final int imageView1=0x7f050084;
+        public static final int imageView1=0x7f050086;
         public static final int image_five=0x7f050047;
         public static final int image_four=0x7f050046;
         public static final int image_one=0x7f050042;
         public static final int image_six=0x7f050048;
         public static final int image_three=0x7f050044;
         public static final int image_two=0x7f050043;
-        public static final int input_a_word=0x7f05005a;
+        public static final int input_a_word=0x7f05005b;
         public static final int input_container=0x7f050049;
-        public static final int input_game_name=0x7f05004b;
-        public static final int input_heading=0x7f050059;
+        public static final int input_game_name=0x7f050052;
+        public static final int input_guess=0x7f05004b;
+        public static final int input_hashtag=0x7f05005c;
+        public static final int input_heading=0x7f05005a;
         public static final int listMode=0x7f050002;
-        public static final int listOfGames=0x7f05005d;
-        public static final int listOfPlayers=0x7f050075;
+        public static final int listOfGames=0x7f05005f;
+        public static final int listOfPlayers=0x7f050077;
         public static final int list_item=0x7f050027;
-        public static final int list_item1=0x7f05007b;
+        public static final int list_item1=0x7f05007d;
         public static final int middle=0x7f050013;
         public static final int never=0x7f05000b;
-        public static final int new_heading=0x7f050060;
+        public static final int new_heading=0x7f050062;
         public static final int none=0x7f050004;
         public static final int normal=0x7f050001;
-        public static final int nr_of_guesses=0x7f050081;
+        public static final int nr_of_guesses=0x7f050083;
         public static final int pager=0x7f05004f;
-        public static final int points=0x7f050083;
-        public static final int popup_header=0x7f050085;
+        public static final int points=0x7f050085;
+        public static final int popup_header=0x7f050087;
         public static final int progress_circular=0x7f05001e;
         public static final int progress_horizontal=0x7f05001f;
         public static final int radio=0x7f05002d;
-        public static final int rules_heading=0x7f050068;
-        public static final int rules_text=0x7f050069;
-        public static final int score=0x7f050065;
-        public static final int score_heading=0x7f050064;
+        public static final int rules_heading=0x7f05006a;
+        public static final int rules_text=0x7f05006b;
+        public static final int score=0x7f050067;
+        public static final int score_heading=0x7f050066;
         public static final int search_badge=0x7f050037;
         public static final int search_bar=0x7f050036;
         public static final int search_button=0x7f050038;
@@ -1902,32 +1904,32 @@ containing a value of this type.
         public static final int search_plate=0x7f05003b;
         public static final int search_src_text=0x7f05003c;
         public static final int search_voice_btn=0x7f050040;
-        public static final int section_label=0x7f05007a;
+        public static final int section_label=0x7f05007c;
         public static final int shortcut=0x7f05002c;
         public static final int showCustom=0x7f050009;
         public static final int showHome=0x7f050006;
         public static final int showTitle=0x7f050008;
         public static final int split_action_bar=0x7f05001b;
-        public static final int start_heading=0x7f05006c;
+        public static final int start_heading=0x7f05006e;
         public static final int submit_area=0x7f05003e;
         public static final int tabMode=0x7f050003;
-        public static final int testing=0x7f05005c;
-        public static final int text=0x7f05007c;
-        public static final int textView1=0x7f05006a;
-        public static final int textView2=0x7f05007d;
-        public static final int textView3=0x7f05007e;
-        public static final int textView4=0x7f05007f;
-        public static final int timerValue=0x7f050071;
-        public static final int timer_heading=0x7f05006f;
+        public static final int testing=0x7f05005e;
+        public static final int text=0x7f05007e;
+        public static final int textView1=0x7f05006c;
+        public static final int textView2=0x7f05007f;
+        public static final int textView3=0x7f050080;
+        public static final int textView4=0x7f050081;
+        public static final int timerValue=0x7f050073;
+        public static final int timer_heading=0x7f050071;
         public static final int title=0x7f050029;
         public static final int top=0x7f050015;
         public static final int top_image_container=0x7f050041;
-        public static final int total_time_spent=0x7f050082;
+        public static final int total_time_spent=0x7f050084;
         public static final int up=0x7f050018;
         public static final int useLogo=0x7f050005;
-        public static final int used_hashtag=0x7f05005b;
-        public static final int waiting_for_host=0x7f050074;
-        public static final int waiting_for_players=0x7f050078;
+        public static final int used_hashtag=0x7f05005d;
+        public static final int waiting_for_host=0x7f050076;
+        public static final int waiting_for_players=0x7f05007a;
         public static final int withText=0x7f05000e;
         public static final int wrap_content=0x7f050000;
         public static final int wrong_answer=0x7f05004d;
@@ -2078,35 +2080,35 @@ containing a value of this type.
          */
         public static final int button_back=0x7f0a0012;
         public static final int button_create=0x7f0a0022;
-        public static final int button_end=0x7f0a0047;
+        public static final int button_end=0x7f0a0049;
         public static final int button_highscore=0x7f0a0015;
         public static final int button_host=0x7f0a001b;
         public static final int button_join=0x7f0a001c;
-        public static final int button_ok=0x7f0a004d;
+        public static final int button_ok=0x7f0a004f;
         public static final int button_rules=0x7f0a0016;
         public static final int button_start=0x7f0a0014;
         public static final int button_start_game=0x7f0a0025;
-        public static final int button_submit=0x7f0a002a;
+        public static final int button_submit=0x7f0a002b;
         /**  USER NAME POPUP 
          */
-        public static final int choose_an_alias=0x7f0a004c;
+        public static final int choose_an_alias=0x7f0a004e;
         public static final int difficulty_setting_instruction=0x7f0a001f;
         public static final int difficulty_setting_level=0x7f0a0021;
         /**  RESULT FINAL ACTIVITY 
          */
-        public static final int final_result=0x7f0a0046;
+        public static final int final_result=0x7f0a0048;
         /**  HIGHSCORE LIST ITEM 
          */
-        public static final int game_name=0x7f0a0048;
+        public static final int game_name=0x7f0a004a;
         public static final int game_name_instruction=0x7f0a001e;
-        public static final int guess_tag=0x7f0a0039;
+        public static final int guess_tag=0x7f0a003b;
         /**  GUESS TAG ACTIVITY 
          */
-        public static final int guess_the_hashtag=0x7f0a0036;
+        public static final int guess_the_hashtag=0x7f0a0037;
         /**  WAIT GUEST ACTIVITY 
          */
         public static final int guest_wait_heading=0x7f0a0026;
-        public static final int hashtag_sign=0x7f0a0038;
+        public static final int hashtag_sign=0x7f0a003a;
         public static final int hello_world=0x7f0a0010;
         /**  HOST ACTIVITY 
          */
@@ -2114,24 +2116,26 @@ containing a value of this type.
         /**  WAIT HOST ACTIVITY 
          */
         public static final int host_wait_heading=0x7f0a0023;
-        public static final int image_five=0x7f0a003e;
-        public static final int image_four=0x7f0a003d;
-        public static final int image_one=0x7f0a003a;
-        public static final int image_six=0x7f0a003f;
-        public static final int image_three=0x7f0a003c;
-        public static final int image_two=0x7f0a003b;
-        public static final int image_view_1=0x7f0a004f;
-        public static final int input_a_word=0x7f0a0029;
-        public static final int input_alias=0x7f0a004e;
+        public static final int image_five=0x7f0a0040;
+        public static final int image_four=0x7f0a003f;
+        public static final int image_one=0x7f0a003c;
+        public static final int image_six=0x7f0a0041;
+        public static final int image_three=0x7f0a003e;
+        public static final int image_two=0x7f0a003d;
+        public static final int image_view_1=0x7f0a0051;
+        public static final int input_a_word=0x7f0a002a;
+        public static final int input_alias=0x7f0a0050;
         public static final int input_game_name=0x7f0a0020;
+        public static final int input_guess=0x7f0a0038;
+        public static final int input_hashtag=0x7f0a0029;
         /**  INPUT TAG ACTIVITY 
          */
         public static final int input_heading=0x7f0a0028;
         /**  NEW ACTIVITY 
          */
         public static final int new_heading=0x7f0a001a;
-        public static final int nr_of_guesses=0x7f0a0049;
-        public static final int points=0x7f0a004b;
+        public static final int nr_of_guesses=0x7f0a004b;
+        public static final int points=0x7f0a004d;
         /**  RULES ACTIVITY 
          */
         public static final int rules_heading=0x7f0a0018;
@@ -2141,30 +2145,30 @@ containing a value of this type.
         public static final int start_heading=0x7f0a0013;
         /**  TIMER ACTIVITY 
          */
-        public static final int timer_heading=0x7f0a002e;
-        public static final int timer_value=0x7f0a002f;
-        public static final int title_activity_guess_tag=0x7f0a0032;
+        public static final int timer_heading=0x7f0a002f;
+        public static final int timer_value=0x7f0a0030;
+        public static final int title_activity_guess_tag=0x7f0a0033;
         /**  HIGHSCORE ACTIVITY 
          */
-        public static final int title_activity_highscore=0x7f0a0040;
-        public static final int title_activity_host=0x7f0a0031;
-        public static final int title_activity_input_tag=0x7f0a002c;
-        public static final int title_activity_join_game=0x7f0a0034;
-        public static final int title_activity_result_final=0x7f0a0035;
-        public static final int title_activity_result_round=0x7f0a0033;
+        public static final int title_activity_highscore=0x7f0a0042;
+        public static final int title_activity_host=0x7f0a0032;
+        public static final int title_activity_input_tag=0x7f0a002d;
+        public static final int title_activity_join_game=0x7f0a0035;
+        public static final int title_activity_result_final=0x7f0a0036;
+        public static final int title_activity_result_round=0x7f0a0034;
         public static final int title_activity_rules=0x7f0a0017;
-        public static final int title_activity_select_tagger=0x7f0a002d;
-        public static final int title_activity_timer=0x7f0a0030;
-        public static final int title_activity_wait_guest=0x7f0a0045;
-        public static final int title_activity_wait_host=0x7f0a0044;
-        public static final int title_section1=0x7f0a0041;
-        public static final int title_section2=0x7f0a0042;
-        public static final int title_section3=0x7f0a0043;
-        public static final int total_time_spent=0x7f0a004a;
-        public static final int used_hashtag=0x7f0a002b;
+        public static final int title_activity_select_tagger=0x7f0a002e;
+        public static final int title_activity_timer=0x7f0a0031;
+        public static final int title_activity_wait_guest=0x7f0a0047;
+        public static final int title_activity_wait_host=0x7f0a0046;
+        public static final int title_section1=0x7f0a0043;
+        public static final int title_section2=0x7f0a0044;
+        public static final int title_section3=0x7f0a0045;
+        public static final int total_time_spent=0x7f0a004c;
+        public static final int used_hashtag=0x7f0a002c;
         public static final int waiting_for_host=0x7f0a0027;
         public static final int waiting_for_players=0x7f0a0024;
-        public static final int wrong_answer=0x7f0a0037;
+        public static final int wrong_answer=0x7f0a0039;
     }
     public static final class style {
         /** 

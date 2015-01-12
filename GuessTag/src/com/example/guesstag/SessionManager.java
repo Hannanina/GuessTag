@@ -1,8 +1,14 @@
 package com.example.guesstag;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import android.content.SharedPreferences;
 import android.widget.Toast;
 
 public class SessionManager implements NetworkingEventHandler {
@@ -20,6 +26,7 @@ public class SessionManager implements NetworkingEventHandler {
 	private ArrayList<String> registeredUsers;
 	private ArrayList<String> usedTags;
 	private ArrayList<String> listOfPlayers = new ArrayList<String> ();
+	private ArrayList<String> listOfHashtags = new ArrayList<String>();
 
 	// networking
 	private NetworkingManager manager;
@@ -80,7 +87,21 @@ public class SessionManager implements NetworkingEventHandler {
 		listOfPlayers.add(player);
 		}
 	
+	
+	public ArrayList<String> getListOfHashtags() {
+		return listOfHashtags;
+	}
 
+	public void setListOfHashtags(ArrayList<String> listOfHashtags) {
+		this.listOfHashtags = listOfHashtags;
+	}
+
+	public void addListOfHashtags(String hashtag) {
+		listOfHashtags.add(hashtag);
+		}
+	
+	
+	
 	// Called to check whether played round was last round
 	public int getRoundsPlayed() {
 		return roundsPlayed;
@@ -221,4 +242,27 @@ public class SessionManager implements NetworkingEventHandler {
 
 	}
 
+	
+	  public void saveChanges(SharedPreferences listOfHashtags ) {
+	        Gson gson = new Gson();
+	        String json = gson.toJson(listOfHashtags);
+
+
+	        SharedPreferences.Editor editor = listOfHashtags.edit();
+	        editor.putString("hashtag submitted", json );
+
+	        editor.commit();
+	    }
+
+
+	    public void loadChanges(SharedPreferences listOfHashtags ) {
+	        Type listType = new TypeToken<ArrayList<String>>() {}.getType();
+	        Gson gson = new Gson();
+	        String hashtagParameters = ((SharedPreferences) listOfHashtags).getString("hashtag submitted", "");
+
+
+	        if (hashtagParameters!="") {
+	        	listOfHashtags = gson.fromJson(hashtagParameters, listType);
+	        }
+	    }	
 }

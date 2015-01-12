@@ -10,7 +10,7 @@ import android.widget.ImageView;
 
 public class RulesActivity extends ActionBarActivity {
 
-	InstaAPIManager apimanager = new InstaAPIManager();
+	InstaAPIManager im =  InstaAPIManager.getInstaAPIManager();
 	ImageView imageview1;
 
 	@Override
@@ -21,12 +21,12 @@ public class RulesActivity extends ActionBarActivity {
 
 		new Thread() {
 			public void run() {
-				apimanager.initiateConnection();
+				im.initiateConnection();
 				
 			}
 		}.start();
 		imageview1 = (ImageView) findViewById(R.id.imageView1);
-		imageview1.setImageBitmap(apimanager.getBitmap());
+		imageview1.setImageBitmap(im.getBitmap());
 
 	}
 

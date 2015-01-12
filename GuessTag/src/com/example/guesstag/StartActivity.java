@@ -81,7 +81,7 @@ public class StartActivity extends ActionBarActivity implements PopupFragment.No
 	
 
 	public void onClickHighscore(View view) {
-		Intent intent = new Intent(this, ResultFinalActivity.class);
+		Intent intent = new Intent(this, GuessTagActivity.class);
 		startActivity(intent);
 	}
 	
