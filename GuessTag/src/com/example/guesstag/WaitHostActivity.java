@@ -6,6 +6,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.google.gson.Gson;
+
 import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,6 +30,7 @@ public class WaitHostActivity extends ActionBarActivity implements
 	TextView waiting_for_players;
 	String gameNameStr;
 	String hostname;
+	Gson gson;
 
 	private NetworkingManager manager;
 
@@ -39,6 +42,7 @@ public class WaitHostActivity extends ActionBarActivity implements
 		setContentView(R.layout.activity_wait_host);
 		Bundle bundle = getIntent().getExtras();
 		gameNameStr = bundle.getString("GameName");
+		gson = new Gson();
 		// listOfPlayers =
 		// SessionManager.getSessionManager().getListOfPlayers();
 
@@ -46,11 +50,9 @@ public class WaitHostActivity extends ActionBarActivity implements
 		// manager.monitorKeyOfUser("listOfPlayers", "user1");
 		// monitorListOfPlayers("user1", "user1");
 		// String hostname = SessionManager.getSessionManager().getUserName();
-
 		hostname = SessionManager.getSessionManager().getUserName();
-		monitorListOfPlayers(gameNameStr);
-		manager.saveValueForKeyOfUser("listOfPlayers", gameNameStr, hostname);
-
+		//monitorListOfPlayers(gameNameStr);
+		
 		adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, listOfPlayers);
 
@@ -61,12 +63,13 @@ public class WaitHostActivity extends ActionBarActivity implements
 
 			public void onItemClick(AdapterView<?> parent, View v,
 					int position, long id) {
-
 			}
 		};
 
 		listView.setOnItemClickListener(clickList);
-
+		listOfPlayers.add(hostname);
+		String s = gson.toJson(listOfPlayers);
+		manager.saveValueForKeyOfUser("listOfPlayers", gameNameStr, s);
 	}
 
 	public void monitorListOfPlayers(String gamename) {
@@ -101,6 +104,7 @@ public class WaitHostActivity extends ActionBarActivity implements
 	}
 
 	public void onClickBack(View view) {
+		manager.ignoreKeyOfUser("listOfPlayers", gameNameStr);
 		Intent intent = new Intent(this, HostActivity.class);
 		startActivity(intent);
 	}
@@ -108,7 +112,41 @@ public class WaitHostActivity extends ActionBarActivity implements
 	@Override
 	public void savedValueForKeyOfUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
+		
+		Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
+				"JSONOBject retreived in method savedValueForKeyOfUser: KEY= "
+						+ key + "USER= "+ user + " JSONSTRING " + json.toString());
 
+		/*
+		 try {
+			
+			if(json.get("value").toString() != "" &&
+				json.get("value").toString() != null) {
+					
+				listOfPlayers.add(json.get("value").toString());
+			}
+			
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		*/
+		/*
+		  try {
+		 
+
+			for (int i = 0; i < 10; i++) {
+				if (json.getJSONArray("records").getJSONObject(i)
+						.getString("key").equals("listOfPlayers")) {
+					listOfPlayers.add(json.getJSONArray("records").getJSONObject(i)
+									.getString("value"));
+				}
+			}
+		} catch (JSONException e) {
+			Log.e(NetworkingManager.TAG_ERROR, e.getMessage());
+		}*/
+
+		//adapter.notifyDataSetChanged();
 	}
 
 	@Override
@@ -143,16 +181,15 @@ public class WaitHostActivity extends ActionBarActivity implements
 		// findViewById(R.id.waiting_for_players);
 
 		Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
-				"JSONOBject retreived in method valueChanged + "
-						+ "forKeyOfUser: " + json.toString());
+				"JSONOBject retreived in method valueChangedForKeyOfUser: KEY= "
+						+ key + "USER= "+ user + " JSONSTRING " + json.toString());
 
 		try {
 
 			for (int i = 0; i < 10; i++) {
 				if (json.getJSONArray("records").getJSONObject(i)
 						.getString("key").equals("listOfPlayers")) {
-					SessionManager.getSessionManager().addListOfPlayers(
-							json.getJSONArray("records").getJSONObject(i)
+					listOfPlayers.add(json.getJSONArray("records").getJSONObject(i)
 									.getString("value"));
 				}
 			}

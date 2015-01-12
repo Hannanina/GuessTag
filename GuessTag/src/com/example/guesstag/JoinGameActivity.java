@@ -8,6 +8,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,8 +41,6 @@ public class JoinGameActivity extends ActionBarActivity implements
 		setContentView(R.layout.activity_join_game);
 
 		manager = new NetworkingManager(this, "group6", "client");
-		// manager.monitorKeyOfUser("createGame", "user1");
-		// manager.saveValueForKeyOfUser("createGame", "user1", "NewGame");
 
 		adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, listOfGames);
@@ -61,12 +61,12 @@ public class JoinGameActivity extends ActionBarActivity implements
 		};
 
 		listView.setOnItemClickListener(clickList);
-
+		manager.loadValueForKeyOfUser("listOfGames", "games");
 	}
 
 	public void goToWaitGuestActivity(String name) {
 		Intent intent = new Intent(this, WaitGuestActivity.class);
-		intent.putExtra("ChosenOne", name);
+		intent.putExtra("GameName", name);
 		startActivity(intent);
 	}
 
@@ -96,7 +96,7 @@ public class JoinGameActivity extends ActionBarActivity implements
 
 	public void onClickRefresh(View view) {
 		manager.loadValueForKeyOfUser("listOfHosts", "hosts");
-		// manager.loadValueForKeyOfUser("createGame", "user1");
+		//manager.loadValueForKeyOfUser("createGame", "user1");
 
 	}
 
@@ -120,6 +120,21 @@ public class JoinGameActivity extends ActionBarActivity implements
 //				"JSONOBject retreived in method loadedValue + "
 //						+ "forKeyOfUser: " + json.toString());
 
+		ArrayList<String> tempListOfGames;
+		try {
+			tempListOfGames = gson.fromJson(json.get("value").toString(), new TypeToken<ArrayList<String>>() {}.getType());
+		
+			if(!(tempListOfGames == null)){
+				listOfGames.addAll(tempListOfGames);
+			}
+		} catch (JsonSyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		/*
 		try {
 			String[] host1 = gson.fromJson((String) json.get("value"),
 					String[].class);
@@ -131,9 +146,8 @@ public class JoinGameActivity extends ActionBarActivity implements
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		*/
 		adapter.notifyDataSetChanged();
-
 	}
 
 	@Override

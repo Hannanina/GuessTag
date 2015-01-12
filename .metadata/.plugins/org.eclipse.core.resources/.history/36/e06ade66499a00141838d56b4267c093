@@ -1,0 +1,227 @@
+package com.example.guesstag;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.SeekBar;
+import android.widget.TextView;
+
+public class HostActivity extends ActionBarActivity implements
+		SeekBar.OnSeekBarChangeListener, NetworkingEventHandler {
+
+	SeekBar diffSetting;
+	TextView difficultyText;
+	private TextView serverMsg;
+//	String hostname;
+	Gson gson = new Gson();
+	List<String> listOfGames = new ArrayList<String>();
+
+	/* added by caofa */
+	private NetworkingManager manager;
+	EditText gameName;
+	String gameNameStr;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_host);
+
+		diffSetting = (SeekBar) findViewById(R.id.difficulty_setting);
+		diffSetting.setOnSeekBarChangeListener(this);
+		difficultyText = (TextView) findViewById(R.id.difficulty_setting_level);
+
+		/* added by caofa */
+		manager = new NetworkingManager(this, "group6", "host");
+		gameName = (EditText) findViewById(R.id.input_game_name);
+		//serverMsg = (TextView) findViewById(R.id.host_heading);
+		// manager.monitorKeyOfUser("createGame", "user1");
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.host, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	/**
+	 * onClick should transfer players to host waiting screen, store difficulty
+	 * and game name variables in the SessionManager and start the networking...
+	 * 
+	 * @param view
+	 */
+
+	// added by caofa!
+	public void onClickCreate(View view) {
+
+		if (view.getId() == R.id.button_create && gameName != null
+				&& gameName.getText() != null && !gameName.getText().equals("")) {
+
+			// manager.saveValueForKeyOfUser("createGame", "user1",
+			// gameName.getText()
+			// .toString());
+			//hostname = SessionManager.getSessionManager().getUserName();
+			
+		
+			/*
+			manager.saveValueForKeyOfUser("createGame", hostname, gameName
+					.getText().toString());
+			manager.saveValueForKeyOfUser("listOfPlayers", hostname, hostname);
+			manager.loadValueForKeyOfUser("listOfHosts", "hosts");
+            */
+
+			/**Updated version of networking*/
+			gameNameStr = gameName.getText().toString();
+			manager.loadValueForKeyOfUser("listOfGames", "games");
+		//	manager.saveValueForKeyOfUser("listOfPlayers", gameNameStr, hostname);
+			
+			// updateListOfHosts();
+			Intent intent = new Intent(this, WaitHostActivity.class);
+			intent.putExtra("GameName", gameNameStr);
+			startActivity(intent);
+		}
+
+	}
+
+	public void updateListOfHosts() {
+		manager.loadValueForKeyOfUser("listOfHosts", "hosts");
+
+	}
+
+	public void onClickBack(View view) {
+		Intent intent = new Intent(this, NewActivity.class);
+		startActivity(intent);
+	}
+
+	@Override
+	public void onProgressChanged(SeekBar seekBar, int progress,
+			boolean fromUser) {
+		// TODO Auto-generated method stub
+		if (diffSetting.getProgress() == 0) {
+			difficultyText.setText("easy");
+			difficultyText.setTextColor(Color.GREEN);
+		} else if (diffSetting.getProgress() == 1) {
+			difficultyText.setText("medium");
+			difficultyText.setTextColor(Color.YELLOW);
+		} else {
+			difficultyText.setText("hard");
+			difficultyText.setTextColor(Color.RED);
+		}
+	}
+
+	@Override
+	public void onStartTrackingTouch(SeekBar seekBar) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onStopTrackingTouch(SeekBar seekBar) {
+		// TODO Auto-generated method stub
+		// difficultyText.setText(diffSetting.getProgress());
+	}
+
+	@Override
+	public void savedValueForKeyOfUser(JSONObject json, String key, String user) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void loadedValueForKeyOfUser(JSONObject json, String key, String user) {
+		// TODO Auto-generated method stub
+
+		try {
+			Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
+					"JSONOBject retreived in method loadedValue + "
+							+ "forKeyOfUser: " + json.toString());
+
+			if (!listOfGames.contains(json.get("value").toString())) {
+				//String[] lsg = gson.fromJson(json.get("value").toString(), String[].class);
+				listOfGames = gson.fromJson(json.get("value").toString(), new TypeToken<ArrayList<String>>() {}.getType());
+						
+
+				listOfGames.add(gameNameStr);
+				listOfGames.addAll(Arrays.asList(lsg));
+
+				String jstring = gson.toJson(listOfGames);
+				manager.saveValueForKeyOfUser("listOfGames", "games", jstring);
+
+				Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
+						"New Host is added to the list: " + jstring.toString());
+			}
+
+		} catch (JSONException e) {
+			Log.e(NetworkingManager.TAG_ERROR, e.getMessage());
+		}
+
+	}
+
+	@Override
+	public void deletedKeyOfUser(JSONObject json, String key, String user) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void monitoringKeyOfUser(JSONObject json, String key, String user) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void ignoringKeyOfUser(JSONObject json, String key, String user) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void valueChangedForKeyOfUser(JSONObject json, String key,
+			String user) {
+		// TODO Auto-generated method stub
+
+		// TODO Do something with returned values?
+
+	}
+
+	@Override
+	public void lockedKeyofUser(JSONObject json, String key, String user) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void unlockedKeyOfUser(JSONObject json, String key, String user) {
+		// TODO Auto-generated method stub
+
+	}
+}

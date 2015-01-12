@@ -1,9 +1,14 @@
 package com.example.guesstag;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
 
 import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
@@ -21,10 +26,14 @@ import android.widget.AdapterView.OnItemClickListener;
 public class WaitGuestActivity extends ActionBarActivity implements
 NetworkingEventHandler {
 	
+	private Gson gson = new Gson();
 	private ArrayList<String> listOfPlayers = new ArrayList<String>();
+	ArrayList<String> tempListOfPlayers;
 	ArrayAdapter<String> adapter;
 	TextView waiting_for_players;
 	String hostname;
+	String gameNameStr;
+	String guestName;
 	
 	private NetworkingManager manager;
 
@@ -34,21 +43,21 @@ NetworkingEventHandler {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_wait_guest);
-		listOfPlayers = SessionManager.getSessionManager().getListOfPlayers();
-		hostname = getIntent().getExtras().getString("ChosenOne");
+		Bundle bundle = getIntent().getExtras();
+		gameNameStr = bundle.getString("GameName");
+		
+		//listOfPlayers = SessionManager.getSessionManager().getListOfPlayers();
+		//hostname = getIntent().getExtras().getString("ChosenOne");
 		manager = new NetworkingManager(this, "group6", "guest");
 		//manager.monitorKeyOfUser("listOfPlayers", "user1");
-		String guestname = SessionManager.getSessionManager().getUserName();
-		monitorListOfPlayers(hostname, guestname);
-	
-	
+		guestName = SessionManager.getSessionManager().getUserName();
 		
 		adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, listOfPlayers);
 
 		ListView listView = (ListView) findViewById(R.id.listOfPlayers);
 		listView.setAdapter(adapter);
-		adapter.notifyDataSetChanged();
+		//adapter.notifyDataSetChanged();
 
 
 		clickList = new OnItemClickListener() {
@@ -60,6 +69,10 @@ NetworkingEventHandler {
 		};
 
 		listView.setOnItemClickListener(clickList);
+		
+		manager.loadValueForKeyOfUser("listOfPlayers", gameNameStr);
+		
+		//monitorListOfPlayers(hostname, guestName);
 	}
 	
 	public void monitorListOfPlayers(String hostname, String guestname){
@@ -102,7 +115,46 @@ NetworkingEventHandler {
 	@Override
 	public void loadedValueForKeyOfUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
+		try {
+			Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
+					"JSONOBject retreived in method loadedValue fir listOfPlayers" 
+					+ " KEY " + key + " USER " + user + " JSONSTRING " + json.get("value").toString());
+			/*
+			String[] lsg = gson.fromJson(json.get("value").toString(), String[].class);
+			//String s = json.get("value").toString();
+			//tempListOfPlayers = 
+			
+			listOfPlayers.add(guestName);
+			listOfPlayers.addAll(Arrays.asList(lsg));
+			String jstring = gson.toJson(listOfPlayers);
+			manager.saveValueForKeyOfUser("listOfPlayers", gameNameStr, jstring);
+			*/
+			
+			tempListOfPlayers = gson.fromJson(json.getString("value").toString(), new TypeToken<ArrayList<String>>() {}.getType());
+			if(!(tempListOfPlayers == null)){
+				listOfPlayers.addAll(tempListOfPlayers);
+			}
+			
+			listOfPlayers.add(guestName);
+
+			String jstring = gson.toJson(listOfPlayers);
+			manager.saveValueForKeyOfUser("listOfPlayers", gameNameStr, jstring);
+
+			Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
+					"New Player added to the list: "+ " PLAYERNAME " + guestName + " JSONSTRING " + jstring.toString());
+			
+			} catch (JsonSyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		
+		//Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
+		//		"New Player added to the list: "+ " PLAYERNAME " + guestName + " JSONSTRING " + jstring.toString());
+		
+		adapter.notifyDataSetChanged();
 	}
 
 	@Override
