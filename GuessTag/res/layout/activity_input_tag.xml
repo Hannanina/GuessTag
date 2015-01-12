@@ -6,21 +6,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/DimGray"
+    android:background="#212121"
     tools:context="com.example.guesstag.InputTagActivity" >
-
-    <TextView
-        android:id="@+id/input_heading"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="15dp"
-        android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_centerHorizontal="true"
-	    android:text="@string/input_heading"
-	    android:textStyle="italic"
-	    android:textSize="30sp"
-	    android:textColor="@color/White">
-    </TextView>
     
     <LinearLayout
         android:id="@+id/input_container"
@@ -36,7 +23,6 @@
 	    	android:layout_height="wrap_content"
 	    	android:layout_marginLeft="2dp"
 	    	android:layout_marginBottom="3dp"
-	    	android:text="@string/input_a_word"
 	    	android:textColor="@color/White">
     	</TextView>
     	<EditText
@@ -57,7 +43,7 @@
         android:layout_toLeftOf="@+id/input_container"
         android:layout_centerVertical="true"
         android:text="@string/hashtag_sign"
-        android:textSize="20sp"
+        android:textSize="30sp"
      	android:textColor="@color/White" >
     </TextView>
     <TextView
@@ -80,4 +66,16 @@
         android:text="@string/button_submit"
         android:onClick="onClickSubmit" >
     </Button>
+
+    <TextView
+        android:id="@+id/input_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="56dp"
+        android:text="Input a hashtag"
+        android:textColor="@color/White"
+        android:textSize="22sp" />
+
 </RelativeLayout>

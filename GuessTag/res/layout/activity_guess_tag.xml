@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/DimGray"
+    android:background="#69e0c8"
     tools:context="com.example.guesstag.GuessTagActivity" >
 
     
@@ -91,8 +91,7 @@
 	    	android:layout_height="wrap_content"
 	    	android:layout_marginLeft="2dp"
 	    	android:layout_marginBottom="3dp"
-	    	android:text="@string/guess_the_hashtag"
-	    	android:textColor="@color/White">
+	    	android:textColor="#212121">
     	</TextView>
     	<EditText
         	android:id="@+id/input_guess"
@@ -112,8 +111,8 @@
         android:layout_toLeftOf="@+id/input_container"
         android:layout_centerVertical="true"
         android:text="@string/hashtag_sign"
-        android:textSize="20sp"
-     	android:textColor="@color/White" >
+        android:textSize="30sp"
+     	android:textColor="#212121" >
     </TextView>
     <TextView
        	android:id="@+id/wrong_answer"

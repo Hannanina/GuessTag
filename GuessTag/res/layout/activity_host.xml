@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    android:background="@color/DimGray"
+    android:background="#212121"
     tools:context="com.example.guesstag.HostActivity" >
 
     <TextView
@@ -18,8 +18,7 @@
 	    android:layout_height="wrap_content"
 	    android:layout_gravity="center"
 	    android:text="@string/host_heading"
-	    android:textStyle="italic"
-	    android:textSize="30sp"
+	    android:textSize="22sp"
 	    android:textColor="@color/White">
     </TextView>
     
@@ -29,15 +28,6 @@
         android:layout_width="200dp"
         android:layout_height="96dp"
         android:layout_gravity="center" >
-   		<TextView
-        	android:id="@+id/game_name_instruction"
-        	android:layout_width="wrap_content"
-	    	android:layout_height="wrap_content"
-	    	android:layout_marginLeft="2dp"
-	    	android:layout_marginBottom="3dp"
-	    	android:text="@string/game_name_instruction"
-	    	android:textColor="@color/White">
-    	</TextView>
     
     	<EditText
         	android:id="@+id/input_game_name"
@@ -55,16 +45,16 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center" >
-    	
+
         <TextView
-        	android:id="@+id/difficulty_setting_instruction"
-        	android:layout_width="wrap_content"
-	    	android:layout_height="wrap_content"
-	    	android:layout_marginLeft="2dp"
-	    	android:layout_marginBottom="3dp"
-	    	android:text="@string/difficulty_setting_instruction"
-	    	android:textColor="@color/White">
-    	</TextView>
+            android:id="@+id/difficulty_setting_instruction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="2dp"
+            android:text="@string/difficulty_setting_instruction"
+            android:textColor="@color/White"
+            android:textSize="22sp" />
     
     </LinearLayout>
     <LinearLayout
@@ -80,7 +70,7 @@
             android:layout_height="wrap_content"
             android:max="2"
             android:progress="1"
-            android:progressTint="@color/Teal" >
+            android:progressTint="#69e0c8" >
         </SeekBar>
         
         <TextView
