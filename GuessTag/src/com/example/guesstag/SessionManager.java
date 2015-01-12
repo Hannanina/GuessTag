@@ -19,6 +19,7 @@ public class SessionManager implements NetworkingEventHandler {
 	private String userName;
 	private Score score = new Score(0, 0, "", "");
 	private String tag;
+	private String tagName;
 	private int nrOfGuesses;
 	private int roundsPlayed;
 	private int totalNrOfGuesses;
@@ -48,6 +49,14 @@ public class SessionManager implements NetworkingEventHandler {
 	// so all interaction with should be through this static call.
 	public static SessionManager getSessionManager() {
 		return sessionManager;
+	}
+
+	public String getTagName() {
+		return tagName;
+	}
+
+	public void setTagName(String tagName) {
+		this.tagName = tagName;
 	}
 	
 	public String getUserName() {

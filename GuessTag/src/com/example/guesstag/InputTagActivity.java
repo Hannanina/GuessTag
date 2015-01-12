@@ -29,21 +29,23 @@ public class InputTagActivity extends ActionBarActivity {
 		textView = (TextView)findViewById(R.id.used_hashtag);
 		textView.setVisibility(View.INVISIBLE);
 	}
+	public void onClickSubmit (View view){
+		
+		SharedPreferences listOfHashtags = getSharedPreferences("preferences",0);
+	    sm.loadChanges(listOfHashtags);
 	
-	public void onClickSubmit (){
-
         EditText hashtagEdit = (EditText)findViewById(R.id.input_hashtag);
-        sm.checkInputTag(hashtagEdit.getText().toString());
-        
+ //     sm.checkInputTag(hashtagEdit.getText().toString());
+        sm.setTagName(hashtagEdit.getText().toString());
+ //     sm.addListOfHashtags(hashtagEdit.getText().toString());
+	    sm.saveChanges(listOfHashtags);
+	    
 		//ToDO: check if hashtag has been used, if so make textView visible
 
 		TextView textView = (TextView) findViewById(R.id.used_hashtag);
         textView.setVisibility(View.INVISIBLE);
-        
-		 SharedPreferences listOfHashtags = getSharedPreferences("preferences",0);
-	     sm.saveChanges(listOfHashtags);
-	    
-		Intent intent = new Intent(this, TimerActivity.class);
+            
+		Intent intent = new Intent(this, GuessTagActivity.class);
 		startActivity(intent);
 	}
 	

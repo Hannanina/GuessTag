@@ -25,6 +25,9 @@ public class InstaAPIManager {
 	String tag;
 	URL example;
 	ArrayList<String> listOfURLs = new ArrayList<String> ();
+	
+	SessionManager sm =  SessionManager.getSessionManager();
+
 
 private static InstaAPIManager instaManager = new InstaAPIManager();
 
@@ -38,6 +41,8 @@ private static InstaAPIManager instaManager = new InstaAPIManager();
 	public void initiateConnection() {
 		// img1 = (ImageView) findViewById(R.id.imageView1);
 		
+		//has to get the tagName input from the tagger's phone
+		tag = sm.getTagName();
 
 		try {
 			example = new URL(
