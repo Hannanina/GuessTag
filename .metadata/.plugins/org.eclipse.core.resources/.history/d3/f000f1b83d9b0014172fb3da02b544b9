@@ -16,6 +16,7 @@ public class InputTagActivity extends Activity {
 	
 	SessionManager sm =  SessionManager.getSessionManager();
 
+
 	private TextView textView;
 	private EditText editText;
 	private boolean goodTag;
@@ -33,16 +34,17 @@ public class InputTagActivity extends Activity {
 		
 //		SharedPreferences listOfHashtags = getSharedPreferences("preferences",0);
 //	    sm.loadChanges(listOfHashtags);
-        //EditText hashtagEdit = (EditText)findViewById(R.id.input_hashtag);
+	
+        EditText hashtagEdit = (EditText)findViewById(R.id.input_hashtag);
  //     sm.checkInputTag(hashtagEdit.getText().toString());
-        sm.setTagName(editText.getText().toString());
+        sm.setTagName(hashtagEdit.getText().toString());
  //     sm.addListOfHashtags(hashtagEdit.getText().toString());
 //	    sm.saveChanges(listOfHashtags);
 	    
 		//ToDO: check if hashtag has been used, if so make textView visible
 
-		//TextView textView = (TextView) findViewById(R.id.used_hashtag);
-        //textView.setVisibility(View.INVISIBLE);
+		TextView textView = (TextView) findViewById(R.id.used_hashtag);
+        textView.setVisibility(View.INVISIBLE);
             
 		Intent intent = new Intent(this, GuessTagActivity.class);
 		startActivity(intent);

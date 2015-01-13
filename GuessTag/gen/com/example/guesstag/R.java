@@ -1878,7 +1878,7 @@ containing a value of this type.
         public static final int input_container=0x7f090049;
         public static final int input_game_name=0x7f090052;
         public static final int input_guess=0x7f09004a;
-        public static final int input_hashtag=0x7f09005a;
+        public static final int input_hashtag=0x7f090059;
         public static final int input_heading=0x7f09004b;
         public static final int layout_root=0x7f090074;
         public static final int listMode=0x7f09000a;
@@ -1934,7 +1934,7 @@ containing a value of this type.
         public static final int total_time_spent=0x7f09007c;
         public static final int up=0x7f090001;
         public static final int useLogo=0x7f090013;
-        public static final int used_hashtag=0x7f090059;
+        public static final int used_hashtag=0x7f09005a;
         public static final int waiting_for_host=0x7f09006c;
         public static final int waiting_for_players=0x7f090070;
         public static final int withText=0x7f090018;

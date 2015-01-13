@@ -220,7 +220,7 @@ public class WaitGuestActivity extends Activity implements
 		// findViewById(R.id.waiting_for_players);
 		try {
 		System.out.println("OUTSIDE VALUECHANGED IN WAITGUEST. JSONSTRING IS: " +
-			json.getJSONArray("records").getJSONObject(0).getString("value").toString());
+				json.getJSONArray("records").getJSONObject(0).getString("value").toString());
 		
 			manager.lockKeyOfUser("gameReady", gameNameStr);
 			if(json.getJSONArray("records").getJSONObject(0).getString("value").toString().equals("true")) {	

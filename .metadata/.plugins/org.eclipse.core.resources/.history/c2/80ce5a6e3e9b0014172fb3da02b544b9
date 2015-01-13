@@ -218,15 +218,12 @@ public class WaitGuestActivity extends Activity implements
 		// TODO Auto-generated method stub
 		// waiting_for_players = (TextView)
 		// findViewById(R.id.waiting_for_players);
-		try {
-		System.out.println("OUTSIDE VALUECHANGED IN WAITGUEST. JSONSTRING IS: " +
-			json.getJSONArray("records").getJSONObject(0).getString("value").toString());
 		
-			manager.lockKeyOfUser("gameReady", gameNameStr);
+		try {
+			manager.lockKeyOfUser("gameReady", );
 			if(json.getJSONArray("records").getJSONObject(0).getString("value").toString().equals("true")) {	
-				System.out.println("INSIDE VALUECHANGED IN WAITGUEST. JSONSTRING IS: " +
+				System.out.println("INSIDE VALUECAHNGED IN WAITGUEST LEAVING TO GUESSTAG JSONSTRING IS: " +
 				json.getJSONArray("records").getJSONObject(0).getString("value").toString());
-				manager.unlockKeyOfUser("gameReady", gameNameStr);
 				Intent intent = new Intent(this, GuessTagActivity.class);
 				startActivity(intent);
 			}
@@ -234,7 +231,6 @@ public class WaitGuestActivity extends Activity implements
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		manager.unlockKeyOfUser("gameReady", gameNameStr);
 		manager.lockKeyOfUser("listOfPlayers", gameNameStr);
 		Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
 				"WaitGuestActivity: valueChangedForKeyOfUser: KEY= " + key

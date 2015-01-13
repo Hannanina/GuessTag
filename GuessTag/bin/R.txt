@@ -576,7 +576,7 @@ int id input_a_word 0x7f090058
 int id input_container 0x7f090049
 int id input_game_name 0x7f090052
 int id input_guess 0x7f09004a
-int id input_hashtag 0x7f09005a
+int id input_hashtag 0x7f090059
 int id input_heading 0x7f09004b
 int id layout_root 0x7f090074
 int id listMode 0x7f09000a
@@ -632,7 +632,7 @@ int id top_image_container 0x7f090041
 int id total_time_spent 0x7f09007c
 int id up 0x7f090001
 int id useLogo 0x7f090013
-int id used_hashtag 0x7f090059
+int id used_hashtag 0x7f09005a
 int id waiting_for_host 0x7f09006c
 int id waiting_for_players 0x7f090070
 int id withText 0x7f090018
