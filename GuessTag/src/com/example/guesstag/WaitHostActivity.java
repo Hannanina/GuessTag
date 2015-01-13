@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
@@ -56,7 +57,10 @@ public class WaitHostActivity extends Activity implements
 		
 		adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, listOfPlayers);
-
+		
+		Button b;
+		b = (Button)findViewById(R.id.button_start_game);
+         
 		ListView listView = (ListView) findViewById(R.id.listOfPlayers);
 		listView.setAdapter(adapter);
 
@@ -71,6 +75,7 @@ public class WaitHostActivity extends Activity implements
 		listOfPlayers.add(hostname);
 		String s = gson.toJson(listOfPlayers);
 		manager.saveValueForKeyOfUser("listOfPlayers", gameNameStr, s);
+		manager.monitorKeyOfUser("listOfPlayers", gameNameStr);
 	}
 
 	public void monitorListOfPlayers(String gamename) {
@@ -182,14 +187,15 @@ public class WaitHostActivity extends Activity implements
 		// findViewById(R.id.waiting_for_players);
 
 		Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
-				"JSONOBject retreived in method valueChangedForKeyOfUser: KEY= "
+				"WaitHostActivity: valueChangedForKeyOfUser: KEY= "
 						+ key + "USER= "+ user + " JSONSTRING " + json.toString());
 
 		try {
 
-			for (int i = 0; i < 10; i++) {
+			for (int i = 0; i < 100; i++) {
 				if (json.getJSONArray("records").getJSONObject(i)
 						.getString("key").equals("listOfPlayers")) {
+					listOfPlayers.clear();
 					listOfPlayers.add(json.getJSONArray("records").getJSONObject(i)
 									.getString("value"));
 				}

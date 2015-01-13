@@ -25,17 +25,17 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class WaitGuestActivity extends Activity implements
-NetworkingEventHandler {
-	
+		NetworkingEventHandler {
+
 	private Gson gson = new Gson();
 	private ArrayList<String> listOfPlayers = new ArrayList<String>();
 	ArrayList<String> tempListOfPlayers;
 	ArrayAdapter<String> adapter;
 	TextView waiting_for_players;
-	String hostname;
+	// String hostname;
 	String gameNameStr;
 	String guestName;
-	
+
 	private NetworkingManager manager;
 
 	private OnItemClickListener clickList;
@@ -46,20 +46,20 @@ NetworkingEventHandler {
 		setContentView(R.layout.activity_wait_guest);
 		Bundle bundle = getIntent().getExtras();
 		gameNameStr = bundle.getString("GameName");
-		
-		//listOfPlayers = SessionManager.getSessionManager().getListOfPlayers();
-		//hostname = getIntent().getExtras().getString("ChosenOne");
+
+		// listOfPlayers =
+		// SessionManager.getSessionManager().getListOfPlayers();
+		// hostname = getIntent().getExtras().getString("ChosenOne");
 		manager = new NetworkingManager(this, "group6", "guest");
-		//manager.monitorKeyOfUser("listOfPlayers", "user1");
+		// manager.monitorKeyOfUser("listOfPlayers", "user1");
 		guestName = SessionManager.getSessionManager().getUserName();
-		
+
 		adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, listOfPlayers);
 
 		ListView listView = (ListView) findViewById(R.id.listOfPlayers);
 		listView.setAdapter(adapter);
-		//adapter.notifyDataSetChanged();
-
+		// adapter.notifyDataSetChanged();
 
 		clickList = new OnItemClickListener() {
 
@@ -70,16 +70,12 @@ NetworkingEventHandler {
 		};
 
 		listView.setOnItemClickListener(clickList);
-		
-		manager.loadValueForKeyOfUser("listOfPlayers", gameNameStr);
-		
-		//monitorListOfPlayers(hostname, guestName);
+
 	}
-	
-	public void monitorListOfPlayers(String hostname, String guestname){
-		//manager.loadValueForKeyOfUser("listOfHosts", "hosts");
-		manager.saveValueForKeyOfUser("listOfPlayers", hostname, guestname);
-		manager.monitorKeyOfUser("listOfPlayers", hostname);
+
+	public void monitorListOfPlayers() {
+		manager.loadValueForKeyOfUser("listOfPlayers", gameNameStr);
+		manager.monitorKeyOfUser("listOfPlayers", gameNameStr);
 
 	}
 
@@ -101,7 +97,7 @@ NetworkingEventHandler {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+
 	public void onClickBack(View view) {
 		Intent intent = new Intent(this, JoinGameActivity.class);
 		startActivity(intent);
@@ -110,7 +106,7 @@ NetworkingEventHandler {
 	@Override
 	public void savedValueForKeyOfUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -118,62 +114,53 @@ NetworkingEventHandler {
 		// TODO Auto-generated method stub
 		try {
 			Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
-					"JSONOBject retreived in method loadedValue fir listOfPlayers" 
-					+ " KEY " + key + " USER " + user + " JSONSTRING " + json.get("value").toString());
-			/*
-			String[] lsg = gson.fromJson(json.get("value").toString(), String[].class);
-			//String s = json.get("value").toString();
-			//tempListOfPlayers = 
-			
-			listOfPlayers.add(guestName);
-			listOfPlayers.addAll(Arrays.asList(lsg));
-			String jstring = gson.toJson(listOfPlayers);
-			manager.saveValueForKeyOfUser("listOfPlayers", gameNameStr, jstring);
-			*/
-			
-			tempListOfPlayers = gson.fromJson(json.getString("value").toString(), new TypeToken<ArrayList<String>>() {}.getType());
-			if(!(tempListOfPlayers == null)){
+					"WaitGuestActivity: loadedValueForKeyOfUser: " + " KEY "
+							+ key + " USER " + user + " JSONSTRING "
+							+ json.get("value").toString());
+
+			tempListOfPlayers = gson.fromJson(json.getString("value")
+					.toString(), new TypeToken<ArrayList<String>>() {
+			}.getType());
+			if (!(tempListOfPlayers == null)) {
 				listOfPlayers.addAll(tempListOfPlayers);
 			}
-			
+
 			listOfPlayers.add(guestName);
 
 			String jstring = gson.toJson(listOfPlayers);
 			manager.saveValueForKeyOfUser("listOfPlayers", gameNameStr, jstring);
 
 			Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
-					"New Player added to the list: "+ " PLAYERNAME " + guestName + " JSONSTRING " + jstring.toString());
-			
-			} catch (JsonSyntaxException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		
-		//Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
-		//		"New Player added to the list: "+ " PLAYERNAME " + guestName + " JSONSTRING " + jstring.toString());
-		
+					"New Player added to the game: " + " PLAYERNAME "
+							+ guestName + " JSONSTRING " + jstring.toString());
+
+		} catch (JsonSyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		adapter.notifyDataSetChanged();
 	}
 
 	@Override
 	public void deletedKeyOfUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void monitoringKeyOfUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void ignoringKeyOfUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -184,17 +171,17 @@ NetworkingEventHandler {
 		// findViewById(R.id.waiting_for_players);
 
 		Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
-				"JSONOBject retreived in method valueChanged + "
-						+ "forKeyOfUser: " + json.toString());
+				"WaitGuestActivity: valueChangedForKeyOfUser: KEY= " + key
+						+ "USER= " + user + " JSONSTRING " + json.toString());
 
 		try {
-			
-			for (int i = 0; i <10; i++) {
-				if (json.getJSONArray("records").getJSONObject(i).getString("key")
-						.equals("listOfPlayers")) {
-					SessionManager.getSessionManager().addListOfPlayers(
-							json.getJSONArray("records").getJSONObject(i)
-									.getString("value"));
+
+			for (int i = 0; i < 100; i++) {
+				if (json.getJSONArray("records").getJSONObject(i)
+						.getString("key").equals("listOfPlayers")) {
+					listOfPlayers.clear();
+					listOfPlayers.add(json.getJSONArray("records")
+							.getJSONObject(i).getString("value"));
 				}
 			}
 		} catch (JSONException e) {
@@ -208,12 +195,12 @@ NetworkingEventHandler {
 	@Override
 	public void lockedKeyofUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void unlockedKeyOfUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
