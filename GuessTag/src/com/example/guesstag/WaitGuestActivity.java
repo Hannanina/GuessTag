@@ -72,6 +72,7 @@ public class WaitGuestActivity extends Activity implements
 
 		listView.setOnItemClickListener(clickList);
 		monitorListOfPlayers();
+		manager.monitorKeyOfUser("gameReady", gameNameStr);
 	}
 
 	public void monitorListOfPlayers() {
@@ -103,6 +104,7 @@ public class WaitGuestActivity extends Activity implements
 	public void onClickBack(View view) {
 		backClick = true;
 		manager.ignoreKeyOfUser("listOfPlayers", gameNameStr);
+		manager.ignoreKeyOfUser("gameReady", gameNameStr);
 		manager.lockKeyOfUser("listOfPlayers", gameNameStr);
 		manager.loadValueForKeyOfUser("listOfPlayers", gameNameStr);
 		Intent intent = new Intent(this, JoinGameActivity.class);
@@ -216,8 +218,19 @@ public class WaitGuestActivity extends Activity implements
 		// TODO Auto-generated method stub
 		// waiting_for_players = (TextView)
 		// findViewById(R.id.waiting_for_players);
+		
+		try {
+			if(json.getJSONArray("records").getJSONObject(0).getString("value").toString() == "true") {	
+				System.out.println("INSIDE VALUECAHNGED IN WAITGUEST LEAVING TO GUESSTAG JSONSTRING IS: " +
+			json.getJSONArray("records").getJSONObject(0).getString("value").toString());
+				Intent intent = new Intent(this, GuessTagActivity.class);
+				startActivity(intent);
+			}
+		} catch (JSONException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		manager.lockKeyOfUser("listOfPlayers", gameNameStr);
-
 		Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
 				"WaitGuestActivity: valueChangedForKeyOfUser: KEY= " + key
 						+ "USER= " + user + " JSONSTRING " + json.toString());

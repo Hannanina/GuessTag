@@ -31,7 +31,8 @@ public class WaitHostActivity extends Activity implements
 	// private String[] listOfPlayers = new String[10];
 	private ArrayList<String> listOfPlayers = new ArrayList<String>();
 	ArrayList<String> tempListOfPlayers = new ArrayList<String>();
-
+	ArrayList<String> listOfGames = new ArrayList<String>();
+	
 	ArrayAdapter<String> adapter;
 	TextView waiting_for_players;
 	String gameNameStr;
@@ -110,8 +111,13 @@ public class WaitHostActivity extends Activity implements
 	}
 
 	public void onClickStartGame(View view) {
-		// Intent intent = new Intent(this, SelectTaggerActivity.class);
-		// startActivity(intent);
+		manager.ignoreKeyOfUser("listOfPlayers", gameNameStr);
+		manager.lockKeyOfUser("listOfGames", "games");
+		manager.loadValueForKeyOfUser("listOfGames", "games");
+		SessionManager.getSessionManager().setListOfPlayers(listOfPlayers);
+		manager.saveValueForKeyOfUser("gameReady", gameNameStr, "true");
+		Intent intent = new Intent(this, InputTagActivity.class);
+		startActivity(intent);
 	}
 
 	public void onClickBack(View view) {
@@ -159,7 +165,38 @@ public class WaitHostActivity extends Activity implements
 	@Override
 	public void loadedValueForKeyOfUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
+		try {
+			Log.d(NetworkingManager.TAG_EVENT_COMPLETE, json.get("value")
+					.toString());
+			tempListOfPlayers.clear();
+			tempListOfPlayers = gson.fromJson(json.getString("value")
+					.toString(), new TypeToken<ArrayList<String>>() {
+			}.getType());
+			if (!(tempListOfPlayers == null)) {
+				listOfGames.clear();
+				listOfGames.addAll(tempListOfPlayers);
+			}
 
+			listOfGames.remove(gameNameStr);
+
+			String jstring = gson.toJson(listOfGames);
+			manager.saveValueForKeyOfUser("listOfGames", "games",
+					jstring);
+
+			Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
+					"New Player added to the game: " + " GAMENAME "
+							+ gameNameStr + " JSONSTRING "
+							+ jstring.toString());
+
+			manager.unlockKeyOfUser("listOfGames", "games");
+
+		} catch (JsonSyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
