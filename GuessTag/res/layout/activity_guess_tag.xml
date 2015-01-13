@@ -124,16 +124,6 @@
 
     </RelativeLayout>
 
-   <Button
-       android:id="@+id/buttonSubmit"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_alignParentBottom="true"
-       android:layout_centerHorizontal="true"  
-       android:layout_marginBottom="40dp"
-       android:background="@drawable/btn_guess"
-       android:onClick="onClickSubmit" />
-
    <TextView
        android:id="@+id/hashtag_sign"
        android:layout_width="wrap_content"
@@ -145,5 +135,15 @@
        android:text="@string/hashtag_sign"
        android:textColor="#212121"
        android:textSize="30sp" />
+
+   <Button
+       android:id="@+id/buttonSubmit"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/input_container"
+       android:layout_centerHorizontal="true"
+       android:layout_marginTop="18dp"
+       android:background="@drawable/btn_guess"
+       android:onClick="onClickSubmit" />
 
 </RelativeLayout>

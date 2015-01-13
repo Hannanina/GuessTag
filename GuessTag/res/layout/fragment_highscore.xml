@@ -14,16 +14,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />  
     
-        <ListView android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:text="" android:id="@+id/list_item1" />
-      
-    <TextView
-        android:id="@+id/text"
-        android:text="You haven't played any games in this level"
-        android:textSize="22sp"
-        android:textColor="#212121"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" /> 
+        <ListView
+            android:id="@+id/list_item1"
+            android:layout_width="wrap_content"
+            android:layout_height="350dp"
+            android:text="" /> 
         
         <Button
         android:id="@+id/button_back"
@@ -36,7 +31,15 @@
         android:width="170dp"
         android:layout_alignParentBottom="true" 
         android:onClick="onClickBack"/>
-        
 
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="You haven&apos;t played any games in this level"
+            android:textColor="#212121"
+            android:textSize="22sp" />
 
 </RelativeLayout>
