@@ -194,11 +194,11 @@ public class WaitHostActivity extends Activity implements
 				if (json.getJSONArray("records").getJSONObject(i)
 						.getString("key").equals("listOfPlayers")) {
 
-					tempListOfPlayers.clear();
 					tempListOfPlayers = gson.fromJson(json.getString("value")
 							.toString(), new TypeToken<ArrayList<String>>() {
 					}.getType());
-
+					
+					listOfPlayers.clear();
 					listOfPlayers.addAll(tempListOfPlayers);
 				}
 			}

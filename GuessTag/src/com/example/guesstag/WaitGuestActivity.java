@@ -117,11 +117,12 @@ public class WaitGuestActivity extends Activity implements
 					"WaitGuestActivity: loadedValueForKeyOfUser: " + " KEY "
 							+ key + " USER " + user + " JSONSTRING "
 							+ json.get("value").toString());
-
+			tempListOfPlayers.clear();
 			tempListOfPlayers = gson.fromJson(json.getString("value")
 					.toString(), new TypeToken<ArrayList<String>>() {
 			}.getType());
 			if (!(tempListOfPlayers == null)) {
+				listOfPlayers.clear();
 				listOfPlayers.addAll(tempListOfPlayers);
 			}
 
@@ -183,7 +184,7 @@ public class WaitGuestActivity extends Activity implements
 					tempListOfPlayers = gson.fromJson(json.getString("value")
 							.toString(), new TypeToken<ArrayList<String>>() {
 					}.getType());
-					
+					listOfPlayers.clear();
 					listOfPlayers.addAll(tempListOfPlayers);
 				}
 			}

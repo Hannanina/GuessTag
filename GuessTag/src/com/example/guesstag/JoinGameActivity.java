@@ -96,7 +96,7 @@ public class JoinGameActivity extends Activity implements
 	}
 
 	public void onClickRefresh(View view) {
-		manager.loadValueForKeyOfUser("listOfHosts", "hosts");
+		//manager.deleteKeyOfUser("listOfGames", "games");
 		//manager.loadValueForKeyOfUser("createGame", "user1");
 
 	}
