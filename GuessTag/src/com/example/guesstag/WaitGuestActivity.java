@@ -75,6 +75,7 @@ public class WaitGuestActivity extends Activity implements
 	}
 
 	public void monitorListOfPlayers() {
+		manager.lockKeyOfUser("listOfPlayers", gameNameStr);
 		manager.loadValueForKeyOfUser("listOfPlayers", gameNameStr);
 		manager.monitorKeyOfUser("listOfPlayers", gameNameStr);
 
@@ -102,6 +103,7 @@ public class WaitGuestActivity extends Activity implements
 	public void onClickBack(View view) {
 		backClick = true;
 		manager.ignoreKeyOfUser("listOfPlayers", gameNameStr);
+		manager.lockKeyOfUser("listOfPlayers", gameNameStr);
 		manager.loadValueForKeyOfUser("listOfPlayers", gameNameStr);
 		Intent intent = new Intent(this, JoinGameActivity.class);
 		startActivity(intent);
@@ -143,6 +145,8 @@ public class WaitGuestActivity extends Activity implements
 								+ guestName + " JSONSTRING "
 								+ jstring.toString());
 
+				manager.unlockKeyOfUser("listOfPlayers", gameNameStr);
+
 			} catch (JsonSyntaxException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -174,6 +178,8 @@ public class WaitGuestActivity extends Activity implements
 						"New Player added to the game: " + " PLAYERNAME "
 								+ guestName + " JSONSTRING "
 								+ jstring.toString());
+
+				manager.unlockKeyOfUser("listOfPlayers", gameNameStr);
 
 			} catch (JsonSyntaxException e) {
 				// TODO Auto-generated catch block
@@ -210,6 +216,7 @@ public class WaitGuestActivity extends Activity implements
 		// TODO Auto-generated method stub
 		// waiting_for_players = (TextView)
 		// findViewById(R.id.waiting_for_players);
+		manager.lockKeyOfUser("listOfPlayers", gameNameStr);
 
 		Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
 				"WaitGuestActivity: valueChangedForKeyOfUser: KEY= " + key
@@ -232,11 +239,14 @@ public class WaitGuestActivity extends Activity implements
 		} catch (JSONException e) {
 			Log.e(NetworkingManager.TAG_ERROR, e.getMessage());
 		}
+		manager.unlockKeyOfUser("listOfPlayers", gameNameStr);
+
 		
 		adapter.notifyDataSetChanged();
 		System.out
 				.println("I AM OUTSIDE AGAIN!:   " + listOfPlayers.toString());
 
+		
 	}
 
 	@Override
