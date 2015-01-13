@@ -1,6 +1,7 @@
 package com.example.guesstag;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,7 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-public class ResultFinalActivity extends ActionBarActivity {
+public class ResultFinalActivity extends Activity {
 	
 	SessionManager sm = SessionManager.getSessionManager();
 	HighscoreList hl = HighscoreList.getHighscoreList();

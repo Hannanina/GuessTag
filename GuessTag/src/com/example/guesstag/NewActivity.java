@@ -1,6 +1,7 @@
 package com.example.guesstag;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -8,7 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-public class NewActivity extends ActionBarActivity {
+public class NewActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

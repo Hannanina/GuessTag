@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -23,7 +24,7 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-public class HostActivity extends ActionBarActivity implements
+public class HostActivity extends Activity implements
 		SeekBar.OnSeekBarChangeListener, NetworkingEventHandler {
 
 	SeekBar diffSetting;

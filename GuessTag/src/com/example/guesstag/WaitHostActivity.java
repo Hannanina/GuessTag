@@ -9,6 +9,7 @@ import org.json.JSONObject;
 import com.google.gson.Gson;
 
 import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,7 +22,7 @@ import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
 
-public class WaitHostActivity extends ActionBarActivity implements
+public class WaitHostActivity extends Activity implements
 		NetworkingEventHandler {
 
 	// private String[] listOfPlayers = new String[10];

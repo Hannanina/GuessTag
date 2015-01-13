@@ -1,13 +1,14 @@
 package com.example.guesstag;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class SelectTaggerActivity extends ActionBarActivity {
+public class SelectTaggerActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

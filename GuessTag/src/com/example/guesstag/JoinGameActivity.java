@@ -11,6 +11,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -24,7 +25,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class JoinGameActivity extends ActionBarActivity implements
+public class JoinGameActivity extends Activity implements
 		NetworkingEventHandler {
 
 	private ArrayList<String> listOfGames = new ArrayList<String>();

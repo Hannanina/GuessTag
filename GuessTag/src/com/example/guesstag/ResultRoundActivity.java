@@ -4,13 +4,14 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class ResultRoundActivity extends ActionBarActivity {
+public class ResultRoundActivity extends Activity {
 	
 	SessionManager sm =  SessionManager.getSessionManager();
 	

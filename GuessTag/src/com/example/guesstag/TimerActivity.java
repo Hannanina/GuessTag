@@ -1,6 +1,7 @@
 package com.example.guesstag;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,7 +12,7 @@ import android.view.MenuItem;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-public class TimerActivity extends ActionBarActivity {
+public class TimerActivity extends Activity {
 
 	ProgressBar mProgressBar;
 	CountDownTimer mCountDownTimer;
