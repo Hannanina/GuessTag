@@ -19,42 +19,43 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class StartActivity extends ActionBarActivity implements PopupFragment.NoticeDialogListener{
-	
+public class StartActivity extends ActionBarActivity implements
+		PopupFragment.NoticeDialogListener {
+
 	SharedPreferences listOfScores;
 	SharedPreferences popup;
 	final String popupShown = "popupShown";
 	Boolean popupIsShown;
 	HighscoreList hl = HighscoreList.getHighscoreList();
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_start);
-		
 
-        listOfScores = getSharedPreferences("preferences",0);
-        hl.loadChanges(listOfScores);
-        
-        popup = PreferenceManager.getDefaultSharedPreferences(this);
-        popupIsShown = popup.getBoolean(popupShown, false);
-        
-        if(!popupIsShown) {
-        	PopupFragment popupFragment = PopupFragment.newInstance();
-         popupFragment.show(getSupportFragmentManager(), "Choose a user name");
-            
-            SharedPreferences.Editor editor = popup.edit();
-            editor.putBoolean(popupShown, true);
-            editor.commit();
-        }
+		listOfScores = getSharedPreferences("preferences", 0);
+		hl.loadChanges(listOfScores);
+
+		popup = PreferenceManager.getDefaultSharedPreferences(this);
+		popupIsShown = popup.getBoolean(popupShown, false);
+
+		if (!popupIsShown) {
+			PopupFragment popupFragment = PopupFragment.newInstance();
+			popupFragment.show(getSupportFragmentManager(),
+					"Choose a user name");
+
+			SharedPreferences.Editor editor = popup.edit();
+			editor.putBoolean(popupShown, true);
+			editor.commit();
+		}
 	}
 
 	@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.new_menu, menu);
-        return true;
-    }
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.new_menu, menu);
+		return true;
+	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -67,25 +68,25 @@ public class StartActivity extends ActionBarActivity implements PopupFragment.No
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+
 	@Override
 	public void onPopupOkClick(DialogFragment popupFragment) {
-		EditText et = (EditText)popupFragment.getDialog().findViewById(R.id.choose_an_alias);
+		EditText et = (EditText) popupFragment.getDialog().findViewById(
+				R.id.choose_an_alias);
 		String userName = et.getText().toString();
 		SessionManager.getSessionManager().setUserName(userName);
 	}
-	
+
 	public void onClickStart(View view) {
 		Intent intent = new Intent(this, NewActivity.class);
 		startActivity(intent);
 	}
-	
 
 	public void onClickHighscore(View view) {
 		Intent intent = new Intent(this, HighscoreActivity.class);
 		startActivity(intent);
 	}
-	
+
 	public void onClickRules(View view) {
 		Intent intent = new Intent(this, RulesActivity.class);
 		startActivity(intent);

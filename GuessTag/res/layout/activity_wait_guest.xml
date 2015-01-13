@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    android:background="@color/DimGray"
+    android:background="#69e0c8"
     tools:context="com.example.guesstag.WaitGuestActivity" >
 
     <TextView
