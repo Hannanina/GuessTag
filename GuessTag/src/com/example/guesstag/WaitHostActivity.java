@@ -78,7 +78,9 @@ public class WaitHostActivity extends Activity implements
 		listView.setOnItemClickListener(clickList);
 		listOfPlayers.add(hostname);
 		String s = gson.toJson(listOfPlayers);
+		manager.lockKeyOfUser("listOfPlayers", gameNameStr);
 		manager.saveValueForKeyOfUser("listOfPlayers", gameNameStr, s);
+		
 		manager.monitorKeyOfUser("listOfPlayers", gameNameStr);
 	}
 
@@ -151,6 +153,7 @@ public class WaitHostActivity extends Activity implements
 		 */
 
 		// adapter.notifyDataSetChanged();
+		manager.unlockKeyOfUser("listOfPlayers", gameNameStr);
 	}
 
 	@Override
@@ -183,6 +186,7 @@ public class WaitHostActivity extends Activity implements
 		// TODO Auto-generated method stub
 		// waiting_for_players = (TextView)
 		// findViewById(R.id.waiting_for_players);
+		manager.lockKeyOfUser("listOfPlayers", gameNameStr);
 		try {
 		Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
 				"WaitHostActivity: valueChangedForKeyOfUser: " + " KEY= " + key
@@ -196,7 +200,7 @@ public class WaitHostActivity extends Activity implements
 					tempListOfPlayers = gson.fromJson(json.getString("value")
 							.toString(), new TypeToken<ArrayList<String>>() {
 					}.getType());
-
+					manager.unlockKeyOfUser("listOfPlayers", gameNameStr);
 					listOfPlayers.clear();
 					listOfPlayers.addAll(tempListOfPlayers);
 				}

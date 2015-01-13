@@ -224,7 +224,6 @@ public class WaitGuestActivity extends Activity implements
 					tempListOfPlayers = gson.fromJson(json.getString("value")
 							.toString(), new TypeToken<ArrayList<String>>() {
 					}.getType());
-					manager.unlockKeyOfUser("listOfPlayers", gameNameStr);
 					listOfPlayers.clear();
 					listOfPlayers.addAll(tempListOfPlayers);
 				}

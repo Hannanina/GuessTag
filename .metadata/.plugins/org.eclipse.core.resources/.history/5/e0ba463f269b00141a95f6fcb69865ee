@@ -108,7 +108,7 @@ public class HostActivity extends Activity implements
 		//	manager.saveValueForKeyOfUser("listOfPlayers", gameNameStr, hostname);
 			
 			// updateListOfHosts();
-			//manager.monitorKeyOfUser("listOfPlayers", gameNameStr);
+			manager.monitorKeyOfUser("listOfPlayers", gameNameStr);
 			
 			Intent intent = new Intent(this, WaitHostActivity.class);
 			intent.putExtra("GameName", gameNameStr);
