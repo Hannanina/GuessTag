@@ -19,7 +19,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class StartActivity extends Activity implements PopupFragment.NoticeDialogListener{
+public class StartActivity extends ActionBarActivity implements PopupFragment.NoticeDialogListener{
 	
 	SharedPreferences listOfScores;
 	SharedPreferences popup;
@@ -41,7 +41,7 @@ public class StartActivity extends Activity implements PopupFragment.NoticeDialo
         
         if(!popupIsShown) {
         	PopupFragment popupFragment = PopupFragment.newInstance();
- //           popupFragment.show(getSupportFragmentManager(), "Choose a user name");
+            popupFragment.show(getSupportFragmentManager(), "Choose a user name");
             
             SharedPreferences.Editor editor = popup.edit();
             editor.putBoolean(popupShown, true);

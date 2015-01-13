@@ -17,7 +17,8 @@ public class RulesActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// setContentView(R.layout.activity_rules);
+		setContentView(R.layout.activity_rules);
+		/*
 		setContentView(R.layout.insta_images);
 
 		new Thread() {
@@ -28,7 +29,7 @@ public class RulesActivity extends Activity {
 		}.start();
 		imageview1 = (ImageView) findViewById(R.id.imageView1);
 		imageview1.setImageBitmap(im.getBitmap());
-
+		*/
 	}
 
 	public void initiate() {
