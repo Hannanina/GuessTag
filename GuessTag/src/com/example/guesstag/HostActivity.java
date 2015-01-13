@@ -103,7 +103,7 @@ public class HostActivity extends Activity implements
 
 			/**Updated version of networking*/
 			gameNameStr = gameName.getText().toString();
-			manager.lockKeyOfUser("listOfGames", gameNameStr);
+			manager.lockKeyOfUser("listOfGames", "games");
 			manager.loadValueForKeyOfUser("listOfGames", "games");
 		//	manager.saveValueForKeyOfUser("listOfPlayers", gameNameStr, hostname);
 			
@@ -184,7 +184,7 @@ public class HostActivity extends Activity implements
 
 				Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
 						"New Host is added to the list: " + jstring.toString());
-				manager.unlockKeyOfUser("listOfGames", gameNameStr);
+				manager.unlockKeyOfUser("listOfGames", "games");
 			}
 
 		} catch (JSONException e) {

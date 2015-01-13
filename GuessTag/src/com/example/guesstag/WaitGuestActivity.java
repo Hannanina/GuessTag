@@ -62,7 +62,6 @@ public class WaitGuestActivity extends Activity implements
 		ListView listView = (ListView) findViewById(R.id.listOfPlayers);
 		listView.setAdapter(adapter);
 
-		
 		clickList = new OnItemClickListener() {
 
 			public void onItemClick(AdapterView<?> parent, View v,
@@ -72,11 +71,10 @@ public class WaitGuestActivity extends Activity implements
 		};
 
 		listView.setOnItemClickListener(clickList);
-        monitorListOfPlayers();
+		monitorListOfPlayers();
 	}
 
 	public void monitorListOfPlayers() {
-		manager.lockKeyOfUser("listOfPlayers", gameNameStr);
 		manager.loadValueForKeyOfUser("listOfPlayers", gameNameStr);
 		manager.monitorKeyOfUser("listOfPlayers", gameNameStr);
 
@@ -118,72 +116,74 @@ public class WaitGuestActivity extends Activity implements
 	@Override
 	public void loadedValueForKeyOfUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
-		if(backClick == false) {
-		
+		if (backClick == false) {
+
 			try {
-			Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
-					"WaitGuestActivity: loadedValueForKeyOfUser: " + " KEY "
-							+ key + " USER " + user + " JSONSTRING "
-							+ json.get("value").toString());
-			tempListOfPlayers.clear();
-			tempListOfPlayers = gson.fromJson(json.getString("value")
-					.toString(), new TypeToken<ArrayList<String>>() {
-			}.getType());
-			if (!(tempListOfPlayers == null)) {
-				listOfPlayers.clear();
-				listOfPlayers.addAll(tempListOfPlayers);
+				Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
+						"WaitGuestActivity: loadedValueForKeyOfUser: "
+								+ " KEY " + key + " USER " + user
+								+ " JSONSTRING " + json.get("value").toString());
+				tempListOfPlayers.clear();
+				tempListOfPlayers = gson.fromJson(json.getString("value")
+						.toString(), new TypeToken<ArrayList<String>>() {
+				}.getType());
+				if (!(tempListOfPlayers == null)) {
+					listOfPlayers.clear();
+					listOfPlayers.addAll(tempListOfPlayers);
+				}
+
+				listOfPlayers.add(guestName);
+
+				String jstring = gson.toJson(listOfPlayers);
+				manager.saveValueForKeyOfUser("listOfPlayers", gameNameStr,
+						jstring);
+
+				Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
+						"New Player added to the game: " + " PLAYERNAME "
+								+ guestName + " JSONSTRING "
+								+ jstring.toString());
+
+			} catch (JsonSyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+		} else {
 
-			listOfPlayers.add(guestName);
+			try {
+				Log.d(NetworkingManager.TAG_EVENT_COMPLETE, json.get("value")
+						.toString());
+				tempListOfPlayers.clear();
+				tempListOfPlayers = gson.fromJson(json.getString("value")
+						.toString(), new TypeToken<ArrayList<String>>() {
+				}.getType());
+				if (!(tempListOfPlayers == null)) {
+					listOfPlayers.clear();
+					listOfPlayers.addAll(tempListOfPlayers);
+				}
 
-			String jstring = gson.toJson(listOfPlayers);
-			manager.saveValueForKeyOfUser("listOfPlayers", gameNameStr, jstring);
+				listOfPlayers.remove(guestName);
 
-			Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
-					"New Player added to the game: " + " PLAYERNAME "
-							+ guestName + " JSONSTRING " + jstring.toString());
-			manager.unlockKeyOfUser("listOfPlayers", gameNameStr);
+				String jstring = gson.toJson(listOfPlayers);
+				manager.saveValueForKeyOfUser("listOfPlayers", gameNameStr,
+						jstring);
 
-		} catch (JsonSyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	} else {
+				Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
+						"New Player added to the game: " + " PLAYERNAME "
+								+ guestName + " JSONSTRING "
+								+ jstring.toString());
 
-		try {
-			Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
-							json.get("value").toString());
-			tempListOfPlayers.clear();
-			tempListOfPlayers = gson.fromJson(json.getString("value")
-					.toString(), new TypeToken<ArrayList<String>>() {
-			}.getType());
-			if (!(tempListOfPlayers == null)) {
-				listOfPlayers.clear();
-				listOfPlayers.addAll(tempListOfPlayers);
+			} catch (JsonSyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-
-			listOfPlayers.remove(guestName);
-
-			String jstring = gson.toJson(listOfPlayers);
-			manager.saveValueForKeyOfUser("listOfPlayers", gameNameStr, jstring);
-
-			Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
-					"New Player added to the game: " + " PLAYERNAME "
-							+ guestName + " JSONSTRING " + jstring.toString());
-			manager.unlockKeyOfUser("listOfPlayers", gameNameStr);
-
-		} catch (JsonSyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-	}
-		//adapter.notifyDataSetChanged();
+		// adapter.notifyDataSetChanged();
 	}
 
 	@Override
@@ -210,30 +210,32 @@ public class WaitGuestActivity extends Activity implements
 		// TODO Auto-generated method stub
 		// waiting_for_players = (TextView)
 		// findViewById(R.id.waiting_for_players);
-		manager.lockKeyOfUser("listOfPlayers", gameNameStr);
+
 		Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
 				"WaitGuestActivity: valueChangedForKeyOfUser: KEY= " + key
 						+ "USER= " + user + " JSONSTRING " + json.toString());
+		System.out.println("I AM OUTSIDE WAITGUESTACTIVITY!!!!!!!!!!!!!!!!!!");
 
 		try {
 
-			for (int i = 0; i < 100; i++) {
-				if (json.getJSONArray("records").getJSONObject(i)
-						.getString("key").equals("listOfPlayers")) {
-                    tempListOfPlayers.clear();					
-					tempListOfPlayers = gson.fromJson(json.getString("value")
-							.toString(), new TypeToken<ArrayList<String>>() {
+			tempListOfPlayers.clear();
+			tempListOfPlayers = gson.fromJson(json.getJSONArray("records")
+					.getJSONObject(0).getString("value").toString(),
+					new TypeToken<ArrayList<String>>() {
 					}.getType());
-					manager.unlockKeyOfUser("listOfPlayers", gameNameStr);
-					listOfPlayers.clear();
-					listOfPlayers.addAll(tempListOfPlayers);
-				}
-			}
+			listOfPlayers.clear();
+			listOfPlayers.addAll(tempListOfPlayers);
+			System.out.println("I AM INSIDE WAITGUESTACTIVITY!:   "
+					+ json.getJSONArray("records").getJSONObject(0)
+							.getString("value").toString());
+		
 		} catch (JSONException e) {
 			Log.e(NetworkingManager.TAG_ERROR, e.getMessage());
 		}
-
+		
 		adapter.notifyDataSetChanged();
+		System.out
+				.println("I AM OUTSIDE AGAIN!:   " + listOfPlayers.toString());
 
 	}
 
