@@ -27,6 +27,7 @@ import android.widget.AdapterView.OnItemClickListener;
 public class WaitGuestActivity extends Activity implements
 		NetworkingEventHandler {
 
+	private boolean backClick;
 	private Gson gson = new Gson();
 	private ArrayList<String> listOfPlayers = new ArrayList<String>();
 	ArrayList<String> tempListOfPlayers = new ArrayList<String>();
@@ -46,6 +47,7 @@ public class WaitGuestActivity extends Activity implements
 		setContentView(R.layout.activity_wait_guest);
 		Bundle bundle = getIntent().getExtras();
 		gameNameStr = bundle.getString("GameName");
+		backClick = false;
 
 		// listOfPlayers =
 		// SessionManager.getSessionManager().getListOfPlayers();
@@ -99,6 +101,9 @@ public class WaitGuestActivity extends Activity implements
 	}
 
 	public void onClickBack(View view) {
+		backClick = true;
+		manager.ignoreKeyOfUser("listOfPlayers", gameNameStr);
+		manager.loadValueForKeyOfUser("listOfPlayers", gameNameStr);
 		Intent intent = new Intent(this, JoinGameActivity.class);
 		startActivity(intent);
 	}
@@ -112,7 +117,9 @@ public class WaitGuestActivity extends Activity implements
 	@Override
 	public void loadedValueForKeyOfUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
-		try {
+		if(backClick == false) {
+		
+			try {
 			Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
 					"WaitGuestActivity: loadedValueForKeyOfUser: " + " KEY "
 							+ key + " USER " + user + " JSONSTRING "
@@ -142,7 +149,37 @@ public class WaitGuestActivity extends Activity implements
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	} else {
 
+		try {
+			Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
+							json.get("value").toString());
+			tempListOfPlayers.clear();
+			tempListOfPlayers = gson.fromJson(json.getString("value")
+					.toString(), new TypeToken<ArrayList<String>>() {
+			}.getType());
+			if (!(tempListOfPlayers == null)) {
+				listOfPlayers.clear();
+				listOfPlayers.addAll(tempListOfPlayers);
+			}
+
+			listOfPlayers.remove(guestName);
+
+			String jstring = gson.toJson(listOfPlayers);
+			manager.saveValueForKeyOfUser("listOfPlayers", gameNameStr, jstring);
+
+			Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
+					"New Player added to the game: " + " PLAYERNAME "
+							+ guestName + " JSONSTRING " + jstring.toString());
+
+		} catch (JsonSyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 		//adapter.notifyDataSetChanged();
 	}
 
