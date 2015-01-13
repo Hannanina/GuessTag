@@ -19,15 +19,41 @@
 	    	android:textColor="@color/White">
     	</TextView>
 
-    <Button
-        android:id="@+id/buttonSubmit"
+    <TextView
+        android:id="@+id/input_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@+id/input_a_word"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp"
-        android:background="@drawable/btn_submit"
-        android:onClick="onClickSubmit" />
+        android:layout_marginTop="20dp"
+        android:text="Input a hashtag"
+        android:textColor="#212121"
+        android:textSize="22sp" />
+
+    <EditText
+        android:id="@+id/input_hashtag"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignLeft="@+id/used_hashtag"
+        android:layout_alignRight="@+id/used_hashtag"
+        android:layout_below="@+id/input_heading"
+        android:layout_marginTop="27dp"
+        android:background="@color/White"
+        android:ems="10"
+        android:hint="@string/input_hashtag" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/hashtag_sign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/used_hashtag"
+        android:layout_toLeftOf="@+id/buttonSubmit"
+        android:text="@string/hashtag_sign"
+        android:textColor="#212121"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/used_hashtag"
@@ -35,43 +61,18 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/input_hashtag"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
         android:text="@string/used_hashtag"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/Red" />
 
-    <EditText
-        android:id="@+id/input_hashtag"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_alignBaseline="@+id/hashtag_sign"
-        android:layout_alignBottom="@+id/hashtag_sign"
-        android:layout_alignLeft="@+id/used_hashtag"
-        android:layout_alignRight="@+id/used_hashtag"
-        android:background="@color/White"
-        android:ems="10"
-        android:hint="@string/input_hashtag" />
-
-    <TextView
-        android:id="@+id/input_heading"
+    <Button
+        android:id="@+id/buttonSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/hashtag_sign"
+        android:layout_below="@+id/used_hashtag"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="21dp"
-        android:text="Input a hashtag"
-        android:textColor="#212121"
-        android:textSize="22sp" />
-
-    <TextView
-        android:id="@+id/hashtag_sign"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonSubmit"
-        android:layout_marginBottom="122dp"
-        android:layout_toLeftOf="@+id/buttonSubmit"
-        android:text="@string/hashtag_sign"
-        android:textColor="#212121"
-        android:textSize="30sp" />
+        android:layout_marginTop="14dp"
+        android:background="@drawable/btn_submit"
+        android:onClick="onClickSubmit" />
 
 </RelativeLayout>
