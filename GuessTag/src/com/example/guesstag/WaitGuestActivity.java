@@ -174,7 +174,7 @@ public class WaitGuestActivity extends Activity implements
 		Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
 				"WaitGuestActivity: valueChangedForKeyOfUser: KEY= " + key
 						+ "USER= " + user + " JSONSTRING " + json.toString());
-
+		
 		try {
 
 			for (int i = 0; i < 100; i++) {

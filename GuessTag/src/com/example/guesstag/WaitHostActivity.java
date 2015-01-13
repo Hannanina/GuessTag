@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
 import android.support.v7.app.ActionBarActivity;
@@ -61,11 +62,11 @@ public class WaitHostActivity extends Activity implements
 		adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, listOfPlayers);
 
+		ListView listView = (ListView) findViewById(R.id.listOfPlayersHost);
+		listView.setAdapter(adapter);
+		
 		Button b;
 		b = (Button) findViewById(R.id.button_start_game);
-
-		ListView listView = (ListView) findViewById(R.id.listOfPlayers);
-		listView.setAdapter(adapter);
 
 		clickList = new OnItemClickListener() {
 
@@ -182,17 +183,16 @@ public class WaitHostActivity extends Activity implements
 		// TODO Auto-generated method stub
 		// waiting_for_players = (TextView)
 		// findViewById(R.id.waiting_for_players);
-
-		Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
-				"WaitHostActivity: valueChangedForKeyOfUser: KEY= " + key
-						+ "USER= " + user + " JSONSTRING " + json.toString());
-
 		try {
+		Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
+				"WaitHostActivity: valueChangedForKeyOfUser: " + " KEY= " + key
+						+ "USER= " + user + " JSONSTRING " + json.toString());
+		
 
 			for (int i = 0; i < 100; i++) {
 				if (json.getJSONArray("records").getJSONObject(i)
 						.getString("key").equals("listOfPlayers")) {
-
+					tempListOfPlayers.clear();
 					tempListOfPlayers = gson.fromJson(json.getString("value")
 							.toString(), new TypeToken<ArrayList<String>>() {
 					}.getType());
@@ -206,7 +206,6 @@ public class WaitHostActivity extends Activity implements
 		}
 
 		adapter.notifyDataSetChanged();
-
 	}
 
 	@Override
