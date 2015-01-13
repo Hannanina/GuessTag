@@ -213,6 +213,7 @@ public class WaitHostActivity extends Activity implements
 		System.out.println("IM OUTSIDE " + listOfPlayers.toString());
 		//adapter.clear();
 		//adapter.addAll(listOfPlayers);
+>>>>>>> Stashed changes
 		adapter.notifyDataSetChanged();
 	}
 

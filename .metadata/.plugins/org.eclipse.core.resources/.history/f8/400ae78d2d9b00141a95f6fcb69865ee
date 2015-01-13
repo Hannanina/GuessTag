@@ -64,7 +64,7 @@ public class WaitHostActivity extends Activity implements
 
 		ListView listView = (ListView) findViewById(R.id.listOfPlayersHost);
 		listView.setAdapter(adapter);
-
+		
 		Button b;
 		b = (Button) findViewById(R.id.button_start_game);
 
@@ -80,7 +80,7 @@ public class WaitHostActivity extends Activity implements
 		String s = gson.toJson(listOfPlayers);
 		manager.lockKeyOfUser("listOfPlayers", gameNameStr);
 		manager.saveValueForKeyOfUser("listOfPlayers", gameNameStr, s);
-
+		
 		manager.monitorKeyOfUser("listOfPlayers", gameNameStr);
 	}
 
@@ -188,10 +188,10 @@ public class WaitHostActivity extends Activity implements
 		// findViewById(R.id.waiting_for_players);
 		manager.lockKeyOfUser("listOfPlayers", gameNameStr);
 		try {
-			Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
-					"WaitHostActivity: valueChangedForKeyOfUser: " + " KEY= "
-							+ key + "USER= " + user + " JSONSTRING "
-							+ json.toString());
+		Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
+				"WaitHostActivity: valueChangedForKeyOfUser: " + " KEY= " + key
+						+ "USER= " + user + " JSONSTRING " + json.toString());
+		
 
 			//for (int i = 0; i < 100; i++) {
 			//	if (json.getJSONArray("records").getJSONObject(i)
@@ -210,9 +210,8 @@ public class WaitHostActivity extends Activity implements
 		} catch (JSONException e) {
 			Log.e(NetworkingManager.TAG_ERROR, e.getMessage());
 		}
-		System.out.println("IM OUTSIDE " + listOfPlayers.toString());
-		//adapter.clear();
-		//adapter.addAll(listOfPlayers);
+		adapter.clear();
+		adapter.addAll(listOfPlayers);
 		adapter.notifyDataSetChanged();
 	}
 
