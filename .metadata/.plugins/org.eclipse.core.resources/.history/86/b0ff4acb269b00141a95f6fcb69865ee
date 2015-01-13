@@ -136,7 +136,6 @@ public class JoinGameActivity extends Activity implements
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		manager.unlockKeyOfUser("listOfGames", "games");
 		/*
 		try {
 			String[] host1 = gson.fromJson((String) json.get("value"),

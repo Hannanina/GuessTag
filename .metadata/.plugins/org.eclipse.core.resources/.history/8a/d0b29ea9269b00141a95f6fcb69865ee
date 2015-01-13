@@ -62,7 +62,7 @@ public class JoinGameActivity extends Activity implements
 		};
 
 		listView.setOnItemClickListener(clickList);
-		manager.lockKeyOfUser("listOfGames", "games");
+		manager.lockKeyOfUser("listOfGames", gameNameStr);
 		manager.loadValueForKeyOfUser("listOfGames", "games");
 	}
 
@@ -136,7 +136,6 @@ public class JoinGameActivity extends Activity implements
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		manager.unlockKeyOfUser("listOfGames", "games");
 		/*
 		try {
 			String[] host1 = gson.fromJson((String) json.get("value"),
