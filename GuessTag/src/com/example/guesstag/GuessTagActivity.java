@@ -30,6 +30,7 @@ import android.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.content.DialogInterface;
+import android.content.Intent;
 
 public class GuessTagActivity extends Activity {
 
@@ -82,7 +83,8 @@ public class GuessTagActivity extends Activity {
 		five.setImageBitmap(im.getBitmap());
 		six.setImageBitmap(im.getBitmap());
 
-
+		TextView wrongAnswer = (TextView) findViewById(R.id.wrong_answer);
+		wrongAnswer.setVisibility(View.INVISIBLE);
 		
 //		pd = new ProgressDialog(this);
 //	    pd.setMessage("Loading...");
@@ -90,40 +92,30 @@ public class GuessTagActivity extends Activity {
 //	    
 	}
 	
-//	public void onClickImage (ImageView imageView){
-//		
-//		ImageView tempImageView = imageView;
-//
-//        AlertDialog.Builder imageDialog = new AlertDialog.Builder(this);
-//        LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
-//
-//        View layout = inflater.inflate(R.layout.fullimage_popup,
-//                (ViewGroup) findViewById(R.id.layout_root));
-//        ImageView image = (ImageView) layout.findViewById(R.id.fullimage);
-//        image.setImageBitmap(im.getBitmap());
-//
-// //       image.setImageDrawable(tempImageView.getDrawable());
-//        imageDialog.setView(layout);
-//        imageDialog.setPositiveButton("back", new DialogInterface.OnClickListener(){
-//
-//            public void onClick(DialogInterface dialog, int which) {
-//                dialog.dismiss();
-//            }
-//
-//        });
-//	}
-
 	public void onClickSubmit (View view){
 		
 		EditText guessEdit = (EditText)findViewById(R.id.input_guess);
- //       sm.checkGuessTag(guessEdit.getText().toString());
+ //     sm.checkGuessTag(guessEdit.getText().toString());
 //		sm.setTagName(guessEdit.getText().toString());
-        
-		//TextView wrongAnswer = (TextView) findViewById(R.id.wrong_answer);
-		//wrongAnswer.setVisibility(View.VISIBLE);
 		
-		//Intent intent = new Intent(this, NewActivity.class); 
-		//startActivity(intent);
+		if(guessEdit.getText().toString().equals(sm.getTagName())){
+			 sm.checkGuessTag(guessEdit.getText().toString());
+			TextView wrongAnswer = (TextView) findViewById(R.id.wrong_answer);
+			wrongAnswer.setVisibility(View.INVISIBLE);
+			
+			Intent intent = new Intent(this, ResultFinalActivity.class); 
+			startActivity(intent);
+		}
+		else{
+			TextView wrongAnswer = (TextView) findViewById(R.id.wrong_answer);
+			wrongAnswer.setVisibility(View.VISIBLE);	
+			
+			//Intent intent = new Intent(this, NewActivity.class); 
+			//startActivity(intent);
+		}
+        
+
+
 	}
 	
 	

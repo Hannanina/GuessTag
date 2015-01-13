@@ -7,14 +7,14 @@
     android:paddingRight="@dimen/highscore_list_item_margin_vert"
     android:paddingTop="@dimen/highscore_list_item_margin_hori"
     android:orientation="horizontal"
-    android:background="#212121" >
+    android:background="#69e0c8" >
 
     <TextView
         android:id="@+id/game_name"
         android:layout_width="132dp"
         android:layout_height="wrap_content"
         android:text="@string/game_name"
-        android:textColor="@color/White"
+        android:textColor="#212121"
         android:textSize="18sp" >
    
     </TextView>
@@ -23,7 +23,7 @@
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:textSize="18sp"
-        android:textColor="@color/White"
+        android:textColor="#212121"
         android:text="@string/nr_of_guesses" >   
     </TextView>
     <TextView
@@ -31,7 +31,7 @@
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:textSize="18sp"
-        android:textColor="@color/White"
+        android:textColor="#212121"
         android:text="@string/total_time_spent" >   
     </TextView>
     <TextView
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="@color/White"
+        android:textColor="#212121"
         android:text="@string/points" >   
     </TextView>
     

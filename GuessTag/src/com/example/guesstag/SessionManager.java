@@ -190,10 +190,10 @@ public class SessionManager implements NetworkingEventHandler {
 	// Checks guessed tag against attribute tag.
 	public Boolean checkGuessTag(String tag) {
 		correctGuessTag = false;
-
-		if (this.tag.equals(tag)) {
-			correctGuessTag = true;
-		}
+//
+//		if (this.tag.equals(tag)) {
+//			correctGuessTag = true;
+//		}
 		nrOfGuesses++;
 		return correctGuessTag;
 	}
