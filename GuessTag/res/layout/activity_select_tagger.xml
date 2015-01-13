@@ -9,19 +9,6 @@
     android:background="#69e0c8"
     tools:context="com.example.guesstag.SelectTaggerActivity" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        
-        android:layout_marginTop="185dp"
-        android:text="Click if you want to be the tagger"
-  	    android:textColor="@color/White"
-        android:textSize="22sp" />
-
     <Button
         android:id="@+id/buttonTagger"
         android:layout_width="wrap_content"
@@ -31,5 +18,16 @@
         android:layout_marginTop="26dp"
         android:background="@drawable/btn_go"
         android:onClick="onClickSelect" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="148dp"
+        android:text="Click if you want\n to be the tagger"
+        android:textColor="#212121"
+        android:textSize="20sp" />
 
 </RelativeLayout>

@@ -14,6 +14,7 @@
        android:id="@+id/top_image_container"
        android:layout_width="fill_parent"
        android:layout_height="100dp"
+       android:layout_marginTop="20dp"
        android:paddingLeft="5dp"
        android:paddingRight="5dp" >
    		<ImageView
@@ -23,7 +24,8 @@
        		android:layout_weight="0.33"
        		android:maxHeight="100dp"
 	   		android:contentDescription="@string/image_one"
-	   		android:src="@drawable/ic_launcher" >
+	   		android:src="@drawable/ic_launcher" 
+	   		android:onClick="onClickImage">
    		</ImageView>
    		<ImageView
        		android:id="@+id/image_two"
@@ -78,64 +80,70 @@
        		android:src="@drawable/ic_launcher" >
    		</ImageView>
    </LinearLayout>
-   <LinearLayout
+   <RelativeLayout
         android:id="@+id/input_container"
         android:orientation="vertical"
         android:layout_width="200dp"
-        android:layout_height="72dp"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/bottom_image_container" >
 
-       <TextView
-           android:id="@+id/input_heading"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_gravity="center"
-           android:text="Make a guess"
-           android:textColor="#212121"
-           android:textSize="22sp" />
+    <EditText
+        android:id="@+id/input_guess"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/input_heading"
+        android:layout_marginTop="18dp"
+        android:background="@color/White"
+        android:ems="10"
+        android:hint="@string/input_guess" >
 
-    	<EditText
-        	android:id="@+id/input_guess"
-        	android:layout_width="match_parent"
-        	android:layout_height="40dp"
-        	android:layout_gravity="center"
-        	android:background="@color/White"
-        	android:ems="10"
-        	android:hint="@string/input_guess" >
-        	<requestFocus />
-    	</EditText>
-    </LinearLayout>
+        <requestFocus />
+    </EditText>
+
     <TextView
-        android:id="@+id/hashtag_sign"
+        android:id="@+id/wrong_answer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/input_container"
-        android:layout_centerVertical="true"
-        android:text="@string/hashtag_sign"
-        android:textSize="30sp"
-     	android:textColor="#212121" >
-    </TextView>
-    <TextView
-       	android:id="@+id/wrong_answer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_below="@+id/input_guess"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/input_container"
         android:text="@string/wrong_answer"
-        android:textColor="@color/Red"
-        android:textAppearance="?android:attr/textAppearanceSmall" >
-    </TextView>
-    <Button
-        android:id="@+id/buttonSubmit"
-  	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-        android:layout_below="@+id/wrong_answer"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-    	android:background="@drawable/btn_guess"
-        android:onClick="onClickSubmit" >
-    </Button>
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/Red" />
 
-    
+    <TextView
+        android:id="@+id/input_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Make a guess"
+        android:textColor="#212121"
+        android:textSize="22sp" />
+
+    </RelativeLayout>
+
+   <Button
+       android:id="@+id/buttonSubmit"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentBottom="true"
+       android:layout_centerHorizontal="true"  
+       android:layout_marginBottom="40dp"
+       android:background="@drawable/btn_guess"
+       android:onClick="onClickSubmit" />
+
+   <TextView
+       android:id="@+id/hashtag_sign"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignBottom="@+id/input_container"
+       android:layout_marginBottom="18dp"
+       android:layout_marginRight="13dp"
+       android:layout_toLeftOf="@+id/input_container"
+       android:text="@string/hashtag_sign"
+       android:textColor="#212121"
+       android:textSize="30sp" />
+
 </RelativeLayout>

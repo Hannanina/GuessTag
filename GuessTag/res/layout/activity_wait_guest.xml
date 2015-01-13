@@ -10,19 +10,7 @@
     android:background="#69e0c8"
     tools:context="com.example.guesstag.WaitGuestActivity" >
 
-    <TextView
-        android:id="@+id/guest_wait_heading"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="15dp"
-        android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_gravity="center"
-	    android:text="@string/guest_wait_heading"
-	    android:textStyle="italic"
-	    android:textSize="30sp"
-	    android:textColor="@color/White">
-    </TextView>
-    
+        
     <LinearLayout 
         android:id="@+id/guest_list_container"
         android:orientation="vertical"
@@ -35,9 +23,9 @@
         	android:layout_width="wrap_content"
 	    	android:layout_height="wrap_content"
 	    	android:text="@string/waiting_for_host"
-	    	android:textStyle="italic"
-	    	android:textSize="20sp"
-	    	android:textColor="@color/White">
+	    	android:layout_marginTop="20dp"
+	    	android:textSize="22sp"
+	    	android:textColor="#212121">
     	</TextView>
     	
    		<ListView

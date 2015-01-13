@@ -1,22 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="@color/DimGray"
+    android:background="#69e0c8"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-    <TextView
-        android:id="@+id/timer_heading"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="15dp"
-        android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_gravity="center"
-	    android:text="@string/timer_heading"
-	    android:textStyle="italic"
-	    android:textSize="30sp"
-	    android:textColor="@color/White">
-    </TextView>
+    
     
     <ProgressBar
         android:id="@+id/circularProgressbar"
@@ -40,6 +29,6 @@
         android:textSize="40sp"
         android:text="@string/timer_value"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/White" />
+        android:textColor="#212121" />
 
 </RelativeLayout>

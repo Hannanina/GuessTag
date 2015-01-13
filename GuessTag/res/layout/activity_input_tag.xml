@@ -9,14 +9,7 @@
     android:background="#69e0c8"
     tools:context="com.example.guesstag.InputTagActivity" >
     
-    <LinearLayout
-        android:id="@+id/input_container"
-        android:orientation="vertical"
-        android:layout_width="200dp"
-        android:layout_height="72dp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/bottom_image_container" >
+
    		<TextView
         	android:id="@+id/input_a_word"
         	android:layout_width="wrap_content"
@@ -25,57 +18,60 @@
 	    	android:layout_marginBottom="3dp"
 	    	android:textColor="@color/White">
     	</TextView>
-    	<EditText
-        	android:id="@+id/input_hashtag"
-        	android:layout_width="match_parent"
-        	android:layout_height="40dp"
-        	android:layout_gravity="center"
-        	android:background="@color/White"
-        	android:ems="10"
-        	android:hint="@string/input_hashtag" >
-        	<requestFocus />
-    	</EditText>
-    </LinearLayout>
-    <TextView
-        android:id="@+id/hashtag_sign"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/input_container"
-        android:layout_centerVertical="true"
-        android:text="@string/hashtag_sign"
-        android:textSize="30sp"
-     	android:textColor="@color/White" >
-    </TextView>
-    <TextView
-       	android:id="@+id/used_hashtag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/input_container"
-        android:text="@string/used_hashtag"
-        android:textColor="@color/Red"
-        android:textAppearance="?android:attr/textAppearanceSmall" >
-    </TextView>
+
     <Button
         android:id="@+id/buttonSubmit"
-  	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-        android:layout_below="@+id/used_hashtag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/btn_submit"     
-        android:onClick="onClickSubmit" >
-    </Button>
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/btn_submit"
+        android:onClick="onClickSubmit" />
+
+    <TextView
+        android:id="@+id/used_hashtag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/input_hashtag"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:text="@string/used_hashtag"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/Red" />
+
+    <EditText
+        android:id="@+id/input_hashtag"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/hashtag_sign"
+        android:layout_alignBottom="@+id/hashtag_sign"
+        android:layout_alignLeft="@+id/used_hashtag"
+        android:layout_alignRight="@+id/used_hashtag"
+        android:background="@color/White"
+        android:ems="10"
+        android:hint="@string/input_hashtag" />
 
     <TextView
         android:id="@+id/input_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+id/hashtag_sign"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="56dp"
+        android:layout_marginBottom="21dp"
         android:text="Input a hashtag"
-        android:textColor="@color/White"
+        android:textColor="#212121"
         android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/hashtag_sign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonSubmit"
+        android:layout_marginBottom="122dp"
+        android:layout_toLeftOf="@+id/buttonSubmit"
+        android:text="@string/hashtag_sign"
+        android:textColor="#212121"
+        android:textSize="30sp" />
 
 </RelativeLayout>

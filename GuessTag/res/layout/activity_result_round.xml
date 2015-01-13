@@ -11,26 +11,24 @@
     tools:context="com.example.guesstag.ResultRoundActivity" >
 
     	<TextView
-        android:id="@+id/score"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="15dp"
-        android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_gravity="center"
-	    android:text=""
-	    android:textSize="20sp"
-	    android:textColor="@color/White">
-    </TextView>
-
-    	<TextView
     	    android:id="@+id/score_heading"
     	    android:layout_width="wrap_content"
     	    android:layout_height="wrap_content"
-    	    android:layout_alignBaseline="@+id/score"
-    	    android:layout_alignBottom="@+id/score"
+    	    android:layout_alignParentTop="true"
     	    android:layout_centerHorizontal="true"
+    	    android:layout_marginTop="20dp"
     	    android:text="Good job!\nYour score for this round is:"
-    	    android:textColor="@color/White"
+    	    android:textColor="#212121"
     	    android:textSize="22sp" />
+
+    	<TextView
+    	    android:id="@+id/score"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:layout_below="@+id/score_heading"
+    	    android:layout_centerHorizontal="true"
+    	    android:layout_marginTop="22dp"
+    	    android:textColor="#212121"
+    	    android:textSize="20sp" />
 
     </RelativeLayout>

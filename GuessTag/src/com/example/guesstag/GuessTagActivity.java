@@ -90,34 +90,34 @@ public class GuessTagActivity extends Activity {
 //	    
 	}
 	
-	public void onClickImage (ImageView imageView){
-		
-		ImageView tempImageView = imageView;
-
-        AlertDialog.Builder imageDialog = new AlertDialog.Builder(this);
-        LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
-
-        View layout = inflater.inflate(R.layout.fullimage_popup,
-                (ViewGroup) findViewById(R.id.layout_root));
-        ImageView image = (ImageView) layout.findViewById(R.id.fullimage);
-        image.setImageBitmap(im.getBitmap());
-
- //       image.setImageDrawable(tempImageView.getDrawable());
-        imageDialog.setView(layout);
-        imageDialog.setPositiveButton("back", new DialogInterface.OnClickListener(){
-
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-
-        });
-	}
+//	public void onClickImage (ImageView imageView){
+//		
+//		ImageView tempImageView = imageView;
+//
+//        AlertDialog.Builder imageDialog = new AlertDialog.Builder(this);
+//        LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
+//
+//        View layout = inflater.inflate(R.layout.fullimage_popup,
+//                (ViewGroup) findViewById(R.id.layout_root));
+//        ImageView image = (ImageView) layout.findViewById(R.id.fullimage);
+//        image.setImageBitmap(im.getBitmap());
+//
+// //       image.setImageDrawable(tempImageView.getDrawable());
+//        imageDialog.setView(layout);
+//        imageDialog.setPositiveButton("back", new DialogInterface.OnClickListener(){
+//
+//            public void onClick(DialogInterface dialog, int which) {
+//                dialog.dismiss();
+//            }
+//
+//        });
+//	}
 
 	public void onClickSubmit (View view){
 		
 		EditText guessEdit = (EditText)findViewById(R.id.input_guess);
  //       sm.checkGuessTag(guessEdit.getText().toString());
-		sm.setTagName(guessEdit.getText().toString());
+//		sm.setTagName(guessEdit.getText().toString());
         
 		//TextView wrongAnswer = (TextView) findViewById(R.id.wrong_answer);
 		//wrongAnswer.setVisibility(View.VISIBLE);

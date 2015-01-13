@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,35 +10,37 @@
     android:background="#69e0c8"
     tools:context="com.example.guesstag.RulesActivity" >
 
-	<TextView
-        android:id="@+id/rules_heading"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="15dp"
-        android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_gravity="center"
-	    android:text="@string/rules_heading"
-	    android:textStyle="italic"
-	    android:textSize="40sp"
-	    android:textColor="@color/White">
-    </TextView>
-    
-	<TextView
-		android:id="@+id/rules_text"
-		android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:maxLines="10"
-	    android:scrollbars="vertical"
-	    android:layout_gravity="center"
-	    android:text="@string/rules_text" >
-	</TextView>
-	
-	<Button 
+	<Button
 	    android:id="@+id/button_back"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:layout_gravity="bottom|center"
-   		android:background="@drawable/btn_back"
-   	    android:onClick="onClickBack" >
-	</Button>
-</LinearLayout>
+	    android:layout_alignParentBottom="true"
+	    android:layout_centerHorizontal="true"
+	    android:layout_marginBottom="40dp"
+	    android:background="@drawable/btn_back"
+	    android:onClick="onClickBack" />
+
+	<TextView
+	    android:id="@+id/rules_heading"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_centerHorizontal="true"
+	    android:layout_marginTop="20dp"
+	    android:text="@string/rules_heading"
+	    android:textColor="#212121"
+	    android:textSize="30sp" />
+
+	<TextView
+	    android:id="@+id/rules_text"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/rules_heading"
+	    android:layout_centerHorizontal="true"
+	    android:layout_marginTop="22dp"
+	    android:maxLines="10"
+	    android:scrollbars="vertical"
+	    android:text="@string/rules_text"
+	    android:textColor="#212121"
+	    android:textSize="20sp" />
+
+</RelativeLayout>

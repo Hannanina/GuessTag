@@ -46,7 +46,7 @@ private static InstaAPIManager instaManager = new InstaAPIManager();
 
 		try {
 			example = new URL(
-					"https://api.instagram.com/v1/tags/snow/media/recent?access_token="
+					"https://api.instagram.com/v1/tags/" + tag + "/media/recent?access_token="
 							+ accessToken + "&count=6");
 
 			URLConnection tc = example.openConnection();

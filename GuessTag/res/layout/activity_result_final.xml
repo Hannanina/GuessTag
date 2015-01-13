@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,47 +9,45 @@
     android:orientation="vertical"
     android:background="#69e0c8"
     tools:context="com.example.guesstag.ResultFinalActivity" >
-	
-	<TextView
-        android:id="@+id/score_heading"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="15dp"
-        android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_gravity="center"
-	    android:text="Congratulations!\nYour final score is:"
-	    android:textSize="22sp"
-	    android:textColor="@color/White">
-    </TextView>
-    	<TextView
-        android:id="@+id/score"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="15dp"
-        android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_gravity="center"
-	    android:text=""
-	    android:textSize="20sp"
-	    android:textColor="@color/White">
-    </TextView>
-      	<Button 
-	    android:id="@+id/button_highscore"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_gravity="center"
-	    android:layout_marginBottom="14dp"
-   		android:background="@drawable/btn_highscore"
-   	    android:onClick="onClickHighscore">
-	</Button>
-	    <Button 
-	    android:id="@+id/button_end"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_gravity="center"
-	    android:background="@drawable/btn_end"
-	    android:onClick="onClickEnd">
-	</Button>
+    
+    	    <TextView
+	        android:id="@+id/score_heading"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="20dp"
+	        android:text="Congratulations!\nYour final score is:"
+	        android:textColor="#212121"
+	        android:textSize="22sp" />
 
+	    <Button
+	        android:id="@+id/button_end"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentBottom="true"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginBottom="40dp"
+	        android:background="@drawable/btn_end"
+	        android:onClick="onClickEnd" />
 
+	    <Button
+	        android:id="@+id/button_highscore"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_above="@+id/button_end"
+	        android:layout_alignLeft="@+id/button_end"
+	        android:layout_marginBottom="18dp"
+	        android:background="@drawable/btn_highscore"
+	        android:onClick="onClickHighscore" />
 
-    </LinearLayout>
+	    <TextView
+	        android:id="@+id/score"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/score_heading"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="22dp"
+	        android:textColor="#212121"
+	        android:textSize="22sp" />
+
+    </RelativeLayout>

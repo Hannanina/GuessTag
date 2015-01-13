@@ -32,14 +32,14 @@ public class InputTagActivity extends Activity {
 	}
 	public void onClickSubmit (View view){
 		
-		SharedPreferences listOfHashtags = getSharedPreferences("preferences",0);
-	    sm.loadChanges(listOfHashtags);
+//		SharedPreferences listOfHashtags = getSharedPreferences("preferences",0);
+//	    sm.loadChanges(listOfHashtags);
 	
         EditText hashtagEdit = (EditText)findViewById(R.id.input_hashtag);
  //     sm.checkInputTag(hashtagEdit.getText().toString());
         sm.setTagName(hashtagEdit.getText().toString());
  //     sm.addListOfHashtags(hashtagEdit.getText().toString());
-	    sm.saveChanges(listOfHashtags);
+//	    sm.saveChanges(listOfHashtags);
 	    
 		//ToDO: check if hashtag has been used, if so make textView visible
 
