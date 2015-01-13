@@ -4,8 +4,6 @@
     android:background="#69e0c8"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
-
-    
     
     <ProgressBar
         android:id="@+id/circularProgressbar"
@@ -30,5 +28,16 @@
         android:text="@string/timer_value"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#212121" />
+
+    <TextView
+        android:id="@+id/timer_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Time is running"
+        android:textColor="#212121"
+        android:textSize="30sp" />
 
 </RelativeLayout>
