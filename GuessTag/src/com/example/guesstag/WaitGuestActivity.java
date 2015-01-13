@@ -29,7 +29,7 @@ public class WaitGuestActivity extends Activity implements
 
 	private Gson gson = new Gson();
 	private ArrayList<String> listOfPlayers = new ArrayList<String>();
-	ArrayList<String> tempListOfPlayers;
+	ArrayList<String> tempListOfPlayers = new ArrayList<String>();
 	ArrayAdapter<String> adapter;
 	TextView waiting_for_players;
 	// String hostname;
