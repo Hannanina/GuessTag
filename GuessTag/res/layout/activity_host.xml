@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    android:background="#212121"
+    android:background="#69e0c8"
     tools:context="com.example.guesstag.HostActivity" >
 
     <TextView
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:max="2"
             android:progress="1"
-            android:progressTint="#69e0c8" >
+            android:progressTint="@color/Gray">
         </SeekBar>
         
         <TextView
