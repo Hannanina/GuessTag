@@ -78,7 +78,7 @@ public class WaitHostActivity extends Activity implements
 		listOfPlayers.add(hostname);
 		String s = gson.toJson(listOfPlayers);
 		manager.saveValueForKeyOfUser("listOfPlayers", gameNameStr, s);
-		manager.monitorKeyOfUser("listOfPlayers", gameNameStr);
+	//	manager.monitorKeyOfUser("listOfPlayers", gameNameStr);
 	}
 
 	public void monitorListOfPlayers(String gamename) {
@@ -108,8 +108,10 @@ public class WaitHostActivity extends Activity implements
 	}
 
 	public void onClickStartGame(View view) {
-		Intent intent = new Intent(this, SelectTaggerActivity.class);
-		startActivity(intent);
+		manager.monitorKeyOfUser("listOfPlayers", gameNameStr);
+
+//		Intent intent = new Intent(this, SelectTaggerActivity.class);
+//		startActivity(intent);
 	}
 
 	public void onClickBack(View view) {
