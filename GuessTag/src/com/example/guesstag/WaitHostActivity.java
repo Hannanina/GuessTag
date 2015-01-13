@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
@@ -28,6 +29,8 @@ public class WaitHostActivity extends Activity implements
 
 	// private String[] listOfPlayers = new String[10];
 	private ArrayList<String> listOfPlayers = new ArrayList<String>();
+	ArrayList<String> tempListOfPlayers;
+
 	ArrayAdapter<String> adapter;
 	TextView waiting_for_players;
 	String gameNameStr;
@@ -53,14 +56,14 @@ public class WaitHostActivity extends Activity implements
 		// monitorListOfPlayers("user1", "user1");
 		// String hostname = SessionManager.getSessionManager().getUserName();
 		hostname = SessionManager.getSessionManager().getUserName();
-		//monitorListOfPlayers(gameNameStr);
-		
+		// monitorListOfPlayers(gameNameStr);
+
 		adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, listOfPlayers);
-		
+
 		Button b;
-		b = (Button)findViewById(R.id.button_start_game);
-         
+		b = (Button) findViewById(R.id.button_start_game);
+
 		ListView listView = (ListView) findViewById(R.id.listOfPlayers);
 		listView.setAdapter(adapter);
 
@@ -118,41 +121,36 @@ public class WaitHostActivity extends Activity implements
 	@Override
 	public void savedValueForKeyOfUser(JSONObject json, String key, String user) {
 		// TODO Auto-generated method stub
-		
+
 		Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
 				"JSONOBject retreived in method savedValueForKeyOfUser: KEY= "
-						+ key + "USER= "+ user + " JSONSTRING " + json.toString());
+						+ key + "USER= " + user + " JSONSTRING "
+						+ json.toString());
 
 		/*
-		 try {
-			
-			if(json.get("value").toString() != "" &&
-				json.get("value").toString() != null) {
-					
-				listOfPlayers.add(json.get("value").toString());
-			}
-			
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		*/
+		 * try {
+		 * 
+		 * if(json.get("value").toString() != "" && json.get("value").toString()
+		 * != null) {
+		 * 
+		 * listOfPlayers.add(json.get("value").toString()); }
+		 * 
+		 * } catch (JSONException e) { // TODO Auto-generated catch block
+		 * e.printStackTrace(); }
+		 */
 		/*
-		  try {
-		 
+		 * try {
+		 * 
+		 * 
+		 * for (int i = 0; i < 10; i++) { if
+		 * (json.getJSONArray("records").getJSONObject(i)
+		 * .getString("key").equals("listOfPlayers")) {
+		 * listOfPlayers.add(json.getJSONArray("records").getJSONObject(i)
+		 * .getString("value")); } } } catch (JSONException e) {
+		 * Log.e(NetworkingManager.TAG_ERROR, e.getMessage()); }
+		 */
 
-			for (int i = 0; i < 10; i++) {
-				if (json.getJSONArray("records").getJSONObject(i)
-						.getString("key").equals("listOfPlayers")) {
-					listOfPlayers.add(json.getJSONArray("records").getJSONObject(i)
-									.getString("value"));
-				}
-			}
-		} catch (JSONException e) {
-			Log.e(NetworkingManager.TAG_ERROR, e.getMessage());
-		}*/
-
-		//adapter.notifyDataSetChanged();
+		// adapter.notifyDataSetChanged();
 	}
 
 	@Override
@@ -187,17 +185,21 @@ public class WaitHostActivity extends Activity implements
 		// findViewById(R.id.waiting_for_players);
 
 		Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
-				"WaitHostActivity: valueChangedForKeyOfUser: KEY= "
-						+ key + "USER= "+ user + " JSONSTRING " + json.toString());
+				"WaitHostActivity: valueChangedForKeyOfUser: KEY= " + key
+						+ "USER= " + user + " JSONSTRING " + json.toString());
 
 		try {
 
 			for (int i = 0; i < 100; i++) {
 				if (json.getJSONArray("records").getJSONObject(i)
 						.getString("key").equals("listOfPlayers")) {
-					listOfPlayers.clear();
-					listOfPlayers.add(json.getJSONArray("records").getJSONObject(i)
-									.getString("value"));
+
+					tempListOfPlayers.clear();
+					tempListOfPlayers = gson.fromJson(json.getString("value")
+							.toString(), new TypeToken<ArrayList<String>>() {
+					}.getType());
+
+					listOfPlayers.addAll(tempListOfPlayers);
 				}
 			}
 		} catch (JSONException e) {

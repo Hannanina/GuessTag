@@ -59,8 +59,8 @@ public class WaitGuestActivity extends Activity implements
 
 		ListView listView = (ListView) findViewById(R.id.listOfPlayers);
 		listView.setAdapter(adapter);
-		// adapter.notifyDataSetChanged();
 
+		
 		clickList = new OnItemClickListener() {
 
 			public void onItemClick(AdapterView<?> parent, View v,
@@ -70,7 +70,7 @@ public class WaitGuestActivity extends Activity implements
 		};
 
 		listView.setOnItemClickListener(clickList);
-
+        monitorListOfPlayers();
 	}
 
 	public void monitorListOfPlayers() {
@@ -142,7 +142,7 @@ public class WaitGuestActivity extends Activity implements
 			e.printStackTrace();
 		}
 
-		adapter.notifyDataSetChanged();
+		//adapter.notifyDataSetChanged();
 	}
 
 	@Override
@@ -179,9 +179,12 @@ public class WaitGuestActivity extends Activity implements
 			for (int i = 0; i < 100; i++) {
 				if (json.getJSONArray("records").getJSONObject(i)
 						.getString("key").equals("listOfPlayers")) {
-					listOfPlayers.clear();
-					listOfPlayers.add(json.getJSONArray("records")
-							.getJSONObject(i).getString("value"));
+                    tempListOfPlayers.clear();					
+					tempListOfPlayers = gson.fromJson(json.getString("value")
+							.toString(), new TypeToken<ArrayList<String>>() {
+					}.getType());
+					
+					listOfPlayers.addAll(tempListOfPlayers);
 				}
 			}
 		} catch (JSONException e) {
