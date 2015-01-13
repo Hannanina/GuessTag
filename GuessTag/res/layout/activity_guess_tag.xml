@@ -85,14 +85,16 @@
         android:layout_height="72dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/bottom_image_container" >
-   		<TextView
-        	android:id="@+id/guess_the_hashtag"
-        	android:layout_width="wrap_content"
-	    	android:layout_height="wrap_content"
-	    	android:layout_marginLeft="2dp"
-	    	android:layout_marginBottom="3dp"
-	    	android:textColor="#212121">
-    	</TextView>
+
+       <TextView
+           android:id="@+id/input_heading"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center"
+           android:text="Make a guess"
+           android:textColor="#212121"
+           android:textSize="22sp" />
+
     	<EditText
         	android:id="@+id/input_guess"
         	android:layout_width="match_parent"

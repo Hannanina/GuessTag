@@ -11,6 +11,7 @@ import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -30,7 +31,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.content.DialogInterface;
 
-public class GuessTagActivity extends ActionBarActivity {
+public class GuessTagActivity extends Activity {
 
 	URL url;
 	Bitmap BitmapImage;
@@ -112,10 +113,11 @@ public class GuessTagActivity extends ActionBarActivity {
         });
 	}
 
-	public void onClickSubmit (){
+	public void onClickSubmit (View view){
 		
 		EditText guessEdit = (EditText)findViewById(R.id.input_guess);
-        sm.checkGuessTag(guessEdit.getText().toString());
+ //       sm.checkGuessTag(guessEdit.getText().toString());
+		sm.setTagName(guessEdit.getText().toString());
         
 		//TextView wrongAnswer = (TextView) findViewById(R.id.wrong_answer);
 		//wrongAnswer.setVisibility(View.VISIBLE);

@@ -60,7 +60,7 @@
 
     <!-- GUESS TAG ACTIVITY -->
     <string name="guess_the_hashtag">Guess the hashtag</string>
-    <string name="input_guess">Input your guess</string>
+    <string name="input_guess">hashtag</string>
     <string name="wrong_answer">Wrong answer, try again!</string>
     <string name="hashtag_sign">#</string>
     <string name="guess_tag">Guess#</string>
