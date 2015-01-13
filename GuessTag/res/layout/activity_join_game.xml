@@ -26,20 +26,19 @@
 
     <Button
         android:id="@+id/buttonRefresh"
-        android:layout_width="200dp"
-        android:layout_height="48dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/buttonBack"
         android:layout_centerHorizontal="true"
         android:onClick="onClickRefresh"
-        android:text="Refresh" />
-
+	    android:layout_marginBottom="14dp"
+   		android:background="@drawable/btn_refresh"/>
     <Button
         android:id="@+id/buttonBack"
-        android:layout_width="200dp"
-        android:layout_height="48dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:onClick="onClickBack"
-        android:text="Back" />
-
+   		android:background="@drawable/btn_back"/>
 </RelativeLayout>

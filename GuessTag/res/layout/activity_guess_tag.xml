@@ -128,12 +128,12 @@
     </TextView>
     <Button
         android:id="@+id/buttonSubmit"
-  	    android:layout_width="200dp"
-	    android:layout_height="48dp"
+  	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
         android:layout_below="@+id/wrong_answer"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
-        android:text="@string/guess_tag"
+    	android:background="@drawable/btn_guess"
         android:onClick="onClickSubmit" >
     </Button>
 

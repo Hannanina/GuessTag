@@ -1,5 +1,6 @@
 package com.example.guesstag;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,7 +19,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class StartActivity extends ActionBarActivity implements PopupFragment.NoticeDialogListener{
+public class StartActivity extends Activity implements PopupFragment.NoticeDialogListener{
 	
 	SharedPreferences listOfScores;
 	SharedPreferences popup;
@@ -40,7 +41,7 @@ public class StartActivity extends ActionBarActivity implements PopupFragment.No
         
         if(!popupIsShown) {
         	PopupFragment popupFragment = PopupFragment.newInstance();
-            popupFragment.show(getSupportFragmentManager(), "Choose a user name");
+ //           popupFragment.show(getSupportFragmentManager(), "Choose a user name");
             
             SharedPreferences.Editor editor = popup.edit();
             editor.putBoolean(popupShown, true);
@@ -81,7 +82,7 @@ public class StartActivity extends ActionBarActivity implements PopupFragment.No
 	
 
 	public void onClickHighscore(View view) {
-		Intent intent = new Intent(this, GuessTagActivity.class);
+		Intent intent = new Intent(this, HighscoreActivity.class);
 		startActivity(intent);
 	}
 	
