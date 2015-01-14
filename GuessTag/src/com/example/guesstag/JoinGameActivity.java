@@ -99,6 +99,8 @@ public class JoinGameActivity extends Activity implements
 	public void onClickRefresh(View view) {
 		//manager.deleteKeyOfUser("listOfGames", "games");
 		//manager.loadValueForKeyOfUser("createGame", "user1");
+		Intent intent = new Intent(this, WaitGuestActivity.class);
+		startActivity(intent);
 
 	}
 

@@ -45,8 +45,8 @@ public class WaitGuestActivity extends Activity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_wait_guest);
-		Bundle bundle = getIntent().getExtras();
-		gameNameStr = bundle.getString("GameName");
+		//Bundle bundle = getIntent().getExtras();
+		//gameNameStr = bundle.getString("GameName");
 		backClick = false;
 
 		// listOfPlayers =
@@ -108,6 +108,11 @@ public class WaitGuestActivity extends Activity implements
 		manager.lockKeyOfUser("listOfPlayers", gameNameStr);
 		manager.loadValueForKeyOfUser("listOfPlayers", gameNameStr);
 		Intent intent = new Intent(this, JoinGameActivity.class);
+		startActivity(intent);
+	}
+	
+	public void onClickFake(View view) {
+		Intent intent = new Intent(this, GuessTagActivity.class);
 		startActivity(intent);
 	}
 

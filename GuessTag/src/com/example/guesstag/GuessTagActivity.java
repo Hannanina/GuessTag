@@ -98,7 +98,7 @@ public class GuessTagActivity extends Activity {
  //     sm.checkGuessTag(guessEdit.getText().toString());
 //		sm.setTagName(guessEdit.getText().toString());
 		
-		if(guessEdit.getText().toString().equals(sm.getTagName())){
+		if(guessEdit.getText().toString().equals("snow")){
 			 sm.checkGuessTag(guessEdit.getText().toString());
 			TextView wrongAnswer = (TextView) findViewById(R.id.wrong_answer);
 			wrongAnswer.setVisibility(View.INVISIBLE);

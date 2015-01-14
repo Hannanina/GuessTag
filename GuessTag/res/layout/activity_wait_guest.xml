@@ -11,6 +11,15 @@
     tools:context="com.example.guesstag.WaitGuestActivity" >
 
     <Button
+        android:id="@+id/button_fake"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:layout_above="@+id/button_back"
+        android:background="@drawable/btn_startgame"
+        android:onClick="onClickFake" />
+    <Button
         android:id="@+id/button_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
