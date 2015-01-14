@@ -72,16 +72,21 @@ public class GuessTagActivity extends Activity {
 		new Thread() {
 			public void run() {
 				im.initiateConnection();
+				System.out.println("GUESSTAGACT:  "+ im.getBitmap().toString());
+				imageOne = im.getBitmap().get(0);
+				imageTwo = im.getBitmap().get(1);
+				
 				
 			}
 		}.start();
-
-		one.setImageBitmap(im.getBitmap());
-		two.setImageBitmap(im.getBitmap());
-		three.setImageBitmap(im.getBitmap());
-		four.setImageBitmap(im.getBitmap());
-		five.setImageBitmap(im.getBitmap());
-		six.setImageBitmap(im.getBitmap());
+        
+		System.out.println("GUESSTAGACT:  "+ im.getBitmap().toString());
+		one.setImageBitmap(imageOne);
+		two.setImageBitmap(imageTwo);
+//		three.setImageBitmap(im.getBitmap().get(2));
+//		four.setImageBitmap(im.getBitmap().get(3));
+//		five.setImageBitmap(im.getBitmap().get(4));
+//		six.setImageBitmap(im.getBitmap().get(5));
 
 		TextView wrongAnswer = (TextView) findViewById(R.id.wrong_answer);
 		wrongAnswer.setVisibility(View.INVISIBLE);

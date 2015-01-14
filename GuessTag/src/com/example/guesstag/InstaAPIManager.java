@@ -21,15 +21,13 @@ public class InstaAPIManager {
 	String accessToken = "15170786.1fb234f.196d7fd71cfa40a9aa12140c522a5c99";
 	JSONObject level2;
 	JSONObject level3;
-	Bitmap bmp;
 	String tag;
 	URL example;
-	ArrayList<String> listOfURLs = new ArrayList<String> ();
-	
-	SessionManager sm =  SessionManager.getSessionManager();
+ private ArrayList<Bitmap> listOfURLs = new ArrayList<Bitmap>();
 
+	SessionManager sm = SessionManager.getSessionManager();
 
-private static InstaAPIManager instaManager = new InstaAPIManager();
+	private static InstaAPIManager instaManager = new InstaAPIManager();
 
 	private InstaAPIManager() {
 	}
@@ -37,17 +35,16 @@ private static InstaAPIManager instaManager = new InstaAPIManager();
 	public static InstaAPIManager getInstaAPIManager() {
 		return instaManager;
 	}
-     
+
 	public void initiateConnection() {
 		// img1 = (ImageView) findViewById(R.id.imageView1);
-		
-		//has to get the tagName input from the tagger's phone
+
+		// has to get the tagName input from the tagger's phone
 		tag = sm.getTagName();
 
 		try {
-			example = new URL(
-					"https://api.instagram.com/v1/tags/" + "snow" + "/media/recent?access_token="
-							+ accessToken + "&count=6");
+			example = new URL("https://api.instagram.com/v1/tags/" + "snow"
+					+ "/media/recent?access_token=" + accessToken + "&count=6");
 
 			URLConnection tc = example.openConnection();
 			BufferedReader in = new BufferedReader(new InputStreamReader(
@@ -65,6 +62,7 @@ private static InstaAPIManager instaManager = new InstaAPIManager();
 	}
 
 	public void imageParsing(BufferedReader in) {
+
 		try {
 			String line;
 			while ((line = in.readLine()) != null) {
@@ -79,20 +77,22 @@ private static InstaAPIManager instaManager = new InstaAPIManager();
 
 					level3 = (JSONObject) level2
 							.getJSONObject("standard_resolution");
-					
-					
+
 					String imageURL = level3.get("url").toString();
-		//			listOfURLs.add(imageURL);
 
-
-					Log.d("API DEBUGGING FEEDBACK",
-							"JSONOBject retreived from Insta API: " + imageURL);
+			
 					URL url = new URL(imageURL);
-					 bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-					 Log.d("API DEBUGGING FEEDBACK",
-								"Bitmap generated: " +  bmp.toString());
+					Bitmap bmp = BitmapFactory.decodeStream(url.openConnection()
+							.getInputStream());
+					Log.d("API DEBUGGING FEEDBACK",
+							"Bitmap generated: " + bmp.toString());
+					
+					listOfURLs.add(bmp);
+					System.out.println("INSIDE IMAGE PARSING!!! ");
 
 				}
+				Log.d("API DEBUGGING FEEDBACK",
+						"IMAGE URLs from Insta API: " + listOfURLs.toString());
 
 			}
 
@@ -107,8 +107,8 @@ private static InstaAPIManager instaManager = new InstaAPIManager();
 			e.printStackTrace();
 		}
 	}
-	
-	public Bitmap getBitmap(){
-		return bmp;
+
+	public ArrayList<Bitmap> getBitmap() {
+		return listOfURLs;
 	}
 }
