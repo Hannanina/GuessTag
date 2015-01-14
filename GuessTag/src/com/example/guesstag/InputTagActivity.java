@@ -44,7 +44,7 @@ public class InputTagActivity extends Activity {
 		//TextView textView = (TextView) findViewById(R.id.used_hashtag);
         //textView.setVisibility(View.INVISIBLE);
             
-		Intent intent = new Intent(this, GuessTagActivity.class);
+		Intent intent = new Intent(this, TimerActivity.class);
 		startActivity(intent);
 	}
 	
