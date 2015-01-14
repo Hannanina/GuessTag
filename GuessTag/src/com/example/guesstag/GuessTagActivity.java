@@ -80,7 +80,7 @@ public class GuessTagActivity extends Activity {
 			}
 		}.start();
         
-		System.out.println("GUESSTAGACT:  "+ im.getBitmap().toString());
+		System.out.println("GUESSTAGACT IMAGE ONE:  "+ imageOne.toString());
 		one.setImageBitmap(imageOne);
 		two.setImageBitmap(imageTwo);
 //		three.setImageBitmap(im.getBitmap().get(2));
