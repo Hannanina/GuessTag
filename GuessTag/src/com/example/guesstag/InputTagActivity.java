@@ -12,6 +12,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+
+/**
+ * This class implements the activity which is invoked when a host player tries to
+ * create a hashtag for the guest players to guess.
+ * @author group 6
+ *
+ */
+
+
 public class InputTagActivity extends Activity {
 	
 	SessionManager sm =  SessionManager.getSessionManager();
@@ -31,18 +40,9 @@ public class InputTagActivity extends Activity {
 	}
 	public void onClickSubmit (View view){
 		
-//		SharedPreferences listOfHashtags = getSharedPreferences("preferences",0);
-//	    sm.loadChanges(listOfHashtags);
-        //EditText hashtagEdit = (EditText)findViewById(R.id.input_hashtag);
- //     sm.checkInputTag(hashtagEdit.getText().toString());
-        sm.setTagName(editText.getText().toString());
- //     sm.addListOfHashtags(hashtagEdit.getText().toString());
-//	    sm.saveChanges(listOfHashtags);
-	    
-		//ToDO: check if hashtag has been used, if so make textView visible
 
-		//TextView textView = (TextView) findViewById(R.id.used_hashtag);
-        //textView.setVisibility(View.INVISIBLE);
+        sm.setTagName(editText.getText().toString());
+
             
 		Intent intent = new Intent(this, TimerActivity.class);
 		startActivity(intent);

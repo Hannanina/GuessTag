@@ -25,6 +25,15 @@ import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
 
+/**
+ * This class is invoked when a host player just create s game session. host
+ * player is able to see a list of all other guest players whoever joint in this
+ * session.
+ * 
+ * @author group 6
+ * 
+ */
+
 public class WaitHostActivity extends Activity implements
 		NetworkingEventHandler {
 
@@ -32,7 +41,7 @@ public class WaitHostActivity extends Activity implements
 	private ArrayList<String> listOfPlayers = new ArrayList<String>();
 	ArrayList<String> tempListOfPlayers = new ArrayList<String>();
 	ArrayList<String> listOfGames = new ArrayList<String>();
-	
+
 	ArrayAdapter<String> adapter;
 	TextView waiting_for_players;
 	String gameNameStr;
@@ -50,15 +59,11 @@ public class WaitHostActivity extends Activity implements
 		Bundle bundle = getIntent().getExtras();
 		gameNameStr = bundle.getString("GameName");
 		gson = new Gson();
-		// listOfPlayers =
-		// SessionManager.getSessionManager().getListOfPlayers();
 
 		manager = new NetworkingManager(this, "group6", "host");
-		// manager.monitorKeyOfUser("listOfPlayers", "user1");
-		// monitorListOfPlayers("user1", "user1");
-		// String hostname = SessionManager.getSessionManager().getUserName();
+	
 		hostname = SessionManager.getSessionManager().getUserName();
-		// monitorListOfPlayers(gameNameStr);
+
 
 		adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, listOfPlayers);
@@ -86,7 +91,6 @@ public class WaitHostActivity extends Activity implements
 	}
 
 	public void monitorListOfPlayers(String gamename) {
-		// manager.saveValueForKeyOfUser("listOfPlayers", hostname, guestname);
 
 		manager.monitorKeyOfUser("listOfPlayers", gamename);
 	}
@@ -135,30 +139,7 @@ public class WaitHostActivity extends Activity implements
 						+ key + "USER= " + user + " JSONSTRING "
 						+ json.toString());
 
-		/*
-		 * try {
-		 * 
-		 * if(json.get("value").toString() != "" && json.get("value").toString()
-		 * != null) {
-		 * 
-		 * listOfPlayers.add(json.get("value").toString()); }
-		 * 
-		 * } catch (JSONException e) { // TODO Auto-generated catch block
-		 * e.printStackTrace(); }
-		 */
-		/*
-		 * try {
-		 * 
-		 * 
-		 * for (int i = 0; i < 10; i++) { if
-		 * (json.getJSONArray("records").getJSONObject(i)
-		 * .getString("key").equals("listOfPlayers")) {
-		 * listOfPlayers.add(json.getJSONArray("records").getJSONObject(i)
-		 * .getString("value")); } } } catch (JSONException e) {
-		 * Log.e(NetworkingManager.TAG_ERROR, e.getMessage()); }
-		 */
 
-		// adapter.notifyDataSetChanged();
 		manager.unlockKeyOfUser("listOfPlayers", gameNameStr);
 	}
 
@@ -180,13 +161,11 @@ public class WaitHostActivity extends Activity implements
 			listOfGames.remove(gameNameStr);
 
 			String jstring = gson.toJson(listOfGames);
-			manager.saveValueForKeyOfUser("listOfGames", "games",
-					jstring);
+			manager.saveValueForKeyOfUser("listOfGames", "games", jstring);
 
 			Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
 					"New Player added to the game: " + " GAMENAME "
-							+ gameNameStr + " JSONSTRING "
-							+ jstring.toString());
+							+ gameNameStr + " JSONSTRING " + jstring.toString());
 
 			manager.unlockKeyOfUser("listOfGames", "games");
 
@@ -230,26 +209,24 @@ public class WaitHostActivity extends Activity implements
 							+ key + "USER= " + user + " JSONSTRING "
 							+ json.toString());
 
-			//for (int i = 0; i < 100; i++) {
-			//	if (json.getJSONArray("records").getJSONObject(i)
-			//			.getString("key").equals("listOfPlayers")) {
-					tempListOfPlayers.clear();
-					tempListOfPlayers = gson.fromJson(json.getJSONArray("records").getJSONObject(0).getString("value")
-							.toString(), new TypeToken<ArrayList<String>>() {
+
+			tempListOfPlayers.clear();
+			tempListOfPlayers = gson.fromJson(json.getJSONArray("records")
+					.getJSONObject(0).getString("value").toString(),
+					new TypeToken<ArrayList<String>>() {
 					}.getType());
-					//System.out.println("INSIDE WAITHOST INSIDE IFOOOOOOOOOOOOOOOOO" + json.getJSONArray("records").getJSONObject(0).getString("value")
-					//		.toString());
-					manager.unlockKeyOfUser("listOfPlayers", gameNameStr);
-					listOfPlayers.clear();
-					listOfPlayers.addAll(tempListOfPlayers);
-			//	}
-			//}
+
+			manager.unlockKeyOfUser("listOfPlayers", gameNameStr);
+			listOfPlayers.clear();
+			listOfPlayers.addAll(tempListOfPlayers);
+			// }
+			// }
 		} catch (JSONException e) {
 			Log.e(NetworkingManager.TAG_ERROR, e.getMessage());
 		}
 		System.out.println("IM OUTSIDE " + listOfPlayers.toString());
-		//adapter.clear();
-		//adapter.addAll(listOfPlayers);
+		// adapter.clear();
+		// adapter.addAll(listOfPlayers);
 		adapter.notifyDataSetChanged();
 	}
 

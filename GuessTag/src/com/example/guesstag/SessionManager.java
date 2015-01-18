@@ -11,11 +11,19 @@ import com.google.gson.reflect.TypeToken;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
+/**
+ * This class is invoked when one game session is created. It mainly handles
+ * with data transmission among players via networks. It also stores data such
+ * as number of players, points during an ongoing game session.
+ * 
+ * @author group 6
+ * 
+ */
 public class SessionManager implements NetworkingEventHandler {
 
 	// Attributes
 
-	//Attributes
+	// Attributes
 	private String userName;
 	private Score score = new Score(0, 0, "", "");
 	private String tag;
@@ -26,7 +34,7 @@ public class SessionManager implements NetworkingEventHandler {
 	private int totalTimeSpent;
 	private ArrayList<String> registeredUsers;
 	private ArrayList<String> usedTags;
-	private ArrayList<String> listOfPlayers = new ArrayList<String> ();
+	private ArrayList<String> listOfPlayers = new ArrayList<String>();
 	private ArrayList<String> listOfHashtags = new ArrayList<String>();
 
 	// networking
@@ -58,7 +66,7 @@ public class SessionManager implements NetworkingEventHandler {
 	public void setTagName(String tagName) {
 		this.tagName = tagName;
 	}
-	
+
 	public String getUserName() {
 		return userName;
 	}
@@ -66,7 +74,7 @@ public class SessionManager implements NetworkingEventHandler {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	
+
 	public Score getScore() {
 		return score;
 	}
@@ -94,9 +102,8 @@ public class SessionManager implements NetworkingEventHandler {
 
 	public void addListOfPlayers(String player) {
 		listOfPlayers.add(player);
-		}
-	
-	
+	}
+
 	public ArrayList<String> getListOfHashtags() {
 		return listOfHashtags;
 	}
@@ -107,10 +114,8 @@ public class SessionManager implements NetworkingEventHandler {
 
 	public void addListOfHashtags(String hashtag) {
 		listOfHashtags.add(hashtag);
-		}
-	
-	
-	
+	}
+
 	// Called to check whether played round was last round
 	public int getRoundsPlayed() {
 		return roundsPlayed;
@@ -120,26 +125,24 @@ public class SessionManager implements NetworkingEventHandler {
 	public void incrementRoundsPlayed() {
 		roundsPlayed++;
 	}
-	
+
 	public ArrayList<String> getRegisteredUsers() {
 		return registeredUsers;
 	}
 
 	public void setRegisteredUsers(String user) {
-		
+
 		try {
-			if(!registeredUsers.contains(user)) {
+			if (!registeredUsers.contains(user)) {
 				registeredUsers.add(user);
+			} else {
+
 			}
-			else {
-				
-			}
-		}
-		catch(Exception e) {
-			
+		} catch (Exception e) {
+
 		}
 	}
-	
+
 	public int getTotalTimeSpent() {
 		return totalTimeSpent;
 	}
@@ -190,14 +193,14 @@ public class SessionManager implements NetworkingEventHandler {
 	// Checks guessed tag against attribute tag.
 	public Boolean checkGuessTag(String tag) {
 		correctGuessTag = false;
-//
-//		if (this.tag.equals(tag)) {
-//			correctGuessTag = true;
-//		}
+		//
+		// if (this.tag.equals(tag)) {
+		// correctGuessTag = true;
+		// }
 		nrOfGuesses++;
 		return correctGuessTag;
 	}
-	
+
 	public int getNrOfGuesses() {
 		return nrOfGuesses;
 	}
@@ -251,27 +254,25 @@ public class SessionManager implements NetworkingEventHandler {
 
 	}
 
-	
-	  public void saveChanges(SharedPreferences listOfHashtags ) {
-	        Gson gson = new Gson();
-	        String json = gson.toJson(listOfHashtags);
+	public void saveChanges(SharedPreferences listOfHashtags) {
+		Gson gson = new Gson();
+		String json = gson.toJson(listOfHashtags);
 
+		SharedPreferences.Editor editor = listOfHashtags.edit();
+		editor.putString("hashtag submitted", json);
 
-	        SharedPreferences.Editor editor = listOfHashtags.edit();
-	        editor.putString("hashtag submitted", json );
+		editor.commit();
+	}
 
-	        editor.commit();
-	    }
+	public void loadChanges(SharedPreferences listOfHashtags) {
+		Type listType = new TypeToken<ArrayList<String>>() {
+		}.getType();
+		Gson gson = new Gson();
+		String hashtagParameters = ((SharedPreferences) listOfHashtags)
+				.getString("hashtag submitted", "");
 
-
-	    public void loadChanges(SharedPreferences listOfHashtags ) {
-	        Type listType = new TypeToken<ArrayList<String>>() {}.getType();
-	        Gson gson = new Gson();
-	        String hashtagParameters = ((SharedPreferences) listOfHashtags).getString("hashtag submitted", "");
-
-
-	        if (hashtagParameters!="") {
-	        	listOfHashtags = gson.fromJson(hashtagParameters, listType);
-	        }
-	    }	
+		if (hashtagParameters != "") {
+			listOfHashtags = gson.fromJson(hashtagParameters, listType);
+		}
+	}
 }

@@ -24,6 +24,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
+/**
+ * This class is invoked when a guest player joins a game session that is still
+ * hosted. guest player is able to see a list of all other players in the same
+ * session.
+ * 
+ * @author group 6
+ * 
+ */
+
 public class WaitGuestActivity extends Activity implements
 		NetworkingEventHandler {
 
@@ -45,15 +54,10 @@ public class WaitGuestActivity extends Activity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_wait_guest);
-		//Bundle bundle = getIntent().getExtras();
-		//gameNameStr = bundle.getString("GameName");
+
 		backClick = false;
 
-		// listOfPlayers =
-		// SessionManager.getSessionManager().getListOfPlayers();
-		// hostname = getIntent().getExtras().getString("ChosenOne");
 		manager = new NetworkingManager(this, "group6", "guest");
-		// manager.monitorKeyOfUser("listOfPlayers", "user1");
 		guestName = SessionManager.getSessionManager().getUserName();
 
 		adapter = new ArrayAdapter<String>(this,
@@ -110,7 +114,7 @@ public class WaitGuestActivity extends Activity implements
 		Intent intent = new Intent(this, JoinGameActivity.class);
 		startActivity(intent);
 	}
-	
+
 	public void onClickFake(View view) {
 		Intent intent = new Intent(this, GuessTagActivity.class);
 		startActivity(intent);
@@ -224,13 +228,18 @@ public class WaitGuestActivity extends Activity implements
 		// waiting_for_players = (TextView)
 		// findViewById(R.id.waiting_for_players);
 		try {
-		System.out.println("OUTSIDE VALUECHANGED IN WAITGUEST. JSONSTRING IS: " +
-			json.getJSONArray("records").getJSONObject(0).getString("value").toString());
-		
+			System.out
+					.println("OUTSIDE VALUECHANGED IN WAITGUEST. JSONSTRING IS: "
+							+ json.getJSONArray("records").getJSONObject(0)
+									.getString("value").toString());
+
 			manager.lockKeyOfUser("gameReady", gameNameStr);
-			if(json.getJSONArray("records").getJSONObject(0).getString("value").toString().equals("true")) {	
-				System.out.println("INSIDE VALUECHANGED IN WAITGUEST. JSONSTRING IS: " +
-				json.getJSONArray("records").getJSONObject(0).getString("value").toString());
+			if (json.getJSONArray("records").getJSONObject(0)
+					.getString("value").toString().equals("true")) {
+				System.out
+						.println("INSIDE VALUECHANGED IN WAITGUEST. JSONSTRING IS: "
+								+ json.getJSONArray("records").getJSONObject(0)
+										.getString("value").toString());
 				manager.unlockKeyOfUser("gameReady", gameNameStr);
 				Intent intent = new Intent(this, GuessTagActivity.class);
 				startActivity(intent);
@@ -258,18 +267,16 @@ public class WaitGuestActivity extends Activity implements
 			System.out.println("I AM INSIDE WAITGUESTACTIVITY!:   "
 					+ json.getJSONArray("records").getJSONObject(0)
 							.getString("value").toString());
-		
+
 		} catch (JSONException e) {
 			Log.e(NetworkingManager.TAG_ERROR, e.getMessage());
 		}
 		manager.unlockKeyOfUser("listOfPlayers", gameNameStr);
 
-		
 		adapter.notifyDataSetChanged();
 		System.out
 				.println("I AM OUTSIDE AGAIN!:   " + listOfPlayers.toString());
 
-		
 	}
 
 	@Override

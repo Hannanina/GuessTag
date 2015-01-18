@@ -10,6 +10,15 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+
+/**
+ * This class is invoked when the score for a game session
+ *  is modified and in need of updating.
+ * 
+ * @author group 6
+ * 
+ */
+
 public class ScoreAdapter extends ArrayAdapter<HighscoreListItem> {
 	
 	HighscoreList hl = HighscoreList.getHighscoreList();

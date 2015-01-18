@@ -3,7 +3,6 @@ package com.example.guesstag;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -11,26 +10,32 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+/**
+ * This class is invoked when one round in a game session is ended either fail or success,
+ * it displays the result of one specific round within a game session.
+ * @author group 6
+ * 
+ */
 public class ResultRoundActivity extends Activity {
-	
-	SessionManager sm =  SessionManager.getSessionManager();
-	
+
+	SessionManager sm = SessionManager.getSessionManager();
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_result_round);
-		
-		//sm.calculatePoints();
-		
-		TextView textview = (TextView)findViewById(R.id.score);
+
+		// sm.calculatePoints();
+
+		TextView textview = (TextView) findViewById(R.id.score);
 		textview.setText(String.valueOf(sm.getScore().getPoints()));
-		
+
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
 
-		   public void run() {
-			   finish();
-		   }
+			public void run() {
+				finish();
+			}
 		}, 10000);
 	}
 

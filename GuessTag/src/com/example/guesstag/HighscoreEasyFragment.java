@@ -13,6 +13,11 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+/**
+ * This is the highscore fragment created for easy game mode. 
+ * @author group 6
+ *
+ */
 
 public class HighscoreEasyFragment extends Fragment{
 	
@@ -67,10 +72,6 @@ public class HighscoreEasyFragment extends Fragment{
 		
 		return rootView;
 	}	
-//		public void onClickBack(View view) {
-//			Intent intent = new Intent(getActivity(), StartActivity.class);
-//			startActivity(intent);
-//		}
 
 
 }

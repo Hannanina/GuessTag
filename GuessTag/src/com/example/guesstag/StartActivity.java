@@ -19,6 +19,15 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * This class is invoked when the app is just opened and it 
+ * creates a main menu. if its the first time of opening the app,
+ * a popup will be shown to let the player input name.
+ * 
+ * @author group 6
+ * 
+ */
+
 public class StartActivity extends ActionBarActivity implements
 		PopupFragment.NoticeDialogListener {
 

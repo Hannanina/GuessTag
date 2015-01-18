@@ -24,13 +24,22 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+/**
+ * This class implements the host activity which is invoked when a player choose
+ * to be a host. A game session will be created after this activity is done
+ * successfully.
+ * 
+ * @author group 6
+ * 
+ */
+
 public class HostActivity extends Activity implements
 		SeekBar.OnSeekBarChangeListener, NetworkingEventHandler {
 
 	SeekBar diffSetting;
 	TextView difficultyText;
 	private TextView serverMsg;
-//	String hostname;
+	// String hostname;
 	Gson gson = new Gson();
 	ArrayList<String> listOfGames;
 
@@ -52,8 +61,7 @@ public class HostActivity extends Activity implements
 		/* added by caofa */
 		manager = new NetworkingManager(this, "group6", "host");
 		gameName = (EditText) findViewById(R.id.input_game_name);
-		//serverMsg = (TextView) findViewById(R.id.host_heading);
-		// manager.monitorKeyOfUser("createGame", "user1");
+
 	}
 
 	@Override
@@ -88,28 +96,13 @@ public class HostActivity extends Activity implements
 		if (view.getId() == R.id.button_create && gameName != null
 				&& gameName.getText() != null && !gameName.getText().equals("")) {
 
-			// manager.saveValueForKeyOfUser("createGame", "user1",
-			// gameName.getText()
-			// .toString());
-			//hostname = SessionManager.getSessionManager().getUserName();
-			
-		
-			/*
-			manager.saveValueForKeyOfUser("createGame", hostname, gameName
-					.getText().toString());
-			manager.saveValueForKeyOfUser("listOfPlayers", hostname, hostname);
-			manager.loadValueForKeyOfUser("listOfHosts", "hosts");
-            */
 
-			/**Updated version of networking*/
+			/** Updated version of networking */
 			gameNameStr = gameName.getText().toString();
 			manager.lockKeyOfUser("listOfGames", "games");
 			manager.loadValueForKeyOfUser("listOfGames", "games");
-		//	manager.saveValueForKeyOfUser("listOfPlayers", gameNameStr, hostname);
-			
-			// updateListOfHosts();
-			//manager.monitorKeyOfUser("listOfPlayers", gameNameStr);
-			
+
+
 			Intent intent = new Intent(this, WaitHostActivity.class);
 			intent.putExtra("GameName", gameNameStr);
 			startActivity(intent);
@@ -167,17 +160,20 @@ public class HostActivity extends Activity implements
 		try {
 			Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
 					"JSONOBject retreived in method loadedValue + "
-							+ "forKeyOfUser: " + json.toString() + " gamenamestr is " + gameNameStr);
+							+ "forKeyOfUser: " + json.toString()
+							+ " gamenamestr is " + gameNameStr);
 
 			if (!listOfGames.contains(json.get("value").toString())) {
-				//String[] lsg = gson.fromJson(json.get("value").toString(), String[].class);
-			ArrayList<String> tempListOfGames = gson.fromJson(json.get("value").toString(), new TypeToken<ArrayList<String>>() {}.getType());
 		
-			if(!(tempListOfGames == null)){
-				listOfGames.addAll(tempListOfGames);
-			}
+				ArrayList<String> tempListOfGames = gson.fromJson(
+						json.get("value").toString(),
+						new TypeToken<ArrayList<String>>() {
+						}.getType());
+
+				if (!(tempListOfGames == null)) {
+					listOfGames.addAll(tempListOfGames);
+				}
 				listOfGames.add(gameNameStr);
-				//listOfGames.addAll(Arrays.asList(lsg));
 
 				String jstring = gson.toJson(listOfGames);
 				manager.saveValueForKeyOfUser("listOfGames", "games", jstring);

@@ -9,6 +9,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+/**
+ * This class is invoked when players try to access the rule page which 
+ * displays the description and rules of the game.
+ * 
+ * @author group 6
+ * 
+ */
+
 public class RulesActivity extends Activity {
 
 	InstaAPIManager im =  InstaAPIManager.getInstaAPIManager();
@@ -18,18 +26,7 @@ public class RulesActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_rules);
-		/*
-		setContentView(R.layout.insta_images);
 
-		new Thread() {
-			public void run() {
-				im.initiateConnection();
-				
-			}
-		}.start();
-		imageview1 = (ImageView) findViewById(R.id.imageView1);
-		imageview1.setImageBitmap(im.getBitmap());
-		*/
 	}
 
 	public void initiate() {

@@ -25,6 +25,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+
+/**
+ * This class is invoked when a guest player tries to join a game session.
+ * it displays a list of existing games which are hosted.
+ * @author group 6
+ *
+ */
+
 public class JoinGameActivity extends Activity implements
 		NetworkingEventHandler {
 
@@ -97,8 +105,7 @@ public class JoinGameActivity extends Activity implements
 	}
 
 	public void onClickRefresh(View view) {
-		//manager.deleteKeyOfUser("listOfGames", "games");
-		//manager.loadValueForKeyOfUser("createGame", "user1");
+
 		Intent intent = new Intent(this, WaitGuestActivity.class);
 		startActivity(intent);
 
@@ -120,9 +127,6 @@ public class JoinGameActivity extends Activity implements
 		// TODO Auto-generated method stub
 		testing = (TextView) findViewById(R.id.testing);
 
-//		Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
-//				"JSONOBject retreived in method loadedValue + "
-//						+ "forKeyOfUser: " + json.toString());
 
 		ArrayList<String> tempListOfGames;
 		try {
@@ -139,19 +143,7 @@ public class JoinGameActivity extends Activity implements
 			e.printStackTrace();
 		}
 		manager.unlockKeyOfUser("listOfGames", "games");
-		/*
-		try {
-			String[] host1 = gson.fromJson((String) json.get("value"),
-					String[].class);
-            listOfGames.addAll(Arrays.asList(host1));
-		
-			Log.d(NetworkingManager.TAG_EVENT_COMPLETE,
-					"jsonHosts parsed from gson: " + listOfGames.toString());
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		*/
+	
 		adapter.notifyDataSetChanged();
 	}
 

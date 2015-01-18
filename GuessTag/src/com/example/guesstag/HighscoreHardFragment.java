@@ -13,6 +13,12 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+/**
+ * This is the highscore fragment created for hard game mode. 
+ * @author group 6
+ *
+ */
+
 
 public class HighscoreHardFragment extends Fragment{
 	
@@ -66,9 +72,6 @@ public class HighscoreHardFragment extends Fragment{
 			}
 		return rootView;
 	}
-//	public void onClickBack(View view) {
-//		Intent intent = new Intent(getActivity(), StartActivity.class);
-//		startActivity(intent);
-//	}
+
 }
 

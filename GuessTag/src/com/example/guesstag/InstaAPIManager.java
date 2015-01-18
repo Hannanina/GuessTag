@@ -17,13 +17,23 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 
+/**
+ * This class implements the connection part with Instagram server and invokes
+ * APIs. It also parses images from received URLs.
+ * 
+ * 
+ * 
+ * @author group 6
+ * 
+ */
+
 public class InstaAPIManager {
 	String accessToken = "15170786.1fb234f.196d7fd71cfa40a9aa12140c522a5c99";
 	JSONObject level2;
 	JSONObject level3;
 	String tag;
 	URL example;
- private ArrayList<Bitmap> listOfURLs = new ArrayList<Bitmap>();
+	private ArrayList<Bitmap> listOfURLs = new ArrayList<Bitmap>();
 
 	SessionManager sm = SessionManager.getSessionManager();
 
@@ -37,9 +47,7 @@ public class InstaAPIManager {
 	}
 
 	public void initiateConnection() {
-		// img1 = (ImageView) findViewById(R.id.imageView1);
 
-		// has to get the tagName input from the tagger's phone
 		tag = sm.getTagName();
 
 		try {
@@ -80,19 +88,18 @@ public class InstaAPIManager {
 
 					String imageURL = level3.get("url").toString();
 
-			
 					URL url = new URL(imageURL);
-					Bitmap bmp = BitmapFactory.decodeStream(url.openConnection()
-							.getInputStream());
+					Bitmap bmp = BitmapFactory.decodeStream(url
+							.openConnection().getInputStream());
 					Log.d("API DEBUGGING FEEDBACK",
 							"Bitmap generated: " + bmp.toString());
-					
+
 					listOfURLs.add(bmp);
 					System.out.println("INSIDE IMAGE PARSING!!! ");
 
 				}
-				Log.d("API DEBUGGING FEEDBACK",
-						"IMAGE URLs from Insta API: " + listOfURLs.toString());
+				Log.d("API DEBUGGING FEEDBACK", "IMAGE URLs from Insta API: "
+						+ listOfURLs.toString());
 
 			}
 

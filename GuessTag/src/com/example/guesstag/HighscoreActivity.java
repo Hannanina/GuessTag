@@ -20,6 +20,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+/**
+ * This class implements the highscore activity which can be accessed by
+ * clicking on the highscore button at the main menu. This activity contains
+ * three fragments which represents three difficulty level of the game record.
+ * 
+ * @author group 6
+ * 
+ */
+
 public class HighscoreActivity extends ActionBarActivity implements
 		ActionBar.TabListener {
 
@@ -31,9 +40,9 @@ public class HighscoreActivity extends ActionBarActivity implements
 	 * {@link android.support.v4.app.FragmentStatePagerAdapter}.
 	 */
 	SectionsPagerAdapter mSectionsPagerAdapter;
-	
+
 	HighscoreList hl = HighscoreList.getHighscoreList();
-	SessionManager sm =  SessionManager.getSessionManager();
+	SessionManager sm = SessionManager.getSessionManager();
 
 	/**
 	 * The {@link ViewPager} that will host the section contents.
@@ -44,13 +53,13 @@ public class HighscoreActivity extends ActionBarActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_highscore);
-		
+
 		SessionManager.getSessionManager().getScore().setDiffSetting("medium");
-				
-		 SharedPreferences listOfScores = getSharedPreferences("preferences",0);
-	     hl.loadChanges(listOfScores);
-	     
-	     // Set up the action bar.
+
+		SharedPreferences listOfScores = getSharedPreferences("preferences", 0);
+		hl.loadChanges(listOfScores);
+
+		// Set up the action bar.
 		final ActionBar actionBar = getSupportActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
@@ -137,25 +146,25 @@ public class HighscoreActivity extends ActionBarActivity implements
 		public Fragment getItem(int position) {
 			// getItem is called to instantiate the fragment for the given page.
 			// Return a PlaceholderFragment (defined as a static inner class
-			// below). 
-			if(sm.getDiffSetting().equals("easy")){
+			// below).
+			if (sm.getDiffSetting().equals("easy")) {
 				mViewPager.setCurrentItem(1);
-			}else if(sm.getDiffSetting().equals("medium")){
+			} else if (sm.getDiffSetting().equals("medium")) {
 				mViewPager.setCurrentItem(2);
-			}else {
+			} else {
 				mViewPager.setCurrentItem(3);
 			}
-			
-			switch (position){
-        case 0:
-            return HighscoreEasyFragment.newInstance(position + 1);
 
-         case 1:
-             return HighscoreMediumFragment.newInstance(position + 1);
-             
-         case 2:
-             return HighscoreHardFragment.newInstance(position + 1);
-     }
+			switch (position) {
+			case 0:
+				return HighscoreEasyFragment.newInstance(position + 1);
+
+			case 1:
+				return HighscoreMediumFragment.newInstance(position + 1);
+
+			case 2:
+				return HighscoreHardFragment.newInstance(position + 1);
+			}
 			return PlaceholderFragment.newInstance(position + 1);
 		}
 

@@ -1,12 +1,21 @@
 package com.example.guesstag;
 
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+/**
+ * This class is invoked in the beginning of a game session, when
+ * one player is chosen to input the hashtag for guessing. this feature 
+ * is not followed due to time limit. In this version, host is always the 
+ * player who inputs hashtag.
+ * 
+ * @author group 6
+ * 
+ */
 
 public class SelectTaggerActivity extends Activity {
 
@@ -15,12 +24,13 @@ public class SelectTaggerActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_select_tagger);
 	}
-	
-	public void onClickSelect(){
-		//toDo: disable button for other players and bring them to guessTag Activity
+
+	public void onClickSelect() {
+		// toDo: disable button for other players and bring them to guessTag
+		// Activity
 		Intent intent = new Intent(this, InputTagActivity.class);
 		startActivity(intent);
-	
+
 	}
 
 	@Override

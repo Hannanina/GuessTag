@@ -14,6 +14,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 
+/**
+ * This is the highscore fragment created for medium game mode. 
+ * @author group 6
+ *
+ */
+
+
 public class HighscoreMediumFragment extends Fragment{
 	
 	private static final String ARG_SECTION_NUMBER = "section_number";
@@ -67,9 +74,6 @@ public class HighscoreMediumFragment extends Fragment{
 		
 		return rootView;
 	}
-//	public void onClickBack(View view) {
-//		Intent intent = new Intent(getActivity(), StartActivity.class);
-//		startActivity(intent);
-//	}
+
 }
 

@@ -1,5 +1,13 @@
 package com.example.guesstag;
 
+/**
+ * This class creates instance of score which consists of many items such as
+ * number of players, points(based on difficulty, time spent etc.)
+ * 
+ * @author group 6
+ * 
+ */
+
 public class Score {
 	
 	private int nrOfPlayers;

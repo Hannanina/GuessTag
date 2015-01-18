@@ -14,6 +14,15 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+
+/**
+ * This class implements a popup fragment which is used to enable
+ * players to input their names in game for the first time they
+ * access the app.
+ * 
+ * @author group 6
+ *
+ */
 public class PopupFragment extends DialogFragment {
 	
 	NoticeDialogListener mListener;
